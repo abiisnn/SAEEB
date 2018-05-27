@@ -64,14 +64,14 @@
 			if(tipoUsuario($idRemitente, $con)=='ALUMNO'){
 			if (mysqli_num_rows($desti)) { 
 						while ($row = mysqli_fetch_array($desti)) { 
-							echo "<option value='$row[0]'> $row[1] $row[2] $row[3]</option>";
+							echo "<option value='$row[0]'> $row[0] - $row[1] $row[2] $row[3]</option>";
 							}
 						}
 			}
 			else{
 				if (mysqli_num_rows($desti)) { 
 						while ($row = mysqli_fetch_array($desti)) { 
-							echo "<option value='$row[0]'> $row[1]</option>";
+							echo "<option value='$row[0]'> $row[0] - $row[1]</option>";
 							}
 						}
 			}
