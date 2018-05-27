@@ -3,16 +3,17 @@
 <head>
 	<meta charset="utf-8">
 	<title>Login</title></head>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
 <body>
 <div>
 	<center>
 		<form method="POST" action="validar.php">
+			<label for="nombre">Nombre:</label>
 			<input type="text" name="nnombre" placeholder="Usuario" />
-			<br />
+			<label for="contrasena">Contraseña:</label>
 			<input type="password" name="npassword" placeholder="Contraseña" />
-			<br />
-			<button type="submit">Iniciar Sesion</button>
-		</form>
+			<input type="submit" value="Enviar">
+		</form>	
 	</center>
 </div>
 </body>

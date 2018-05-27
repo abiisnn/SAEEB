@@ -19,9 +19,10 @@
 		// Valida que el usuario y contraseña sean validos
 		if($extraido['idUsuario'] ==  $usuario && $extraido['Contrasena'] ==  $pass)
 		{
-			session_start();
-			$_SESSION['usuario'] = $usuario;
-			header("Location: contenido.php");	
+			//session_start();
+			//$_SESSION['usuario'] = $usuario;
+			//header("Location: contenido.php");
+			header("Location: Principal_Alum.html");
 		}
 		else
 		{
