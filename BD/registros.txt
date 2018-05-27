@@ -1,0 +1,71 @@
+cd C:\Program Files\MySQL\MySQL Server 5.7\bin
+mysqldump -u root -p saeeb > c:/saeeb.sql
+
+insert into escuela values(150003, 'ESCUELA SECUNDARIA TECNICA NUM. 3', 'CALLE ISLA DE GUADALUPE E ISLA CLARION', 4,'PRADO VALLEJO', 'TLALNEPANTLA DE BAZ', 'EDOMEX', 'TECNICA', concat(year(now()), '-2'), 'TERESA VALENCIA DE LA MORA');
+
+insert into escuela values(151386, 'COLEGIO LAS AMERICAS', 'AVENIDA JORGE JIMÉNEZ CANTU', 17,'VILLA DE GUADALUPE XALOSTOC', 'ECATEPEC DE MORELOS', 'EDOMEX', 'TECNICA', concat(year(now()), '-2'), '');
+
+insert into escuela values(150160, 'ESCUELA SECUNDARIA TECNICA NUM. 150', 'CALLE ARGELIA', 11,'MEXICO 86', 'ATIZAPAN DE ZARAGOZA', 'EDOMEX', 'TECNICA', concat(year(now()), '-2'), 'RAUL AGUSTIN JAIMES SANTANA');
+
+insert into escuela values(150070, 'JAIME TORRES BODET', 'AVENIDA FRANCISCO BARRERA', 12,'PROFESOR CRISTOBAL HIGUERA', 'ATIZAPAN DE ZARAGOZA', 'EDOMEX', 'TECNICA', concat(year(now()), '-2'), 'MARIO CUADRILLA RAMIREZ');
+
+insert into escuela values(	150021, 'ADOLFO LOPEZ MATEOS', 'CALLE SALVADOR NOVO', 8,'SAN ANTONIO ZOMEYUCAN', 'NAUCALPAN DE JUAREZ', 'EDOMEX', 'TELESECUNDARIA', concat(year(now()), '-2'), 'CONSTANTINO RIVERA MORALES');
+
+insert into usuario values (280000, 150003, 'ERICK', 'RAMOS', 'TELLEZ', 'RATE040125HMCMLRA8', 'enriquebroly@hotmail.com','ultra', 13, 'MASCULINO', 'CALLE AQUILES SERDAN', 31, 'EL GALLITO STA CLARA', 'ECATEPEC DE MORELOS', 'EDOMEX', 'ALUMNO', '7:00', '13:00');
+
+insert into usuario values (280001, 150021, 'LEONARDO', 'DIAZ', 'MIRANDA', 'DIML040906HMCIIN08', 'enriquebroly@gmail.com','instinto', 13, 'MASCULINO', 'CALLE TOLUCA', 109, 'LOMAS DE SAN ANDRES ATENCO', 'TLALNEPANTLA DE BAZ', 'EDOMEX', 'ALUMNO', '8:00', '15:00');
+
+insert into usuario values (380001, 150021, 'JAIME', 'DAVALOS', 'PEREZ', 'DAPJ040916HMCYYN11', 'jaime@gmail.com','123', 33, 'MASCULINO', 'CALLE ESMERALDA', 9, 'ACAPULCO', 'TLALNEPANTLA DE BAZ', 'EDOMEX', 'ORIENTADOR', '8:00', '15:00');
+
+insert into usuario values (480011, 150070, 'LEONEL', 'QUINTERO', 'LOPEZ', 'QULL040920HMCXDYN11', 'leonel@gmail.com','123', 46, 'MASCULINO', 'CALLE FORTUNA', 187, 'GUERRERO', 'NAUCALPAN DE JUAREZ', 'EDOMEX', 'PROFESOR', '8:00', '15:00');
+
+insert into orientador values (380001, 'LIC. EN CIENCIAS SOCIALES');
+
+insert into profesor values (480011, 'LIC. EN CONTABILIDAD');
+
+insert into pg values (1, 480011);
+
+insert into grupo values (1, '1CM1', 380001);
+
+insert into alumno values (280000, 1, "ENRIQUE RAMOS AGUILAR", 2, "MATUTINO", 0);
+insert into alumno values (280001, 1, "SALOMON DIAZ HERNANDEZ", 2, "MATUTINO", 0);
+
+insert into materia values (580000, "MATEMATICAS I");
+insert into materia values (580001, "FORMACION CIVICA Y ÉTICA II");
+insert into materia values (580002, "HISTORIA I");
+
+
+insert into am values (280000, 580000, 10);
+insert into am values (280000, 580001, 9);
+insert into am values (280001, 580002, 8);
+
+insert into mensaje values (1,280000, 'Este es un mensaje enviado de prueba', 380001, CURRENT_TIMESTAMP, 'Asunto 1');
+insert into mensaje values (2,280001, 'Otro mensaje de prueba', 280000, CURRENT_TIMESTAMP, 'Asunto 1');
+insert into mensaje values (3,380001, 'El ultimo xD', 380001, CURRENT_TIMESTAMP, 'Asunto 1');
+
+insert into mensaje values (4,280000, 'Quince años de malicia', 280001, CURRENT_TIMESTAMP, 'Asunto 1');
+insert into mensaje values (5,280001, 'Ultra instinto', 380001, CURRENT_TIMESTAMP, 'Asunto 1');
+insert into mensaje values (6,380001, 'Nunca más', 280001, CURRENT_TIMESTAMP, 'Asunto 1');
+
+
+//Obtener profesores y orientador de cada alumno
+SELECT u.idusuario, u.nombre, u.appaterno, u.apmaterno 
+FROM usuario u, profesor p, alumno a, grupo g, pg pg , orientador o
+WHERE ((u.idusuario=pg.idprofesor and pg.idgrupo=g.idgrupo) or (u.idusuario=g.idorientador)) and g.idgrupo=a.idgrupo and a.idalumno=280000;
+
+//Obtener alumnos por parte del orientador
+SELECT u.idusuario, u.nombre, u.appaterno, u.apmaterno 
+FROM usuario u, orientador o, alumno a, grupo g
+WHERE u.idusuario=a.idalumno and a.idgrupo=g.idgrupo and g.idorientador=o.idorientador and o.idorientador=380001;
+
+//Obtener padres de familia por parte del orientador
+SELECT a.idalumno, a.tutor
+FROM orientador o, alumno a, grupo g
+WHERE a.idgrupo=g.idgrupo and g.idorientador=o.idorientador and o.idorientador=380001;
+
+//Obtener alumnos por parte del profesor
+SELECT a.idalumno, a.tutor
+FROM profesor p, alumno a, grupo g, pg pg
+WHERE a.idgrupo=g.idgrupo and g.idgrupo=pg.idgrupo and pg.idprofesor=p.idprofesor and p.idprofesor=480011;
+
+
