@@ -29,7 +29,7 @@ CREATE TABLE `alumno` (
   `Grado` int(11) NOT NULL,
   `Turno` varchar(45) NOT NULL,
   `Promedio` double NOT NULL,
-  `tel` varchar(20) DEFAULT NULL,
+  `Tel` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`idAlumno`,`idGrupo`),
   KEY `idGrupo_idx` (`idGrupo`),
   CONSTRAINT `idAlumno_Alumno` FOREIGN KEY (`idAlumno`) REFERENCES `usuario` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -71,6 +71,7 @@ CREATE TABLE `am` (
 
 LOCK TABLES `am` WRITE;
 /*!40000 ALTER TABLE `am` DISABLE KEYS */;
+INSERT INTO `am` VALUES (280000,580000,10),(280000,580001,9),(280001,580002,8);
 /*!40000 ALTER TABLE `am` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -86,6 +87,8 @@ CREATE TABLE `cita` (
   `Lugar` varchar(45) NOT NULL,
   `Fecha` datetime NOT NULL,
   `HoraCita` varchar(10) NOT NULL,
+  `Motivo` varchar(50) NOT NULL,
+  `Remitente` varchar(45) NOT NULL,
   PRIMARY KEY (`idCita`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -168,8 +171,11 @@ CREATE TABLE `grupo` (
   `idGrupo` int(11) NOT NULL,
   `Nombre` varchar(45) NOT NULL,
   `idOrientador` int(11) NOT NULL,
-  PRIMARY KEY (`idGrupo`,`idOrientador`),
+  `ClaveEscuela` int(11) NOT NULL,
+  PRIMARY KEY (`idGrupo`,`idOrientador`,`ClaveEscuela`),
   KEY `idOrientador_idx` (`idOrientador`),
+  KEY `ClaveEscuela_Grupo_idx` (`ClaveEscuela`),
+  CONSTRAINT `ClaveEscuela_Grupo` FOREIGN KEY (`ClaveEscuela`) REFERENCES `escuela` (`ClaveEscuela`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `idOrientador_Grupo` FOREIGN KEY (`idOrientador`) REFERENCES `orientador` (`idOrientador`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -180,7 +186,7 @@ CREATE TABLE `grupo` (
 
 LOCK TABLES `grupo` WRITE;
 /*!40000 ALTER TABLE `grupo` DISABLE KEYS */;
-INSERT INTO `grupo` VALUES (1,'1CM1',380001);
+INSERT INTO `grupo` VALUES (1,'1CM1',380001,150021);
 /*!40000 ALTER TABLE `grupo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -220,8 +226,8 @@ CREATE TABLE `mensaje` (
   `idUsuario` int(11) NOT NULL,
   `Mensaje` varchar(150) NOT NULL,
   `Destinatario` int(11) NOT NULL,
-  `HoraMensaje` varchar(25) DEFAULT NULL,
-  `asunto` varchar(20) DEFAULT NULL,
+  `HoraMensaje` varchar(30) DEFAULT NULL,
+  `Asunto` varchar(20) NOT NULL,
   PRIMARY KEY (`idMensaje`,`idUsuario`),
   KEY `idUsuario_idx` (`idUsuario`),
   CONSTRAINT `idUsuario_Mensaje` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -234,7 +240,7 @@ CREATE TABLE `mensaje` (
 
 LOCK TABLES `mensaje` WRITE;
 /*!40000 ALTER TABLE `mensaje` DISABLE KEYS */;
-INSERT INTO `mensaje` VALUES (1,280000,'Este es un mensaje enviado de prueba',380001,'2018-05-26 20:02:49','Asunto 1'),(2,280001,'Otro mensaje de prueba',280000,'2018-05-26 20:02:49','Asunto 1'),(3,380001,'El ultimo xD',380001,'2018-05-26 20:02:49','Asunto 1'),(4,280000,'Quince años de malicia',280001,'2018-05-26 20:02:49','Asunto 1'),(5,280001,'Ultra instinto',380001,'2018-05-26 20:02:49','Asunto 1'),(6,380001,'Nunca más',280001,'2018-05-26 20:02:50','Asunto 1'),(53,380001,'Respuesta de prueba adios',280000,'2018-05-26 22:21:18','Re: Asunto 1'),(54,280001,'Nuevo mensaje enviado a las 11:11 am',380001,'2018-05-27 11:11:27','Prueba de mensaje 2'),(63,380001,'Muy bien, es el ultimo entonces xD',380001,'2018-05-26 22:22:09','Re: Asunto 1'),(64,280001,'Otro mensaje más.\r\nSaludos',480011,'2018-05-27 11:13:17','Mensaje de prueba 3'),(72,380001,'Te respondo en la noche',280001,'2018-05-26 22:25:03','Mensaje noche'),(1543,280001,'sdgsdgsdgsdg',480011,'2018-05-27 11:14:45','dfsgsd'),(1573,480011,'Ok xD',280001,'2018-05-27 11:15:24','Re: dfsgsd');
+INSERT INTO `mensaje` VALUES (1,280000,'Este es un mensaje enviado de prueba',380001,'2018-05-27 18:45:14','Asunto 1'),(2,280001,'Otro mensaje de prueba',280000,'2018-05-27 18:45:14','Asunto 1'),(3,380001,'El ultimo xD',380001,'2018-05-27 18:45:14','Asunto 1'),(4,280000,'Quince años de malicia',280001,'2018-05-27 18:45:14','Asunto 1'),(5,280001,'Ultra instinto',380001,'2018-05-27 18:45:14','Asunto 1'),(6,380001,'Nunca más',280001,'2018-05-27 18:45:15','Asunto 1');
 /*!40000 ALTER TABLE `mensaje` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -366,4 +372,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-27 12:32:04
+-- Dump completed on 2018-05-27 18:46:07
