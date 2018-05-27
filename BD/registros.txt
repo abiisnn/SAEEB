@@ -69,3 +69,5 @@ FROM profesor p, alumno a, grupo g, pg pg
 WHERE a.idgrupo=g.idgrupo and g.idgrupo=pg.idgrupo and pg.idprofesor=p.idprofesor and p.idprofesor=480011;
 
 
+
+
