@@ -27,8 +27,8 @@ insert into pg values (1, 480011);
 
 insert into grupo values (1, '1CM1', 380001);
 
-insert into alumno values (280000, 1, "ENRIQUE RAMOS AGUILAR", 2, "MATUTINO", 0);
-insert into alumno values (280001, 1, "SALOMON DIAZ HERNANDEZ", 2, "MATUTINO", 0);
+insert into alumno values (280000, 1, "ENRIQUE RAMOS AGUILAR", 2, "MATUTINO", 0, '55-55-55-55-55');
+insert into alumno values (280001, 1, "SALOMON DIAZ HERNANDEZ", 2, "MATUTINO", 0, '55-89-12-11-00');
 
 insert into materia values (580000, "MATEMATICAS I");
 insert into materia values (580001, "FORMACION CIVICA Y ÉTICA II");
