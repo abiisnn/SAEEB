@@ -58,7 +58,7 @@
 			<table>
 			<tr>
 			
-			De: <input type='text' name='remitente 'value='".usuario($idRemitente, $con)."' size=40>
+			De: <input type='text' name='remitente 'value='$idRemitente - ".usuario($idRemitente, $con)."' size=40>
 			<br><br>
 			Para: <select name='destino'>";
 			if(tipoUsuario($idRemitente, $con)=='ALUMNO'){
@@ -78,7 +78,7 @@
 
 			echo "</select>
 			<br><br>
-			Asunto: <input type='text' name='asunto' name='asunto' size=50>
+			Asunto: <input type='text' name='asunto' size=50>
 			<br><br>
 			Mensaje: <textarea name='mensaje' cols=50 rows=10></textarea>
 			<br></td>
