@@ -13,9 +13,9 @@
 	if (!$con)
   			die ("Error al conectar a la BD: ". mysqli_connect_error());
   	else{
-  		if (isset($_POST['enviar'])) { 
+  		if (isset($_POST['nuevoM'])) { 
 
-  			$nuevoid=rand($_POST['idMensaje']+23, $_POST['idMensaje']+100);
+  			$nuevoid=rand(23,2000);
   			$Remitente=$_POST['remitente'];
   			$Destinatario=$_POST['destino'];
   			$nuevoAsunto=$_POST['asunto'];
@@ -38,19 +38,45 @@
 		else{
 	  		$idRemitente = $_GET['idRemitente'];
 
-	  		$rowsDestinatarios=consultaDesti($idRemitente, $con);
+	  		if(tipoUsuario($idRemitente, $con)=='ORIENTADOR'){
+	  			$desti=DestiOri($idRemitente, $con);
 
 
-	  			
+	  		}
+	  		else if(tipoUsuario($idRemitente, $con)=='ALUMNO'){
+	  			$desti=DestiAlumno($idRemitente, $con);
+
+	  		}
+	  		else if(tipoUsuario($idRemitente, $con)=='PROFESOR'){
+	  			$desti=DestiProf($idRemitente, $con);
+
+	  		}
 
 
 
-			echo "<form action='responder.php' method='POST'>
+			echo "<form action='nuevoMensaje.php' method='POST'>
 			<table>
 			<tr>
-			De: <input type='text' value='".usuario($idRemitente, $con)."' size=40>
+			
+			De: <input type='text' name='remitente 'value='".usuario($idRemitente, $con)."' size=40>
 			<br><br>
-			Para: <input type='text' size=40 name='destino'>
+			Para: <select name='destino'>";
+			if(tipoUsuario($idRemitente, $con)=='ALUMNO'){
+			if (mysqli_num_rows($desti)) { 
+						while ($row = mysqli_fetch_array($desti)) { 
+							echo "<option value='$row[0]'> $row[1] $row[2] $row[3]</option>";
+							}
+						}
+			}
+			else{
+				if (mysqli_num_rows($desti)) { 
+						while ($row = mysqli_fetch_array($desti)) { 
+							echo "<option value='$row[0]'> $row[1]</option>";
+							}
+						}
+			}
+
+			echo "</select>
 			<br><br>
 			Asunto: <input type='text' name='asunto' name='asunto' size=50>
 			<br><br>
@@ -59,7 +85,7 @@
 			</tr>
 			</table><br>
 			<input type='hidden' value='$idRemitente' name='remitente'>
-			<input type='submit' name='enviar' value='Enviar mensaje'>
+			<input type='submit' name='nuevoM' value='Enviar mensaje'>
 			</form>"
 			;
 
