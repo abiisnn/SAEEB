@@ -35,11 +35,11 @@ session_start();
 			{
 				if($extraido['Tipo'] == $Tipo2) // Tipo PROFESOR
 				{
-					header("Location: Principal_Profesor.html");		
+					header("Location: Principal_Profesor.php");		
 				}
 				else // Tipo Orientador 
 				{
-					header("Location: Principal_Orientador.html");
+					header("Location: Principal_Orientador.php");
 				}
 			}
 		}

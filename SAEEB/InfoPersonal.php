@@ -66,9 +66,13 @@ if($now > $_SESSION['expire'])
 	$conexion = conectar();
 	if($conexion)
 	{
+		// Consultas para usuario
 		$result = mysqli_query($conexion,"SELECT*FROM usuario where idUsuario='" . $_SESSION['username']. "'");
 		$extraido=$result->fetch_array();
-		// Valida que el usuario y contraseña sean validos
+		// Consulta para Grupo 
+		$result1 = mysqli_query($conexion,"SELECT*FROM Alumno where idUsuario='" . $_SESSION['username']. "'");
+		$extraidos=$result->fetch_array();
+		
 	}
 echo "			<section id='main' class='container 95%'>
 					<header>
@@ -79,29 +83,30 @@ echo "			<section id='main' class='container 95%'>
 						<form method='post' action='#'>
 							<div class='row uniform 50%'>
 								<div class='3u 12u(mobilep)'>
-									<label for='nombre'>Nombre(s):</label>
+									<label for='nombre'><b>Nombre(s):</b></label>
 									<p>".$extraido[2]."</p>
 								</div>
 								<div class='3u 12u(mobilep)'>
-									<label for='nombre'>Apellido Paterno:</label>
+									<label for='nombre'><b>Apellido Paterno:</b></label>
 									<p>".$extraido[3]."</p>
 								</div>
 								<div class='3u 12u(mobilep)'>
-									<label for='nombre'>Apellido Materno:</label>
+									<label for='nombre'><b>Apellido Materno:</b></label>
 									<p>".$extraido[4]."</p>
+								</div>
+								<div class='3u 12u(mobilep)'>
+									<label for='nombre'><b>Edad:</b></label>
+									<p>".$extraido[8]."</p>
 								</div>
 							</div>
 							<div class='row uniform 50%'>
+								
 								<div class='3u 12u(mobilep)'>
-									<label for='nombre'>Edad:</label>
-									<p>".$extraido[8]."</p>
-								</div>
-								<div class='3u 12u(mobilep)'>
-									<label for='nombre'>Sexo:</label>
+									<label for='nombre'><b>Sexo:</b></label>
 									<p>".$extraido[9]."</p>
 								</div>
 								<div class='3u 12u(mobilep)'>
-									<label for='nombre'>Email:</label>
+									<label for='nombre'><b>Email:</b></label>
 									<p>".$extraido[6]."</p>
 								</div>
 							</div>
@@ -109,7 +114,7 @@ echo "			<section id='main' class='container 95%'>
 							<div class='row uniform'>
 								<div class='12u'>
 									<ul class='actions align-center'>
-										<li><a href='Principal_Alumno.html' class='button special'>Regresar</a></li>
+										<li><a href='Principal_Alumno.php' class='button special'>Regresar</a></li>
 									</ul>
 								</div>
 							</div>
