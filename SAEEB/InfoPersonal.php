@@ -6,14 +6,14 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
 }
 else 
 {
-	echo "<br><a href='index.html'>Login</a>";
+	header("Location: index.php");
 	exit;
 }
 $now = time();
 if($now > $_SESSION['expire'])
 {
 	session_destroy();
-	echo "<br><a href='index.html'>Login</a>";
+	header("Location: index.php");	
 }
 ?>
 <!DOCTYPE HTML>
@@ -81,6 +81,9 @@ echo "			<section id='main' class='container 95%'>
 					</header>
 					<div class='box'>
 						<form method='post' action='#'>
+							<div class='row uniform 50%'>
+								<div class='3u 12u(mobilep)'>
+									<label for='nombre'><b>DATOS PERSONALES(							</div>
 							<div class='row uniform 50%'>
 								<div class='3u 12u(mobilep)'>
 									<label for='nombre'><b>Nombre(s):</b></label>

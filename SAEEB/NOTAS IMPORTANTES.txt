@@ -34,14 +34,14 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
 }
 else 
 {
-	echo "<br><a href='index.html'>Login</a>";
+	header("Location: index.php");
 	exit;
 }
 $now = time();
 if($now > $_SESSION['expire'])
 {
 	session_destroy();
-	echo "<br><a href='index.html'>Login</a>";
+	header("Location: index.php");	
 }
 ?>
 
