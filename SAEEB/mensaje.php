@@ -24,7 +24,8 @@
 
 		echo "<table>
 				<tr>
-				<td><b>Enviado por: </b>".usuario($row[1], $con)." >IdUsuario: $row[1]< <br><br>
+				<td><b>Enviado por: </b>$row[1] - ".usuario($row[1], $con)."<br>
+				<b>Para: </b>$row[3] - ".usuario($row[3], $con)."<br><br>
 				<b>Asunto:</b> <i>$row[5]</i>
 				<br><br><br>
 				<b>Mensaje:</b>
@@ -33,6 +34,7 @@
 				</TABLE>
 				<br><br><br>
 				"; 
+
 		echo "
 		<a href='responder.php?idMensaje=$id'><button>Responder el mensaje</button></a><br><br>
 		<a href=bandeja.php><button>Volver a la bandeja de entrada</button></a>";
