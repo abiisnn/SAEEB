@@ -6,37 +6,27 @@
 		return $row[0];
 	}
 
-	function consultaDesti($idUsuario, $conex){
-		$destinatarios=null;
-		$rowD=null;
-		echo "".$idUsuario;
 
-		if(tipoUsuario($idUsuario, $conex)=='ALUMNO'){
-			$destinatarios= mysqli_query($conex, "SELECT u.*
-														FROM usuario u, profesor p, alumno a, grupo g, pg pg , orientador o
-														WHERE ((u.idusuario=pg.idprofesor and pg.idgrupo=g.idgrupo) or (u.idusuario=g.idorientador)) and g.idgrupo=a.idgrupo and a.idalumno=$idUsuario order by 3 asc;"); 
-			$rowD = mysqli_fetch_array($destinatarios);
-		}
-		else if(tipoUsuario($idUsuario, $conex)=='PROFESOR'){//Obtener padres de familia
-			$destinatarios= mysqli_query($conex, "SELECT a.*
-													FROM profesor p, alumno a, grupo g, pg pg
-													WHERE a.idgrupo=g.idgrupo and g.idgrupo=pg.idgrupo and pg.idprofesor=p.idprofesor and p.idprofesor=$idUsuario order by 2 asc;"); 
-			$rowD = mysqli_fetch_array($destinatarios);
-		}
-		else if(tipoUsuario($idUsuario, $conex)=='ORIENTADOR'){//Obtener padres de familia
-			$destinatarios= mysqli_query($conex, "SELECT a.*
-													FROM orientador o, alumno a, grupo g
-													WHERE a.idgrupo=g.idgrupo and g.idorientador=o.idorientador and o.idorientador=$idUsuario order by 2 asc;"); 
-			$rowD = mysqli_fetch_array($destinatarios);
-		}
+	function DestiAlumno($idUsuario, $conex){
+		$destinatariosA= mysqli_query($conex, "SELECT u.idusuario, u.nombre, u.appaterno, u.apmaterno
+											FROM usuario u, profesor p, alumno a, grupo g, pg pg , orientador o
+											WHERE ((u.idusuario=pg.idprofesor and pg.idgrupo=g.idgrupo) or (u.idusuario=g.idorientador)) and g.idgrupo=a.idgrupo and a.idalumno=$idUsuario order by 1 asc;"); 
+		return $destinatariosA;
+	}
 
+	function DestiOri($idUsuario, $conex){
+		$destinatariosO= mysqli_query($conex, "SELECT a.idalumno, a.tutor
+												FROM orientador o, alumno a, grupo g
+												WHERE a.idgrupo=g.idgrupo and g.idorientador=o.idorientador and o.idorientador=$idUsuario order by 1 asc;"); 
+		return $destinatariosO;
 		
-		if (mysqli_num_rows($destinatarios)) { 
-	  				while ($rowD) {
-	  					echo "".$rowD[0]." ".$rowD[1];
-	  					echo "<br>";
-	  				}
-	  			}
+	}
+
+	function DestiProf($idUsuario, $conex){
+		$destinatariosP= mysqli_query($conex, "SELECT a.idalumno, a.tutor
+												FROM profesor p, alumno a, grupo g, pg pg
+												WHERE a.idgrupo=g.idgrupo and g.idgrupo=pg.idgrupo and pg.idprofesor=p.idprofesor and p.idprofesor=$idUsuario order by 1 asc;"); 
+		return $destinatariosP;
 	}
 
 	function usuario($idusuario, $conex){
