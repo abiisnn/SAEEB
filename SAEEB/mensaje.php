@@ -33,7 +33,6 @@
 				</TABLE>
 				<br><br><br>
 				"; 
-
 		echo "
 		<a href='responder.php?idMensaje=$id'><button>Responder el mensaje</button></a><br><br>
 		<a href=bandeja.php><button>Volver a la bandeja de entrada</button></a>";
