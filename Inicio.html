@@ -1,25 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset""uff-8"/>
-	<title>INICIAR SESION</title>
-</head>
+	<meta charset="utf-8">
+	<title>Login</title></head>
 <body>
-	<h1> Introduce tus datos</h1>
-	<form action="Login.php" method="post">
-		<table>
-			<tr>
-				<td class="izq">Login</td>
-				<td class="der"><input type="text" name="login"></td>
-			</tr>
-			<tr>
-				<td class="izq">Contraseña</td>
-				<td class="der"><input type="password" name="Contrasena"></td>
-			</tr>
-			<tr>
-				<td colspan="2"><input type="submit" name="enviar" value="LOGIN">
-			</tr>
-		</table>
-
+<div>
+	<center>
+		<form method="POST" action="validar.php">
+			<input type="text" name="nnombre" placeholder="Usuario" />
+			<br />
+			<input type="password" name="npassword" placeholder="Contraseña" />
+			<br />
+			<button type="submit">Iniciar Sesion</button>
+		</form>
+	</center>
+</div>
 </body>
 </html>
