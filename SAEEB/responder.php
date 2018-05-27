@@ -47,7 +47,7 @@
 
 			echo "<table>
 					<tr>
-					<td><b>Enviado por: </b>".usuario($row[1], $con)." >IdUsuario: $row[1]< <br><br>
+					<td><b>Enviado por: </b> $row[1] - ".usuario($row[1], $con)."<br><br>
 					<b>Asunto:</b> <i>$row[5]</i>
 					<br><br><br>
 					<b>Mensaje:</b>
@@ -60,9 +60,9 @@
 			echo "<form action='responder.php' method='POST'>
 			<table>
 			<tr>
-			De: <input type='text' value='".usuario($row[3], $con)."' size=40>
+			De: <input type='text' value='$row[3] - ".usuario($row[3], $con)."' size=40>
 			<br><br>
-			Para: <input type='text' value='".usuario($row[1], $con)."' size=40>
+			Para: <input type='text' value='$row[1] - ".usuario($row[1], $con)."' size=40>
 			<br><br>
 			Asunto: <input type='text' name='asunto' value='Re: $row[5]' size=50>
 			<br><br>

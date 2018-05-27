@@ -26,7 +26,7 @@
 		echo "<a href='nuevoMensaje.php?idRemitente=$idusuario'><button>Redactar</button></a>";
 		echo "<br><br>";
 
-		$mensaje=mysqli_query($con, "SELECT idusuario, idmensaje, asunto, horamensaje FROM mensaje WHERE destinatario=$idusuario ORDER BY 4 DESC"); 
+		$mensaje=mysqli_query($con, "SELECT destinatario, idmensaje, asunto, horamensaje FROM mensaje WHERE idusuario=$idusuario ORDER BY 4 DESC"); 
 
 		if (mysqli_num_rows($mensaje)) { 
 			while ($rowMensaje = mysqli_fetch_array($mensaje)) { 
@@ -37,7 +37,7 @@
 
 		}
 		else{ 
-			echo "Todavia no ha recibido mensajes.<br><br><br><br>";
+			echo "Todavia no ha enviado mensajes.<br><br><br><br>";
 		}
 	}
 
