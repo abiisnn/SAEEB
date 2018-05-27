@@ -6,7 +6,7 @@
 	// Cuando no se han ingresado datos
 	if(empty($usuario) || empty($pass))
 	{
-		header("Location: index.html");
+		header("Location: login.html");
 		exit();
 	}
 	include ("conexion.php");

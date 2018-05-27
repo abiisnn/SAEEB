@@ -17,57 +17,44 @@
 	<body class="landing">
 		<div id="page-wrapper">
 			<!-- Header -->
-				<header id="header" class="alt">
-					<h1><a href="index.html">Alpha</a> by HTML5 UP</h1>
+				<header id="cta" class="alt">
 					<nav id="nav">
 						<ul>
 							<li><a href="Principal.html">Inicio</a></li>
-							<li>
-								<a href="#" class="icon fa-angle-down">Opciones</a>
-								<ul>
-									<li><a href="generic.html">Contacto</a></li>
-									<li><a href="contact.html">Cerrar Sesión</a></li>
-									<li>
-										<a href="#">Submenu</a>
-										<ul>
-											<li><a href="#">Option One</a></li>
-											<li><a href="#">Option Two</a></li>
-											<li><a href="#">Option Three</a></li>
-											<li><a href="#">Option Four</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
 						</ul>
 					</nav>
 				</header>
 
 				<section id="main" class="container 50%">
 					<header>
-						<h2>Iniciar Sesión </h2>
+						<h2>Iniciar Sesión</h2>
 					</header>
 					<div class="box">
-						<form method="POST" action="validar.php">
-							<div class="row uniform 50%">
-								<div class="12u 12u(mobilep)">
-									<center><label for="nombre">Usuario:</label></center>
+						<center>
+							<form method="POST" action="validar.php">
+								<div class="row uniform 50%">
+									<div class="12u 12u(mobilep)">
+										<label for="nombre">Usuario:</label>		
 									<input type="text" name="nnombre" placeholder="Usuario" />
+									</div>
 								</div>
-							</div>
-							<div class="row uniform 50%">
-								<div class="12u 12u(mobilep)">
-									<center><label for="nombre">Contraseña</label></center>
+								<div class="row uniform 50%">
+									<div class="12u 12u(mobilep)">
+										<label for="contrasena">Contraseña:</label>
 									<input type="password" name="npassword" placeholder="Contraseña" />
+									</div>
 								</div>
-							</div>
-							<div class="row uniform">
-								<div class="12u">
-									<ul class="actions align-center">
-										<li><a href="validar.php" class="button special">Iniciar Sesión</a></li>
-									</ul>
-								</div>
-							</div>
-						</form>
+								<div class="row uniform">
+									<div class="12u">
+										<ul class="actions align-center">
+											<li><input type="submit" value="Iniciar Sesión"></li>
+											<li><a href="index.html" class="button special">Regresar</a></li>
+										</ul>
+									</div>
+								</div>	
+								
+							</form>	
+						</center>
 					</div>
 				</section>
 
@@ -89,22 +76,6 @@
 					</form>
 
 				</section>
-
-			<!-- Footer -->
-				<footer id="footer">
-					<ul class="icons">
-						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
-						<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
-						<li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
-					</ul>
-					<ul class="copyright">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-				</footer>
-
 		</div>
 
 		<!-- Scripts -->
