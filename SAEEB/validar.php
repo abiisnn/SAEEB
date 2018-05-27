@@ -26,7 +26,7 @@
 				session_start();
 				$_SESSION['usuario'] = $usuario;
 				//header("Location: contenido.php");
-				header("Location: Principal_Alumno.html");	
+				header("Location: Principal_Alumno.php");	
 			}
 			else
 			{
@@ -51,6 +51,6 @@
 			header("Location: login.html");
 			exit();
 		}
-		
 	}
+	mysqli_close($conexion);
 ?>

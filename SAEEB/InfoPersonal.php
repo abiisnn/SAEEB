@@ -15,8 +15,7 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
 	<body class="landing">
-	<?php
-		echo "<div id='page-wrapper'>
+		<div id='page-wrapper'>
 			<!-- Header -->
 				<header id='header' class='alt'>
 					<h1><a href='index.html'>Alpha</a> by HTML5 UP</h1>
@@ -42,7 +41,11 @@
 						</ul>
 					</nav>
 				</header>
-				";
+				
+<?php
+				session_start();
+				$_SESSION['idUsuario'];
+
 echo "			<section id='main' class='container 95%'>
 					<header>
 						<h2>Contact Us</h2>
@@ -53,7 +56,7 @@ echo "			<section id='main' class='container 95%'>
 							<div class='row uniform 50%'>
 								<div class='3u 12u(mobilep)'>
 									<label for='nombre'>Nombre(s):</label>
-									<p>Proximo periodo de evaluación.</p>
+									<p>".extraido[2]."</p>
 								</div>
 								<div class='3u 12u(mobilep)'>
 									<label for='nombre'>Apellido Paterno:</label>

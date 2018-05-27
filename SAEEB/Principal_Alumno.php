@@ -16,7 +16,11 @@
 	</head>
 	<body class="landing">
 	<?php
-	<?
+		session_start();
+		//echo "Hola " . $_SESSION['usuario'];
+		//echo "<p style='font-weight: bold;font-size: 2em;'>" . $_SESSION['usuario'] . "</h1>";
+		//echo "<p style='font-color: grey;'>Teléfono: " . $_SESSION['usuario'] . "<br />Dirección: " . $_SESSION['usuario'] . "</p>";
+	?>
 		<div id="page-wrapper">
 			<!-- Header -->
 				<header id="header" class="alt">
