@@ -9,7 +9,7 @@
 		header("Location: index.html");
 		exit();
 	}
-	include ("conectar.php");
+	include ("conexion.php");
 	// Probamos la conexion
 	$conexion = conectar();
 	if($conexion)
@@ -19,10 +19,10 @@
 		// Valida que el usuario y contraseña sean validos
 		if($extraido['idUsuario'] ==  $usuario && $extraido['Contrasena'] ==  $pass)
 		{
-			//session_start();
-			//$_SESSION['usuario'] = $usuario;
+			session_start();
+			$_SESSION['usuario'] = $usuario;
 			//header("Location: contenido.php");
-			header("Location: Principal_Alum.html");
+			header("Location: Principal.html");
 		}
 		else
 		{
