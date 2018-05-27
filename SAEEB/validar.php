@@ -19,10 +19,32 @@
 		// Valida que el usuario y contraseña sean validos
 		if($extraido['idUsuario'] ==  $usuario && $extraido['Contrasena'] ==  $pass)
 		{
-			session_start();
-			$_SESSION['usuario'] = $usuario;
-			//header("Location: contenido.php");
-			header("Location: Principal.html");
+			$Tipo = "ALUMNO";
+			$Tipo2 = "PROFESOR";
+			if($extraido['Tipo'] == $Tipo) // Tipo ALUMNO
+			{
+				session_start();
+				$_SESSION['usuario'] = $usuario;
+				//header("Location: contenido.php");
+				header("Location: Principal/Principal_Alumno.html");	
+			}
+			else
+			{
+				if($extraido['Tipo'] == $Tipo2) // Tipo PROFESOR
+				{
+					session_start();
+					$_SESSION['usuario'] = $usuario;
+					//header("Location: contenido.php");
+					header("Location: Principal/Principal_Profesor.html");		
+				}
+				else // Tipo Orientador 
+				{
+					session_start();
+					$_SESSION['usuario'] = $usuario;
+					//header("Location: contenido.php");
+					header("Location: Principal/Principal_Orientador.html");
+				}
+			}
 		}
 		else
 		{
