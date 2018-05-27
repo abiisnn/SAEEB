@@ -1,3 +1,22 @@
+<?php
+session_start();
+if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
+{
+
+}
+else 
+{
+	echo "<br><a href='index.html'>Login</a>";
+	exit;
+}
+$now = time();
+if($now > $_SESSION['expire'])
+{
+	session_destroy();
+	echo "<br><a href='index.html'>Login</a>";
+}
+?>
+
 <!DOCTYPE HTML>
 <!--
 	Alpha by HTML5 UP
@@ -15,12 +34,6 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
 	<body class="landing">
-	<?php
-		session_start();
-		//echo "Hola " . $_SESSION['usuario'];
-		//echo "<p style='font-weight: bold;font-size: 2em;'>" . $_SESSION['usuario'] . "</h1>";
-		//echo "<p style='font-color: grey;'>Teléfono: " . $_SESSION['usuario'] . "<br />Dirección: " . $_SESSION['usuario'] . "</p>";
-	?>
 		<div id="page-wrapper">
 			<!-- Header -->
 				<header id="header" class="alt">

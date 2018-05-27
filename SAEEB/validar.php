@@ -1,5 +1,7 @@
 <?php
-
+session_start();
+?>
+<?php
 	$usuario = $_POST['nnombre'];
 	$pass = $_POST['npassword'];
 
@@ -19,29 +21,24 @@
 		// Valida que el usuario y contraseña sean validos
 		if($extraido['idUsuario'] ==  $usuario && $extraido['Contrasena'] ==  $pass)
 		{
+			$_SESSION['loggedin'] = true;
+			$_SESSION['username'] = $usuario;
+			$_SESSION['start'] = time();
+			$_SESSION['expire'] = $_SESSION['start'] + (10*60);
 			$Tipo = "ALUMNO";
 			$Tipo2 = "PROFESOR";
 			if($extraido['Tipo'] == $Tipo) // Tipo ALUMNO
 			{
-				session_start();
-				$_SESSION['usuario'] = $usuario;
-				//header("Location: contenido.php");
 				header("Location: Principal_Alumno.php");	
 			}
 			else
 			{
 				if($extraido['Tipo'] == $Tipo2) // Tipo PROFESOR
 				{
-					session_start();
-					$_SESSION['usuario'] = $usuario;
-					//header("Location: contenido.php");
 					header("Location: Principal_Profesor.html");		
 				}
 				else // Tipo Orientador 
 				{
-					session_start();
-					$_SESSION['usuario'] = $usuario;
-					//header("Location: contenido.php");
 					header("Location: Principal_Orientador.html");
 				}
 			}

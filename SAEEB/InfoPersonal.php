@@ -1,3 +1,21 @@
+<?php
+session_start();
+if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
+{
+
+}
+else 
+{
+	echo "<br><a href='index.html'>Login</a>";
+	exit;
+}
+$now = time();
+if($now > $_SESSION['expire'])
+{
+	session_destroy();
+	echo "<br><a href='index.html'>Login</a>";
+}
+?>
 <!DOCTYPE HTML>
 <!--
 	Alpha by HTML5 UP
@@ -43,9 +61,15 @@
 				</header>
 				
 <?php
-				session_start();
-				$_SESSION['idUsuario'];
-
+	include ("conexion.php");
+	// Probamos la conexion
+	$conexion = conectar();
+	if($conexion)
+	{
+		$result = mysqli_query($conexion,"SELECT*FROM usuario where idUsuario='" . $_SESSION['username']. "'");
+		$extraido=$result->fetch_array();
+		// Valida que el usuario y contraseña sean validos
+	}
 echo "			<section id='main' class='container 95%'>
 					<header>
 						<h2>Contact Us</h2>
@@ -56,16 +80,29 @@ echo "			<section id='main' class='container 95%'>
 							<div class='row uniform 50%'>
 								<div class='3u 12u(mobilep)'>
 									<label for='nombre'>Nombre(s):</label>
-									<p>".extraido[2]."</p>
+									<p>".$extraido[2]."</p>
 								</div>
 								<div class='3u 12u(mobilep)'>
 									<label for='nombre'>Apellido Paterno:</label>
+									<p>".$extraido[3]."</p>
 								</div>
 								<div class='3u 12u(mobilep)'>
 									<label for='nombre'>Apellido Materno:</label>
+									<p>".$extraido[4]."</p>
 								</div>
+							</div>
+							<div class='row uniform 50%'>
 								<div class='3u 12u(mobilep)'>
 									<label for='nombre'>Edad:</label>
+									<p>".$extraido[8]."</p>
+								</div>
+								<div class='3u 12u(mobilep)'>
+									<label for='nombre'>Sexo:</label>
+									<p>".$extraido[9]."</p>
+								</div>
+								<div class='3u 12u(mobilep)'>
+									<label for='nombre'>Email:</label>
+									<p>".$extraido[6]."</p>
 								</div>
 							</div>
 
