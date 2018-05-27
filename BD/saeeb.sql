@@ -29,6 +29,7 @@ CREATE TABLE `alumno` (
   `Grado` int(11) NOT NULL,
   `Turno` varchar(45) NOT NULL,
   `Promedio` double NOT NULL,
+  `tel` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`idAlumno`,`idGrupo`),
   KEY `idGrupo_idx` (`idGrupo`),
   CONSTRAINT `idAlumno_Alumno` FOREIGN KEY (`idAlumno`) REFERENCES `usuario` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -42,7 +43,7 @@ CREATE TABLE `alumno` (
 
 LOCK TABLES `alumno` WRITE;
 /*!40000 ALTER TABLE `alumno` DISABLE KEYS */;
-INSERT INTO `alumno` VALUES (280000,1,'ENRIQUE RAMOS AGUILAR',2,'MATUTINO',0),(280001,1,'SALOMON DIAZ HERNANDEZ',2,'MATUTINO',0);
+INSERT INTO `alumno` VALUES (280000,1,'ENRIQUE RAMOS AGUILAR',2,'MATUTINO',0,'55-55-55-55-55'),(280001,1,'SALOMON DIAZ HERNANDEZ',2,'MATUTINO',0,'55-89-12-11-00');
 /*!40000 ALTER TABLE `alumno` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -70,7 +71,6 @@ CREATE TABLE `am` (
 
 LOCK TABLES `am` WRITE;
 /*!40000 ALTER TABLE `am` DISABLE KEYS */;
-INSERT INTO `am` VALUES (280000,580000,10),(280000,580001,9),(280001,580002,8);
 /*!40000 ALTER TABLE `am` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -234,7 +234,7 @@ CREATE TABLE `mensaje` (
 
 LOCK TABLES `mensaje` WRITE;
 /*!40000 ALTER TABLE `mensaje` DISABLE KEYS */;
-INSERT INTO `mensaje` VALUES (1,280000,'Este es un mensaje enviado de prueba',380001,'2018-05-26 20:02:49','Asunto 1'),(2,280001,'Otro mensaje de prueba',280000,'2018-05-26 20:02:49','Asunto 1'),(3,380001,'El ultimo xD',380001,'2018-05-26 20:02:49','Asunto 1'),(4,280000,'Quince años de malicia',280001,'2018-05-26 20:02:49','Asunto 1'),(5,280001,'Ultra instinto',380001,'2018-05-26 20:02:49','Asunto 1'),(6,380001,'Nunca más',280001,'2018-05-26 20:02:50','Asunto 1'),(53,380001,'Respuesta de prueba adios',280000,'2018-05-26 22:21:18','Re: Asunto 1'),(63,380001,'Muy bien, es el ultimo entonces xD',380001,'2018-05-26 22:22:09','Re: Asunto 1'),(72,380001,'Te respondo en la noche',280001,'2018-05-26 22:25:03','Mensaje noche');
+INSERT INTO `mensaje` VALUES (1,280000,'Este es un mensaje enviado de prueba',380001,'2018-05-26 20:02:49','Asunto 1'),(2,280001,'Otro mensaje de prueba',280000,'2018-05-26 20:02:49','Asunto 1'),(3,380001,'El ultimo xD',380001,'2018-05-26 20:02:49','Asunto 1'),(4,280000,'Quince años de malicia',280001,'2018-05-26 20:02:49','Asunto 1'),(5,280001,'Ultra instinto',380001,'2018-05-26 20:02:49','Asunto 1'),(6,380001,'Nunca más',280001,'2018-05-26 20:02:50','Asunto 1'),(53,380001,'Respuesta de prueba adios',280000,'2018-05-26 22:21:18','Re: Asunto 1'),(54,280001,'Nuevo mensaje enviado a las 11:11 am',380001,'2018-05-27 11:11:27','Prueba de mensaje 2'),(63,380001,'Muy bien, es el ultimo entonces xD',380001,'2018-05-26 22:22:09','Re: Asunto 1'),(64,280001,'Otro mensaje más.\r\nSaludos',480011,'2018-05-27 11:13:17','Mensaje de prueba 3'),(72,380001,'Te respondo en la noche',280001,'2018-05-26 22:25:03','Mensaje noche'),(1543,280001,'sdgsdgsdgsdg',480011,'2018-05-27 11:14:45','dfsgsd'),(1573,480011,'Ok xD',280001,'2018-05-27 11:15:24','Re: dfsgsd');
 /*!40000 ALTER TABLE `mensaje` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -366,4 +366,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-27  0:19:26
+-- Dump completed on 2018-05-27 12:32:04
