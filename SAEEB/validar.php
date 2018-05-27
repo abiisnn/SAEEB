@@ -26,7 +26,7 @@
 				session_start();
 				$_SESSION['usuario'] = $usuario;
 				//header("Location: contenido.php");
-				header("Location: Principal/Principal_Alumno.html");	
+				header("Location: Principal_Alumno.html");	
 			}
 			else
 			{
@@ -35,14 +35,14 @@
 					session_start();
 					$_SESSION['usuario'] = $usuario;
 					//header("Location: contenido.php");
-					header("Location: Principal/Principal_Profesor.html");		
+					header("Location: Principal_Profesor.html");		
 				}
 				else // Tipo Orientador 
 				{
 					session_start();
 					$_SESSION['usuario'] = $usuario;
 					//header("Location: contenido.php");
-					header("Location: Principal/Principal_Orientador.html");
+					header("Location: Principal_Orientador.html");
 				}
 			}
 		}
