@@ -1,0 +1,11 @@
+Al cargar la BD .sql
+1.- Abrir MySQL
+2.- Simplemente escribir "source" y arrastrar y pegar el archivo .sql
+3.- Y ya(: la bd se llama saeeb (automaticamente crea la bd y la selecciona con use)
+
+Codigo de IdUsuarios:
+- Inicia con 2 -> Alumno
+- Inicia con 3 -> Orientador
+- Inicia con 4 -> Profesor
+
+IdMensajes se generan aleatoriamente con rand()
