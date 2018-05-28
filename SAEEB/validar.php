@@ -24,7 +24,7 @@ session_start();
 			$_SESSION['loggedin'] = true;
 			$_SESSION['username'] = $usuario;
 			$_SESSION['start'] = time();
-			$_SESSION['expire'] = $_SESSION['start'] + (10*60);
+			$_SESSION['expire'] = $_SESSION['start'] + (20*60);
 			$Tipo = "ALUMNO";
 			$Tipo2 = "PROFESOR";
 			if($extraido['Tipo'] == $Tipo) // Tipo ALUMNO
