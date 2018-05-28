@@ -32,39 +32,31 @@ if($now > $_SESSION['expire'])
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
-	
-<?php
-	include("obtenerUsuario.php");
-	$conexion = conectar();
-	$tipo = tipoUsuario($_SESSION['username'], $conexion);
-
-echo "<body class='landing'>
-		<div id='page-wrapper'>
+	<body class="landing">
+		<div id="page-wrapper">
 			<!-- Header -->
-				<header id='header' class='alt'>
-					<nav id='nav'>
+				<header id="header" class="alt">
+					<nav id="nav">
 						<ul>
-";
-	if($tipo == "ALUMNO")
-	{
-		
-	}
-							<li><a href='Principal_Alumno.php'>Inicio</a></li>
+							<li><a href="Principal.php">Inicio</a></li>
 							<li>
-								<a href='CerrarSesion.php'>Cerrar Sesión</a>
+								<a href="CerrarSesion.php">Cerrar Sesión</a>
 							</li>
 						</ul>
 					</nav>
 				</header>
 
 			<!-- Banner -->
-				<section id='banner'>
+				<section id="banner">
 					<h2>Bienvenido a SAEEB</h2>
 				</section>
-
 			<!-- Main -->
 				<section id='main' class='container'>
 					<section class='box special features'>
+<?php
+	include("conexion")
+	$conexion = conectar();
+
 						<div class='features-row'>
 							<section>
 								<span class='icon major fa fa-child accent2'></span>
@@ -99,11 +91,12 @@ echo "<body class='landing'>
 						</div>
 					</section>
 				</section>
+?>
 
 			<!-- CTA -->
-				<section id='cta'>
+				<section id="cta">
 					<form>
-						<div class='row uniform 50%'>
+						<div class="row uniform 50%">
 							
 						</div>
 					</form>
@@ -111,4 +104,3 @@ echo "<body class='landing'>
 		</div>
 	</body>
 </html>
-?>
