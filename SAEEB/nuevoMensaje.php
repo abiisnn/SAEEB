@@ -1,11 +1,38 @@
+<!DOCTYPE HTML>
+<!--
+	Alpha by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
-<title>
-	Bandeja de Entrada - SAEEB
-</title>
-<body>
-	<br>
-<?php
-	include("conexion.php");
+	<head>
+		<title>Contact - Alpha by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Inicio</a></li>
+							<li><a href="index.html">Cerrar Sesion</a></li>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<section id="main" class="container 75%">
+					<header>
+						<h2>Envio Emails</h2>
+					</header>
+	<?php
+		include("conexion.php");
 	include("obtenerUsuario.php");
 
 	$con=conectar();
@@ -50,49 +77,74 @@
 	  		else if(tipoUsuario($idRemitente, $con)=='PROFESOR'){
 	  			$desti=DestiProf($idRemitente, $con);
 
-	  		}
+	  		} 
+				echo"
+					<div class='box'>
+						<form method='post' action='nuevoMensaje.php'>
+							<div class='row uniform 50%'>
+								<div class='6u 12u(mobilep)''>
+									<label for='nombre'><b>De:</b></label>
+									<input type='text' name='remitente' value='$idRemitente - ".usuario($idRemitente, $con)."'/>
+								</div>
+								<div class='6u 12u(mobilep)'>
+									<label for='nombre'><b>Para:</b></label>
+									<select name='destino'>";
+								
+				if(tipoUsuario($idRemitente, $con)=='ALUMNO'){
+					if (mysqli_num_rows($desti)) { 
+								while ($row = mysqli_fetch_array($desti)) { 
+									echo "<option value='$row[0]'> $row[0] - $row[1] $row[2] $row[3]</option>";
+									}
+								}
+					}
+					else{
+						if (mysqli_num_rows($desti)) { 
+								while ($row = mysqli_fetch_array($desti)) { 
+									echo "<option value='$row[0]'> $row[0] - $row[1]</option>";
+									}
+								}
+				}
+				echo " 
+							</select>
+								</div>
+							</div>
+							<div class='row uniform 50%'>
+								<div class='12u'>
+								<label for='nombre'><b>Asunto:</b></label>
+									<input type='text' name='asunto'  value=''/>
+								</div>
+							</div>
+							<div class='row uniform 50%''>
+								<div class='12u'>
+									<label for='nombre'><b>Mensaje:</b></label>
+									<textarea name='mensaje' rows='6'></textarea>
+								</div>
+							</div>
+							<div class='row uniform'>
+								<div class='12u'>
+									<ul class='actions align-center'>
+										<input type='hidden' value='$idRemitente' name='remitente'>
+										<li><input type='submit' name='nuevoM' value='Enviar mensaje'></li>
+									</ul>
+								</div>
+							</div>
+						</form>
+					</div>
+				</section>
+		</div>
 
 
-
-			echo "<form action='nuevoMensaje.php' method='POST'>
-			<table>
-			<tr>
+				<!-- Scripts -->
+					<script src='assets/js/jquery.min.js'></script>
+					<script src='assets/js/jquery.dropotron.min.js'></script>
+					<script src='assets/js/jquery.scrollgress.min.js'></script>
+					<script src='assets/js/skel.min.js'></script>
+					<script src='assets/js/util.js'></script>
+					<!--[if lte IE 8]><script src='assets/js/ie/respond.min.js'></script><![endif]-->
+					<script src='assets/js/main.js'></script>";
+			}
+		}
 			
-			De: <input type='text' name='remitente 'value='$idRemitente - ".usuario($idRemitente, $con)."' size=40>
-			<br><br>
-			Para: <select name='destino'>";
-			if(tipoUsuario($idRemitente, $con)=='ALUMNO'){
-			if (mysqli_num_rows($desti)) { 
-						while ($row = mysqli_fetch_array($desti)) { 
-							echo "<option value='$row[0]'> $row[0] - $row[1] $row[2] $row[3]</option>";
-							}
-						}
-			}
-			else{
-				if (mysqli_num_rows($desti)) { 
-						while ($row = mysqli_fetch_array($desti)) { 
-							echo "<option value='$row[0]'> $row[0] - $row[1]</option>";
-							}
-						}
-			}
-
-			echo "</select>
-			<br><br>
-			Asunto: <input type='text' name='asunto' size=50>
-			<br><br>
-			Mensaje: <textarea name='mensaje' cols=50 rows=10></textarea>
-			<br></td>
-			</tr>
-			</table><br>
-			<input type='hidden' value='$idRemitente' name='remitente'>
-			<input type='submit' name='nuevoM' value='Enviar mensaje'>
-			</form>"
-			;
-
-			echo "<a href=bandeja.php><button>Volver a la bandeja de entrada</button></a>";
-	  	}
-	  
-	}
-?>
-</body>
+	?>
+	</body>
 </html>
