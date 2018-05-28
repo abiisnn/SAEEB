@@ -20,7 +20,7 @@ IdMensajes se generan aleatoriamente con rand()
 
 -------------------------------------------------------
 -------------------------------------------------------
-					NOTAS Abi
+					NOTAS ABI
 -------------------------------------------------------
 -------------------------------------------------------
 
@@ -48,3 +48,12 @@ if($now > $_SESSION['expire'])
 ?>
 
 
+>>>>>>>>>>> NOTA 2
+Para usar procedures el procedimiento es:
+
+include ("conexion.php");
+	// Probamos la conexion
+	$conexion = conectar();
+	$U = mysqli_query($conexion,"call usuario(".$_SESSION['username'].")");
+	$Usuario=$U->fetch_array();
+	echo $Usuario[0];

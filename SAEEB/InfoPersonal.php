@@ -53,23 +53,17 @@ echo"				<section id='cta'>
 ";
 	include ("conexion.php");
 	// Probamos la conexion
-
-	$conexion = conectar();
-	$U = mysqli_query($conexion,"call usuario(".$_SESSION['username'].")");
-	$Usuario=$U->fetch_array();
-	/*
-	$mysqli = new mysqli("localhost", "root", "root", "saeeb");
-	$Result = $mysqli->query("call usuario(".$_SESSION['username'].")");
-	$Usuario= $Result->fetch_array(MYSQLI_NUM);
-	echo $Usuario[0];
-	*/
+		$conexion = conectar();
+		$result2 = mysqli_query($conexion,"SELECT * FROM usuario where idUsuario='".$_SESSION['username']."'");
+		$Usuario=$result2->fetch_array();
+		
 		// Para saber la Escuela
-	//	$result1 = mysqli_query($conexion, "SELECT e.nombre FROM usuario u, escuela e where e.ClaveEscuela=u.ClaveEscuela and u.idUsuario='".$_SESSION['username']."'");
-	//$Escuela=$result1->fetch_array();
+		$result1 = mysqli_query($conexion, "SELECT e.nombre FROM usuario u, escuela e where e.ClaveEscuela=u.ClaveEscuela and u.idUsuario='".$_SESSION['username']."'");
+		$Escuela=$result1->fetch_array();
 
 		// PARA EL USUARIO TIPO: ALUMNO
 		// Consulta para Tutor, Grado, Turno y Promedio
-	/*	$result2 = mysqli_query($conexion,"SELECT*FROM alumno where idAlumno='" . $_SESSION['username']. "'");
+		$result2 = mysqli_query($conexion,"SELECT*FROM alumno where idAlumno='" . $_SESSION['username']. "'");
 		$Alumno=$result2->fetch_array();
 		// Para saber el grupo
 		$result3 = mysqli_query($conexion, "SELECT g.nombre FROM grupo g, alumno a where g.idGrupo=a.idGrupo and a.idAlumno='".$_SESSION['username']."'");
@@ -82,7 +76,7 @@ echo"				<section id='cta'>
 		// PARA EL USUARIO TIPO: PROFESOR
 		$result5 = mysqli_query($conexion, "SELECT Area FROM Profesor where idProfesor='".$_SESSION['username']."'");
 		$Area=$result5->fetch_array();
-	*/
+	
 echo "			
 					<div class='box'>
 						<form method='post' action='#'>
@@ -110,10 +104,33 @@ echo "
 								</div>
 							</div>
 							<div class='row uniform 50%'>
-								<div class='5u 12u(mobilep)'>
+";
+	include("obtenerUsuario.php");
+	$conexion = conectar();
+	$usuario = $_SESSION['username'];
+	$Tipo = tipoUsuario($usuario, $conexion);
+	if($Tipo == "ALUMNO")
+	{
+		echo "					<div class='5u 12u(mobilep)'>
 									<label for='nombre'><b>Tutor:</b></label>
 									<p>".$Alumno[2]."</p>
 								</div>
+		";							
+	}	
+	if($Tipo == "ORIENTADOR" || $Tipo == "PROFESOR")
+	{
+		echo "					<div class='2u 12u(mobilep)'>
+									<label for='nombre'><b>Hora de Entrada:</b></label>
+									<p>".$Usuario[16]."</p>
+								</div>
+								<div class='3u 12u(mobilep)'>
+									<label for='nombre'><b>Hora de Salida:</b></label>
+									<p>".$Usuario[17]."</p>
+								</div>
+		";
+	}
+
+echo "
 								<div class='4u 12u(mobilep)'>
 									<label for='nombre'><b>Email:</b></label>
 									<p>".$Usuario[6]."</p>
@@ -133,7 +150,11 @@ echo "
 									<label for='nombre'><b>Escuela:</b></label>
 									<p>".$Escuela[0]."</p>
 								</div>
-								<div class='3u 12u(mobilep)'>
+								
+";
+	if($Tipo == "ALUMNO")
+	{
+		echo"					<div class='3u 12u(mobilep)'>
 									<label for='nombre'><b>Turno:</b></label>
 									<p>".$Alumno[4]."</p>
 								</div>
@@ -147,6 +168,27 @@ echo "
 								</div>
 							</div>
 
+		";
+	}
+	if ($Tipo == "ORIENTADOR")
+	{
+		echo "					<div class='3u 12u(mobilep)'>
+									<label for='nombre'><b>Formación Académica:</b></label>
+									<p>".$Lic[0]."</p>
+								</div>
+							</div>
+		";
+	}
+	if($Tipo == "PROFESOR")
+	{
+		echo "					<div class='3u 12u(mobilep)'>
+								<label for='nombre'><b>Área:</b></label>
+									<p>".$Area[0]."</p>
+								</div>
+							</div>
+		";
+	}
+?>
 							<div class='row uniform'>
 								<div class='12u'>
 									<ul class='actions align-center'>
@@ -157,8 +199,6 @@ echo "
 						</form>
 					</div>
 				</section>
-";
-?>
 			<!-- CTA -->
 				<section id="cta">
 				</section>
