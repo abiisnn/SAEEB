@@ -83,9 +83,8 @@ if($now > $_SESSION['expire'])
 	$conexion = conectar();
 	$usuario = $_SESSION['username'];
 	$Tipo = tipoUsuario($usuario, $conexion);
-
 	echo "SOY UN ".$Tipo;
-	if($Tipo == "ALUMNO" && $Tipo == "ORIENTADOR")
+	if($Tipo == "ALUMNO" || $Tipo == "ORIENTADOR")
 	{
 		echo "
 							<section>
@@ -98,20 +97,20 @@ if($now > $_SESSION['expire'])
 						</div>
 		";	
 	}
-	else // Cuando es PROFESOR
+	if($Tipo == "ORIENTADOR")
 	{
-		echo "
+    echo"				
+    					<div class='features-row'>
 							<section>
-								<span class='icon major fa fa-calendar-check-o accent5'></span>
-								<h3>Grupos</h3>
+								<span class='icon major fa fa-envelope accent4'></span>
+								<h3>Generar Boleta</h3>
 								<ul class='actions'>
-									<li><a href='grupos.php' class='button alt'>Ver</a></li>
+									<li><a href='boleta.php' class='button alt'>Ver</a></li>
 								</ul>
 							</section>
 						</div>
-		";
+	";
 	}
-
 ?>				
 					</section>
 				</section>
