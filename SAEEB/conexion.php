@@ -5,10 +5,8 @@
 		$server="localhost";
 		$db="saeeb";
 		$con=mysqli_connect($server, $user, $pass,$db);
+		 mysqli_select_db($con, $db);
 
-		if (mysqli_connect_errno()){
-  			echo "Error al conectar a la BD: " . mysqli_connect_error();
-  		}
 		return $con;
 	}
 ?>

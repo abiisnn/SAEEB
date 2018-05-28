@@ -13,7 +13,7 @@
 	if (!$con)
   			die ("Error al conectar a la BD: ". mysqli_connect_error());
   	else{
-  		$ingresa=true;
+
 		$idusuario=280001;
 
 		echo "Bandeja de entrada. <br>Usuario: $idusuario - ".usuario($idusuario, $con);
