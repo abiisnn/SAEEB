@@ -68,7 +68,7 @@ echo"				<section id='cta'>
 		$Escuela=$result2->fetch_array();
 		// Para saber el grupo
 		$result3 = mysqli_query($conexion, "SELECT Licenciatura FROM Orientador where idOrientador='".$_SESSION['username']."'");
-		$Lic=$result3->fetch_array();
+		$Area=$result3->fetch_array();
 		
 		
 	}
@@ -128,14 +128,14 @@ echo "
 								</div>
 								<div class='3u 12u(mobilep)'>
 									<label for='nombre'><b>Formación Académica:</b></label>
-									<p>".$Lic[0]."</p>
+									<p>".$Area[0]."</p>
 								</div>
 							</div>
 
 							<div class='row uniform'>
 								<div class='12u'>
 									<ul class='actions align-center'>
-										<li><a href='Principal_Orientador.php' class='button special'>Regresar</a></li>
+										<li><a href='Principal_Profesor.php' class='button special'>Regresar</a></li>
 									</ul>
 								</div>
 							</div>
