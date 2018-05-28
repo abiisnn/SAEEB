@@ -46,7 +46,7 @@ if($now > $_SESSION['expire'])
 echo"				<section id='cta'>
 					<h2>".$_SESSION['username']."</h2>
 				</section>
-				<section id='main' class='container 95%'>
+				<section id='main' class='container 50%'>
 					<header>
 						<h3>MENSAJE</h3>
 					</header>				
@@ -67,30 +67,31 @@ echo"				<section id='cta'>
 					<div class='box'>	
 						<form method='post' action='bandeja.php'>
 							<div class='row uniform 50%'>
-								<div class='6u 12u(mobilep)'>
-									<label for='nombre'><b>Enviado por:  $row[1]  </b> ".usuario($row[1], $con)."</label>
+								<div class='12u 12u(mobilep)'>
+									<label for='nombre'><b>ENVIADO  POR: </b> $row[1]  " .usuario($row[1], $con)."</label>
 								</div>
 							</div>
 							<div class='row uniform 50%'>
 								<div class='12u'>
-									<label for='nombre'><b>Para:  $row[3]  </b> ".usuario($row[3], $con)."</label>
+									<label for='nombre'><b>PARA: </b> $row[3] ".usuario($row[3], $con)."</label>
 								</div>
 							</div>
 							<div class='row uniform 50%'>
 								<div class='12u'>
-									<label for='nombre'><b>ASUNTO:  </b>   $row[5]</label>
+									<label for='nombre'><b>ASUNTO: </b><i> $row[5]</i></label>
 								</div>
 							</div>
 							<div class='row uniform 50%'>
 								<div class='12u'>
-									<label for='nombre'><b>Mensaje:  </b>   $row[2]</label>
+									<label for='nombre'><b>Mensaje:  </b> </label>
+									<p>$row[2]</p>
 								</div>
 							</div>
 							<div class='row uniform'>
 								<div class='12u'>
 									<ul class='actions align-center'>
 										<li><input type='submit' value='Bandeja de Entrada' /></li>
-										<li><a href='responder.php?idMensaje=$id' class='button special'>Responder Mensaje</a></li>
+										<li><a href='responder.php?idMensaje=$id' class='button special'>Responder</a></li>
 									</ul>
 								</div>
 							</div>
