@@ -107,6 +107,11 @@ echo"			<section id='cta'>
 													<td> $rowMensaje[3]</td> 			
 												</tr>
 				";}
+			}
+			else{ 
+						echo "<td>Todavia no ha recibido mensajes.</td>
+								</tr>";
+					}
 				echo "						</tbody>
 											<tfoot>
 											</tfoot>
@@ -116,7 +121,6 @@ echo"			<section id='cta'>
 						</div>
 					</div>
 			";
-			}
 		}
 ?>
 				</section>
