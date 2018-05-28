@@ -76,7 +76,7 @@ if($now > $_SESSION['expire'])
 								<span class="icon major fa fa-envelope accent4"></span>
 								<h3>Bandeja de Entrada</h3>
 								<ul class="actions">
-									<li><a href="#" class="button alt">Ver</a></li>
+									<li><a href="bandeja.php" class="button alt">Ver</a></li>
 								</ul>
 							</section>
 							<section>
