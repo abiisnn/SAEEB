@@ -67,8 +67,8 @@ echo"				<section id='cta'>
 		$result2 = mysqli_query($conexion, "SELECT e.nombre FROM usuario u, escuela e where e.ClaveEscuela=u.ClaveEscuela and u.idUsuario='".$_SESSION['username']."'");
 		$Escuela=$result2->fetch_array();
 		// Para saber el grupo
-		$result3 = mysqli_query($conexion, "SELECT g.nombre FROM grupo g, alumno a where g.idGrupo=a.idGrupo and a.idAlumno='".$_SESSION['username']."'");
-		$Grupo=$result3->fetch_array();
+		$result3 = mysqli_query($conexion, "SELECT Licenciatura FROM Orientador where idOrientador='".$_SESSION['username']."'");
+		$Lic=$result3->fetch_array();
 		
 		
 	}
@@ -101,11 +101,11 @@ echo "
 							<div class='row uniform 50%'>
 								<div class='3u 12u(mobilep)'>
 									<label for='nombre'><b>Hora de Entrada:</b></label>
-									<p>".$extraido[15]."</p>
+									<p>".$extraido[16]."</p>
 								</div>
 								<div class='3u 12u(mobilep)'>
-									<label for='nombre'><b>Salida:</b></label>
-									<p>".$extraido[16]."</p>
+									<label for='nombre'><b>Hora de Salida:</b></label>
+									<p>".$extraido[17]."</p>
 								</div>
 								<div class='4u 12u(mobilep)'>
 									<label for='nombre'><b>Email:</b></label>
@@ -128,15 +128,7 @@ echo "
 								</div>
 								<div class='3u 12u(mobilep)'>
 									<label for='nombre'><b>Turno:</b></label>
-									<p>".$extraido1[4]."</p>
-								</div>
-								<div class='3u 12u(mobilep)'>
-									<label for='nombre'><b>Grupo:</b></label>
-									<p>".$Grupo[0]."</p>
-								</div>
-								<div class='2u 12u(mobilep)'>
-									<label for='nombre'><b>Promedio:</b></label>
-									<p>".$extraido1[5]."</p>
+									<p>".$Lic[0]."</p>
 								</div>
 							</div>
 
