@@ -1,3 +1,21 @@
+<?php
+session_start();
+if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
+{
+
+}
+else 
+{
+	header("Location: index.html");
+	exit;
+}
+$now = time();
+if($now > $_SESSION['expire'])
+{
+	session_destroy();
+	header("Location: index.html");	
+}
+?>
 <html>
 <title>
 	Bandeja de Entrada - SAEEB
@@ -14,7 +32,7 @@
   			die ("Error al conectar a la BD: ". mysqli_connect_error());
   	else{
   		$ingresa=true;
-		$idusuario=280001;
+		$idusuario=$_SESSION['username'];
 
 		echo "Bandeja de entrada. <br>Usuario: $idusuario - ".usuario($idusuario, $con);
 		echo "<br><br><br><br>"; 
