@@ -56,18 +56,28 @@ echo"				<section id='cta'>
 	$conexion = conectar();
 	if($conexion)
 	{
-		// Consultas para usuario
+		// Consultas para USUARIO EN GENERAL
 		$result = mysqli_query($conexion,"SELECT*FROM usuario where idUsuario='" . $_SESSION['username']. "'");
-		$extraido=$result->fetch_array();
-		// Consulta para Tutor, Grado, Turno y Promedio
-		$result1 = mysqli_query($conexion,"SELECT*FROM alumno where idAlumno='" . $_SESSION['username']. "'");
-		$extraido1=$result1->fetch_array();
+		$Usuario=$result->fetch_array();
 		// Para saber la Escuela
-		$result2 = mysqli_query($conexion, "SELECT e.nombre FROM usuario u, escuela e where e.ClaveEscuela=u.ClaveEscuela and u.idUsuario='".$_SESSION['username']."'");
-		$Escuela=$result2->fetch_array();
+		$result1 = mysqli_query($conexion, "SELECT e.nombre FROM usuario u, escuela e where e.ClaveEscuela=u.ClaveEscuela and u.idUsuario='".$_SESSION['username']."'");
+		$Escuela=$result1->fetch_array();
+
+		// PARA EL USUARIO TIPO: ALUMNO
+		// Consulta para Tutor, Grado, Turno y Promedio
+		$result2 = mysqli_query($conexion,"SELECT*FROM alumno where idAlumno='" . $_SESSION['username']. "'");
+		$Alumno=$result2->fetch_array();
 		// Para saber el grupo
 		$result3 = mysqli_query($conexion, "SELECT g.nombre FROM grupo g, alumno a where g.idGrupo=a.idGrupo and a.idAlumno='".$_SESSION['username']."'");
-		$Grupo=$result3->fetch_array();	
+		$Grupo=$result3->fetch_array();
+
+		// PARA EL USUARIO TIPO: ORIENTADOR
+		$result4 = mysqli_query($conexion, "SELECT Licenciatura FROM Orientador where idOrientador='".$_SESSION['username']."'");
+		$Lic=$result4->fetch_array();
+
+		// PARA EL USUARIO TIPO: PROFESOR
+		$result5 = mysqli_query($conexion, "SELECT Area FROM Profesor where idProfesor='".$_SESSION['username']."'");
+		$Area=$result5->fetch_array();
 	}
 echo "			
 					<div class='box'>
@@ -80,33 +90,33 @@ echo "
 							<div class='row uniform 50%'>
 								<div class='3u 12u(mobilep)'>
 									<label for='nombre'><b>Nombre(s):</b></label>
-									<p>".$extraido[2]."</p>
+									<p>".$Usuario[2]."</p>
 								</div>
 								<div class='3u 12u(mobilep)'>
 									<label for='nombre'><b>Apellido Paterno:</b></label>
-									<p>".$extraido[3]."</p>
+									<p>".$Usuario[3]."</p>
 								</div>
 								<div class='3u 12u(mobilep)'>
 									<label for='nombre'><b>Apellido Materno:</b></label>
-									<p>".$extraido[4]."</p>
+									<p>".$Usuario[4]."</p>
 								</div>
 								<div class='3u 12u(mobilep)'>
 									<label for='nombre'><b>Edad:</b></label>
-									<p>".$extraido[8]."</p>
+									<p>".$Usuario[8]."</p>
 								</div>
 							</div>
 							<div class='row uniform 50%'>
 								<div class='5u 12u(mobilep)'>
 									<label for='nombre'><b>Tutor:</b></label>
-									<p>".$extraido1[2]."</p>
+									<p>".$Alumno[2]."</p>
 								</div>
 								<div class='4u 12u(mobilep)'>
 									<label for='nombre'><b>Email:</b></label>
-									<p>".$extraido[6]."</p>
+									<p>".$Usuario[6]."</p>
 								</div>
 								<div class='3u 12u(mobilep)'>
 									<label for='nombre'><b>Sexo:</b></label>
-									<p>".$extraido[9]."</p>
+									<p>".$Usuario[9]."</p>
 								</div>
 							</div>
 							<div class='row uniform 50%'>
@@ -121,7 +131,7 @@ echo "
 								</div>
 								<div class='3u 12u(mobilep)'>
 									<label for='nombre'><b>Turno:</b></label>
-									<p>".$extraido1[4]."</p>
+									<p>".$Alumno[4]."</p>
 								</div>
 								<div class='3u 12u(mobilep)'>
 									<label for='nombre'><b>Grupo:</b></label>
@@ -129,14 +139,14 @@ echo "
 								</div>
 								<div class='2u 12u(mobilep)'>
 									<label for='nombre'><b>Promedio:</b></label>
-									<p>".$extraido1[5]."</p>
+									<p>".$Alumno[5]."</p>
 								</div>
 							</div>
 
 							<div class='row uniform'>
 								<div class='12u'>
 									<ul class='actions align-center'>
-										<li><a href='Principal_Alumno.php' class='button special'>Regresar</a></li>
+										<li><a href='Principal.php' class='button special'>Regresar</a></li>
 									</ul>
 								</div>
 							</div>
