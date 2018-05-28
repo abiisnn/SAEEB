@@ -61,14 +61,14 @@ if($now > $_SESSION['expire'])
 						<div class="features-row">
 							<section>
 								<span class="icon major fa fa-child accent2"></span>
-								<h3>Ver información Personal</h3>
+								<h3>Información Personal</h3>
 								<ul class="actions">
 									<li><a href="InfoPersonal.php" class="button alt">Ver</a></li>
 								</ul>
 							</section>
 							<section>
 								<span class="icon major fa fa-folder-open-o accent3"></span>
-								<h3>Ver calificaciones</h3>
+								<h3>Calificaciones</h3>
 								<ul class="actions">
 									<li><a href="#" class="button alt">Ver</a></li>
 								</ul>
@@ -83,9 +83,11 @@ if($now > $_SESSION['expire'])
 								</ul>
 							</section>
 							<section>
-								<span class="icon major fa-lock accent5"></span>
-								<h3>Enim phasellus</h3>
-								<p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
+								<span class="icon major fa fa-calendar-check-o accent5"></span>
+								<h3>Citas</h3>
+								<ul class="actions">
+									<li><a href="#" class="button alt">Ver</a></li>
+								</ul>
 							</section>
 						</div>
 					</section>
