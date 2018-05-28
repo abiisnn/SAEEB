@@ -91,14 +91,14 @@ echo"				<section id='cta'>
 						<div class='row uniform'>
 							<div class='12u'>
 								<ul class='actions align-center'>
-									<li><a href='Principal_Orientador.php' class='button special'>Aceptar</a></li>
+									<li><a href='#' class='button special'>Aceptar</a></li>
 								</ul>
 							</div>
 						</div>
 						<div class='row uniform'>
 							<div class='12u'>
 								<ul class='actions align-center'>
-									<li><a href='Principal_Orientador.php' class='button special'>Regresar</a></li>
+									<li><a href='Principal.php' class='button special'>Regresar</a></li>
 								</ul>
 							</div>
 						</div>
