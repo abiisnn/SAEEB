@@ -85,7 +85,7 @@ DROP TABLE IF EXISTS `cita`;
 CREATE TABLE `cita` (
   `idCita` int(11) NOT NULL,
   `Lugar` varchar(45) NOT NULL,
-  `Fecha` date DEFAULT NULL,
+  `Fecha` datetime NOT NULL,
   `HoraCita` varchar(10) NOT NULL,
   `Motivo` varchar(50) NOT NULL,
   `Remitente` varchar(45) NOT NULL,
@@ -99,7 +99,7 @@ CREATE TABLE `cita` (
 
 LOCK TABLES `cita` WRITE;
 /*!40000 ALTER TABLE `cita` DISABLE KEYS */;
-INSERT INTO `cita` VALUES (21321,'OFICINA DE DIRECCION','2018-05-29','11:00','No ha respondido a los Reportes de Conducta','380001'),(21325,'SALON 1011','2018-06-01','8:00','Entrega de calificaciones 3er Parcial','380001');
+INSERT INTO `cita` VALUES (21321,'OFICINA DE DIRECCION','2018-05-29 00:00:00','11:00','No ha respondido a los Reportes de Conducta','380001'),(21325,'SALON 1011','2018-06-01 00:00:00','8:00','Entrega de calificaciones 3er Parcial','380001');
 /*!40000 ALTER TABLE `cita` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -228,7 +228,7 @@ CREATE TABLE `mensaje` (
   `idUsuario` int(11) NOT NULL,
   `Mensaje` varchar(150) NOT NULL,
   `Destinatario` int(11) NOT NULL,
-  `HoraMensaje` varchar(30) DEFAULT NULL,
+  `HoraMensaje` varchar(25) NOT NULL,
   `Asunto` varchar(20) NOT NULL,
   PRIMARY KEY (`idMensaje`,`idUsuario`),
   KEY `idUsuario_idx` (`idUsuario`),
@@ -242,7 +242,7 @@ CREATE TABLE `mensaje` (
 
 LOCK TABLES `mensaje` WRITE;
 /*!40000 ALTER TABLE `mensaje` DISABLE KEYS */;
-INSERT INTO `mensaje` VALUES (1,280000,'Este es un mensaje enviado de prueba',380001,'2018-05-27 18:45:14','Asunto 1'),(2,280001,'Otro mensaje de prueba',280000,'2018-05-27 18:45:14','Asunto 1'),(3,380001,'El ultimo xD',380001,'2018-05-27 18:45:14','Asunto 1'),(4,280000,'Quince años de malicia',280001,'2018-05-27 18:45:14','Asunto 1'),(5,280001,'Ultra instinto',380001,'2018-05-27 18:45:14','Asunto 1'),(6,380001,'Nunca más',280001,'2018-05-27 18:45:15','Asunto 1'),(1614,280001,'Nunca más',480011,'2018-05-27 18:50:19','Prueba de mensaje 2');
+INSERT INTO `mensaje` VALUES (1,280000,'Este es un mensaje enviado de prueba',380001,'2018-05-27 20:30:49','Asunto 1'),(2,280001,'Otro mensaje de prueba',280000,'2018-05-27 20:30:49','Asunto 1'),(3,380001,'El ultimo xD',380001,'2018-05-27 20:30:49','Asunto 1'),(4,280000,'Quince años de malicia',280001,'2018-05-27 20:30:49','Asunto 1'),(5,280001,'Ultra instinto',380001,'2018-05-27 20:30:49','Asunto 1'),(6,380001,'Nunca más',280001,'2018-05-27 20:30:49','Asunto 1');
 /*!40000 ALTER TABLE `mensaje` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -374,4 +374,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-27 20:26:10
+-- Dump completed on 2018-05-27 20:32:19
