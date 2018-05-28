@@ -53,19 +53,23 @@ echo"				<section id='cta'>
 ";
 	include ("conexion.php");
 	// Probamos la conexion
+
 	$conexion = conectar();
-	if($conexion)
-	{
-		// Consultas para USUARIO EN GENERAL
-		$result = mysqli_query($conexion,"SELECT*FROM usuario where idUsuario='" . $_SESSION['username']. "'");
-		$Usuario=$result->fetch_array();
+	$U = mysqli_query($conexion,"call usuario(".$_SESSION['username'].")");
+	$Usuario=$U->fetch_array();
+	/*
+	$mysqli = new mysqli("localhost", "root", "root", "saeeb");
+	$Result = $mysqli->query("call usuario(".$_SESSION['username'].")");
+	$Usuario= $Result->fetch_array(MYSQLI_NUM);
+	echo $Usuario[0];
+	*/
 		// Para saber la Escuela
-		$result1 = mysqli_query($conexion, "SELECT e.nombre FROM usuario u, escuela e where e.ClaveEscuela=u.ClaveEscuela and u.idUsuario='".$_SESSION['username']."'");
-		$Escuela=$result1->fetch_array();
+	//	$result1 = mysqli_query($conexion, "SELECT e.nombre FROM usuario u, escuela e where e.ClaveEscuela=u.ClaveEscuela and u.idUsuario='".$_SESSION['username']."'");
+	//$Escuela=$result1->fetch_array();
 
 		// PARA EL USUARIO TIPO: ALUMNO
 		// Consulta para Tutor, Grado, Turno y Promedio
-		$result2 = mysqli_query($conexion,"SELECT*FROM alumno where idAlumno='" . $_SESSION['username']. "'");
+	/*	$result2 = mysqli_query($conexion,"SELECT*FROM alumno where idAlumno='" . $_SESSION['username']. "'");
 		$Alumno=$result2->fetch_array();
 		// Para saber el grupo
 		$result3 = mysqli_query($conexion, "SELECT g.nombre FROM grupo g, alumno a where g.idGrupo=a.idGrupo and a.idAlumno='".$_SESSION['username']."'");
@@ -78,7 +82,7 @@ echo"				<section id='cta'>
 		// PARA EL USUARIO TIPO: PROFESOR
 		$result5 = mysqli_query($conexion, "SELECT Area FROM Profesor where idProfesor='".$_SESSION['username']."'");
 		$Area=$result5->fetch_array();
-	}
+	*/
 echo "			
 					<div class='box'>
 						<form method='post' action='#'>
