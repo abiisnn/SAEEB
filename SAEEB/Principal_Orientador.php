@@ -6,14 +6,14 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
 }
 else 
 {
-	header("Location: index.php");
+	header("Location: index.html");
 	exit;
 }
 $now = time();
 if($now > $_SESSION['expire'])
 {
 	session_destroy();
-	header("Location: index.php");	
+	header("Location: index.html");	
 }
 ?>
 
@@ -39,7 +39,7 @@ if($now > $_SESSION['expire'])
 				<header id="header" class="alt">
 					<nav id="nav">
 						<ul>
-							<li><a href="Principal_Alumno.php">Inicio</a></li>
+							<li><a href="Principal_Orientador.php">Inicio</a></li>
 							<li>
 								<a href="CerrarSesion.php">Cerrar Sesión</a>
 							</li>
