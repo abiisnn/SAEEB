@@ -67,7 +67,7 @@ echo"				<section id='cta'>
 		$result2 = mysqli_query($conexion, "SELECT e.nombre FROM usuario u, escuela e where e.ClaveEscuela=u.ClaveEscuela and u.idUsuario='".$_SESSION['username']."'");
 		$Escuela=$result2->fetch_array();
 		// Para saber el grupo
-		$result3 = mysqli_query($conexion, "SELECT Licenciatura FROM Orientador where idOrientador='".$_SESSION['username']."'");
+		$result3 = mysqli_query($conexion, "SELECT Area FROM Profesor where idProfesor='".$_SESSION['username']."'");
 		$Area=$result3->fetch_array();
 		
 		
@@ -127,7 +127,7 @@ echo "
 									<p>".$Escuela[0]."</p>
 								</div>
 								<div class='3u 12u(mobilep)'>
-									<label for='nombre'><b>Formación Académica:</b></label>
+								<label for='nombre'><b>Área:</b></label>
 									<p>".$Area[0]."</p>
 								</div>
 							</div>
