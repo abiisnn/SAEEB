@@ -23,9 +23,11 @@ insert into orientador values (380001, 'LIC. EN CIENCIAS SOCIALES');
 
 insert into profesor values (480011, 'LIC. EN CONTABILIDAD');
 
-insert into pg values (1, 480011);
 
-insert into grupo values (1, '1CM1', 380001);
+
+insert into grupo values (1, '1CM1', 380001, 150021);
+
+insert into pg values (1, 480011);
 
 insert into alumno values (280000, 1, "ENRIQUE RAMOS AGUILAR", 2, "MATUTINO", 0, '55-55-55-55-55');
 insert into alumno values (280001, 1, "SALOMON DIAZ HERNANDEZ", 2, "MATUTINO", 0, '55-89-12-11-00');
@@ -46,6 +48,12 @@ insert into mensaje values (3,380001, 'El ultimo xD', 380001, CURRENT_TIMESTAMP,
 insert into mensaje values (4,280000, 'Quince años de malicia', 280001, CURRENT_TIMESTAMP, 'Asunto 1');
 insert into mensaje values (5,280001, 'Ultra instinto', 380001, CURRENT_TIMESTAMP, 'Asunto 1');
 insert into mensaje values (6,380001, 'Nunca más', 280001, CURRENT_TIMESTAMP, 'Asunto 1');
+
+insert into cita values (21321, 'OFICINA DE DIRECCION', '2018-05-29', '11:00','No ha respondido a los Reportes de Conducta', 380001);
+insert into cu values (280001, 21321);
+
+insert into cita values (21325, 'SALON 1011', '2018-06-01', '8:00','Entrega de calificaciones 3er Parcial', 380001);
+insert into cu values (280001, 21325);
 
 
 //Obtener profesores y orientador de cada alumno
