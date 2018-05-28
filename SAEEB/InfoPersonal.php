@@ -70,8 +70,8 @@ if($now > $_SESSION['expire'])
 		$result = mysqli_query($conexion,"SELECT*FROM usuario where idUsuario='" . $_SESSION['username']. "'");
 		$extraido=$result->fetch_array();
 		// Consulta para Grupo 
-		$result1 = mysqli_query($conexion,"SELECT*FROM alumno where idUsuario='" . $_SESSION['username']. "'");
-		//$extraido1=$result1->fetch_array();
+		$result1 = mysqli_query($conexion,"SELECT*FROM alumno where idAlumno='" . $_SESSION['username']. "'");
+		$extraido1=$result1->fetch_array();
 		
 	}
 echo "			<section id='main' class='container 95%'>
