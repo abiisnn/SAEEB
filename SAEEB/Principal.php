@@ -71,7 +71,7 @@ if($now > $_SESSION['expire'])
 						</div>
 						<div class='features-row'>
 							<section>
-								<span class='icon major fa fa-envelope accent4'></span>
+								<span class='icon major fa fa-book accent3'></span>
 								<h3>Calificaciones</h3>
 								<ul class='actions'>
 									<li><a href='calificaciones.php' class='button alt'>Ver</a></li>
@@ -83,7 +83,6 @@ if($now > $_SESSION['expire'])
 	$conexion = conectar();
 	$usuario = $_SESSION['username'];
 	$Tipo = tipoUsuario($usuario, $conexion);
-	echo "SOY UN ".$Tipo;
 	if($Tipo == "ALUMNO" || $Tipo == "ORIENTADOR")
 	{
 		echo "
@@ -102,7 +101,7 @@ if($now > $_SESSION['expire'])
     echo"				
     					<div class='features-row'>
 							<section>
-								<span class='icon major fa fa-envelope accent4'></span>
+								<span class='icon major fa fa-file-pdf-o accent4'></span>
 								<h3>Generar Boleta</h3>
 								<ul class='actions'>
 									<li><a href='SeleccionarAlumno.php' class='button alt'>Ver</a></li>
