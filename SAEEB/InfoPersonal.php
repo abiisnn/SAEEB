@@ -6,14 +6,14 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
 }
 else 
 {
-	header("Location: index.php");
+	header("Location: index.html");
 	exit;
 }
 $now = time();
 if($now > $_SESSION['expire'])
 {
 	session_destroy();
-	header("Location: index.php");	
+	header("Location: index.html");	
 }
 ?>
 <!DOCTYPE HTML>
@@ -70,8 +70,8 @@ if($now > $_SESSION['expire'])
 		$result = mysqli_query($conexion,"SELECT*FROM usuario where idUsuario='" . $_SESSION['username']. "'");
 		$extraido=$result->fetch_array();
 		// Consulta para Grupo 
-		$result1 = mysqli_query($conexion,"SELECT*FROM Alumno where idUsuario='" . $_SESSION['username']. "'");
-		$extraidos=$result->fetch_array();
+		$result1 = mysqli_query($conexion,"SELECT*FROM alumno where idUsuario='" . $_SESSION['username']. "'");
+		$extraido1=$result1->fetch_array();
 		
 	}
 echo "			<section id='main' class='container 95%'>
@@ -83,7 +83,9 @@ echo "			<section id='main' class='container 95%'>
 						<form method='post' action='#'>
 							<div class='row uniform 50%'>
 								<div class='3u 12u(mobilep)'>
-									<label for='nombre'><b>DATOS PERSONALES(							</div>
+									<label for='nombre'><b>DATOS PERSONALES</b></label>							
+								</div>
+							</div>
 							<div class='row uniform 50%'>
 								<div class='3u 12u(mobilep)'>
 									<label for='nombre'><b>Nombre(s):</b></label>
@@ -103,14 +105,40 @@ echo "			<section id='main' class='container 95%'>
 								</div>
 							</div>
 							<div class='row uniform 50%'>
-								
+								<div class='5u 12u(mobilep)'>
+									<label for='nombre'><b>Tutor:</b></label>
+									<p>".$extraido1[2]."</p>
+								</div>
+								<div class='4u 12u(mobilep)'>
+									<label for='nombre'><b>Email:</b></label>
+									<p>".$extraido[6]."</p>
+								</div>
 								<div class='3u 12u(mobilep)'>
 									<label for='nombre'><b>Sexo:</b></label>
 									<p>".$extraido[9]."</p>
 								</div>
+							</div>
+							<div class='row uniform 50%'>
 								<div class='3u 12u(mobilep)'>
-									<label for='nombre'><b>Email:</b></label>
-									<p>".$extraido[6]."</p>
+									<label for='nombre'><b>DATOS ACADEMICOS</b></label>							
+								</div>
+							</div>
+							<div class='row uniform 50%'>
+								<div class='3u 12u(mobilep)'>
+									<label for='nombre'><b>Escuela:</b></label>
+									<p>".$extraido[2]."</p>
+								</div>
+								<div class='3u 12u(mobilep)'>
+									<label for='nombre'><b>Turno:</b></label>
+									<p>".$extraido[3]."</p>
+								</div>
+								<div class='3u 12u(mobilep)'>
+									<label for='nombre'><b>Grupo:</b></label>
+									<p>".$extraido[4]."</p>
+								</div>
+								<div class='3u 12u(mobilep)'>
+									<label for='nombre'><b>Promedio:</b></label>
+									<p>".$extraido[8]."</p>
 								</div>
 							</div>
 
