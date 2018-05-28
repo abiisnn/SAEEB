@@ -53,27 +53,14 @@ if($now > $_SESSION['expire'])
 			<!-- Main -->
 				<section id='main' class='container'>
 					<section class='box special features'>
-<?php
-	include("conexion")
-	$conexion = conectar();
-
 						<div class='features-row'>
 							<section>
 								<span class='icon major fa fa-child accent2'></span>
 								<h3>Información Personal</h3>
-								<ul class='actions'>
-									<li><a href='InfoPersonal.php' class='button alt'>Ver</a></li>
-								</ul>
+									<ul class='actions'>
+										<li><a href='InfoPersonal.php' class='button alt'>Ver</a></li>
+									</ul>
 							</section>
-							<section>
-								<span class='icon major fa fa-folder-open-o accent3'></span>
-								<h3>Calificaciones</h3>
-								<ul class='actions'>
-									<li><a href='#' class='button alt'>Ver</a></li>
-								</ul>
-							</section>
-						</div>
-						<div class='features-row'>
 							<section>
 								<span class='icon major fa fa-envelope accent4'></span>
 								<h3>Bandeja de Entrada</h3>
@@ -81,6 +68,31 @@ if($now > $_SESSION['expire'])
 									<li><a href='bandeja.php' class='button alt'>Ver</a></li>
 								</ul>
 							</section>
+<?php
+	include("conexion.php");
+	include("obtenerUsuario.php");
+	$conexion = conectar();
+	$usuario = $_SESSION['idusername'];
+	$Tipo = tipoUsuario($usuario, $conexion);
+
+	echo "SOY UN ".$Tipo;
+	if($Tipo == "ALUMNO")
+	{
+//		echo " SOY UN".$Tipo;
+	}
+	/*							
+							
+						*/
+?>
+			</div>
+						<div class='features-row'>
+							<section>
+								<span class='icon major fa fa-envelope accent4'></span>
+								<h3>Bandeja de Entrada</h3>
+								<ul class='actions'>
+									<li><a href='bandeja.php' class='button alt'>Ver</a></li>
+								</ul>
+							</section>			
 							<section>
 								<span class='icon major fa fa-calendar-check-o accent5'></span>
 								<h3>Citas</h3>
@@ -91,8 +103,6 @@ if($now > $_SESSION['expire'])
 						</div>
 					</section>
 				</section>
-?>
-
 			<!-- CTA -->
 				<section id="cta">
 					<form>

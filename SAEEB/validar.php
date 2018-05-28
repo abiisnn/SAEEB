@@ -27,7 +27,8 @@ session_start();
 			$_SESSION['expire'] = $_SESSION['start'] + (20*60);
 			$Tipo = "ALUMNO";
 			$Tipo2 = "PROFESOR";
-			if($extraido['Tipo'] == $Tipo) // Tipo ALUMNO
+			header("Location: Principal.php");
+			/*if($extraido['Tipo'] == $Tipo) // Tipo ALUMNO
 			{
 				header("Location: Principal_Alumno.php");	
 			}
@@ -41,7 +42,7 @@ session_start();
 				{
 					header("Location: Principal_Orientador.php");
 				}
-			}
+			}*/
 		}
 		else
 		{
