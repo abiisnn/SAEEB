@@ -68,6 +68,15 @@ if($now > $_SESSION['expire'])
 									<li><a href='bandeja.php' class='button alt'>Ver</a></li>
 								</ul>
 							</section>
+						</div>
+						<div class='features-row'>
+							<section>
+								<span class='icon major fa fa-envelope accent4'></span>
+								<h3>Calificaciones</h3>
+								<ul class='actions'>
+									<li><a href='calificaciones.php' class='button alt'>Ver</a></li>
+								</ul>
+							</section>	
 <?php
 	include("conexion.php");
 	include("obtenerUsuario.php");
@@ -76,31 +85,34 @@ if($now > $_SESSION['expire'])
 	$Tipo = tipoUsuario($usuario, $conexion);
 
 	echo "SOY UN ".$Tipo;
-	if($Tipo == "ALUMNO")
+	if($Tipo == "ALUMNO" && $Tipo == "ORIENTADOR")
 	{
-//		echo " SOY UN".$Tipo;
-	}
-	/*							
-							
-						*/
-?>
-			</div>
-						<div class='features-row'>
-							<section>
-								<span class='icon major fa fa-envelope accent4'></span>
-								<h3>Bandeja de Entrada</h3>
-								<ul class='actions'>
-									<li><a href='bandeja.php' class='button alt'>Ver</a></li>
-								</ul>
-							</section>			
+		echo "
 							<section>
 								<span class='icon major fa fa-calendar-check-o accent5'></span>
 								<h3>Citas</h3>
 								<ul class='actions'>
-									<li><a href='#' class='button alt'>Ver</a></li>
+									<li><a href='citas.php' class='button alt'>Ver</a></li>
 								</ul>
 							</section>
 						</div>
+		";	
+	}
+	else // Cuando es PROFESOR
+	{
+		echo "
+							<section>
+								<span class='icon major fa fa-calendar-check-o accent5'></span>
+								<h3>Grupos</h3>
+								<ul class='actions'>
+									<li><a href='grupos.php' class='button alt'>Ver</a></li>
+								</ul>
+							</section>
+						</div>
+		";
+	}
+
+?>				
 					</section>
 				</section>
 			<!-- CTA -->

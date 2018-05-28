@@ -1,0 +1,50 @@
+
+-------------------------------------------------------
+-------------------------------------------------------
+					NOTAS ENRIKE
+-------------------------------------------------------
+-------------------------------------------------------
+Al cargar la BD .sql
+1.- Abrir MySQL
+2.- create database saeeb;
+3.- use saeeb;
+2.- Escribir "source" y arrastrar y pegar el archivo .sql
+3.- Y ya(:
+
+Codigo de IdUsuarios:
+- Inicia con 2 -> Alumno
+- Inicia con 3 -> Orientador
+- Inicia con 4 -> Profesor
+
+IdMensajes se generan aleatoriamente con rand()
+
+-------------------------------------------------------
+-------------------------------------------------------
+					NOTAS Abi
+-------------------------------------------------------
+-------------------------------------------------------
+
+>>>>>>>>>>>> NOTA 1
+Para controlar el inicio de sesión es importante que en cada archivo
+lo primero que este sea la siguiente fracción de código:
+
+<?php
+session_start();
+if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
+{
+
+}
+else 
+{
+	header("Location: index.html");
+	exit;
+}
+$now = time();
+if($now > $_SESSION['expire'])
+{
+	session_destroy();
+	header("Location: index.html");	
+}
+?>
+
+
