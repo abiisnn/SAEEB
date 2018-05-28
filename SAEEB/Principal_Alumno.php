@@ -37,7 +37,6 @@ if($now > $_SESSION['expire'])
 		<div id="page-wrapper">
 			<!-- Header -->
 				<header id="header" class="alt">
-					<h1><a href="index.html">Alpha</a> by HTML5 UP</h1>
 					<nav id="nav">
 						<ul>
 							<li><a href="Principal_Alumno.html">Inicio</a></li>

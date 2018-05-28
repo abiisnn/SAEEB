@@ -36,7 +36,6 @@ if($now > $_SESSION['expire'])
 		<div id='page-wrapper'>
 			<!-- Header -->
 				<header id='header' class='alt'>
-					<h1><a href='index.html'>Alpha</a> by HTML5 UP</h1>
 					<nav id='nav'>
 						<ul>
 							<li><a href='Principal.html'>Inicio</a></li>
@@ -69,9 +68,16 @@ if($now > $_SESSION['expire'])
 		// Consultas para usuario
 		$result = mysqli_query($conexion,"SELECT*FROM usuario where idUsuario='" . $_SESSION['username']. "'");
 		$extraido=$result->fetch_array();
-		// Consulta para Grupo 
+		// Consulta para Tutor, Grado, Turno y Promedio
 		$result1 = mysqli_query($conexion,"SELECT*FROM alumno where idAlumno='" . $_SESSION['username']. "'");
 		$extraido1=$result1->fetch_array();
+		// Para saber la Escuela
+		$result2 = mysqli_query($conexion, "SELECT e.nombre FROM usuario u, escuela e where e.ClaveEscuela=u.ClaveEscuela and u.idUsuario='".$_SESSION['username']."'");
+		$Escuela=$result2->fetch_array();
+		// Para saber el grupo
+		$result3 = mysqli_query($conexion, "SELECT g.nombre FROM grupo g, alumno a where g.idGrupo=a.idGrupo and a.idAlumno='".$_SESSION['username']."'");
+		$Grupo=$result3->fetch_array();
+		
 		
 	}
 echo "			<section id='main' class='container 95%'>
@@ -124,21 +130,21 @@ echo "			<section id='main' class='container 95%'>
 								</div>
 							</div>
 							<div class='row uniform 50%'>
-								<div class='3u 12u(mobilep)'>
+								<div class='4u 12u(mobilep)'>
 									<label for='nombre'><b>Escuela:</b></label>
-									<p>".$extraido[2]."</p>
+									<p>".$Escuela[0]."</p>
 								</div>
 								<div class='3u 12u(mobilep)'>
 									<label for='nombre'><b>Turno:</b></label>
-									<p>".$extraido[3]."</p>
+									<p>".$extraido1[4]."</p>
 								</div>
 								<div class='3u 12u(mobilep)'>
 									<label for='nombre'><b>Grupo:</b></label>
-									<p>".$extraido[4]."</p>
+									<p>".$Grupo[0]."</p>
 								</div>
-								<div class='3u 12u(mobilep)'>
+								<div class='2u 12u(mobilep)'>
 									<label for='nombre'><b>Promedio:</b></label>
-									<p>".$extraido[8]."</p>
+									<p>".$extraido1[5]."</p>
 								</div>
 							</div>
 
