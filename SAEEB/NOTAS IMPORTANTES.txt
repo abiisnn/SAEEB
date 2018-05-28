@@ -6,8 +6,10 @@
 -------------------------------------------------------
 Al cargar la BD .sql
 1.- Abrir MySQL
-2.- Simplemente escribir "source" y arrastrar y pegar el archivo .sql
-3.- Y ya(: la bd se llama saeeb (automaticamente crea la bd y la selecciona con use)
+2.- create database saeeb;
+3.- use saeeb;
+2.- Escribir "source" y arrastrar y pegar el archivo .sql
+3.- Y ya(:
 
 Codigo de IdUsuarios:
 - Inicia con 2 -> Alumno
