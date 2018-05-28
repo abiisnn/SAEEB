@@ -67,9 +67,7 @@ echo"				<section id='cta'>
 		$Escuela=$result2->fetch_array();
 		// Para saber el grupo
 		$result3 = mysqli_query($conexion, "SELECT g.nombre FROM grupo g, alumno a where g.idGrupo=a.idGrupo and a.idAlumno='".$_SESSION['username']."'");
-		$Grupo=$result3->fetch_array();
-		
-		
+		$Grupo=$result3->fetch_array();	
 	}
 echo "			
 					<div class='box'>
