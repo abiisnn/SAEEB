@@ -43,6 +43,21 @@
 				}
 				return $nombreUsuario;	
 		}
+	function GrupoOrientador($idUsuario,$conex){
+		$grupo=mysqli_query($conex, "SELECT Nombre FROM Grupo WHERE idOrientador=$idUsuario"); 
+		$row = mysqli_fetch_array($grupo);
 
+		return $row[0];
+	}
+	function ObtenerAlumnosGrupo($idgrupo,$conex)
+	{
+		$Alumno= mysqli_query($conex, "SELECT u.idUsuario,u.nombre,u.appaterno, u.apmaterno FROM Usuario u, grupo g,alumno a WHERE g.idgrupo=a.idgrupo and a.idalumno=u.idUsuario and g.idgrupo=$idgrupo order by 1 asc;"); 
+		return $Alumno;	
+	}
+	function OtenerGrupo($idusuario, $conex){
+		$tipo=mysqli_query($conex, "SELECT idgrupo FROM grupo where idorientador=$idusuario"); 
+		$row = mysqli_fetch_array($tipo);
 
+		return $row[0];
+	}
 ?>
