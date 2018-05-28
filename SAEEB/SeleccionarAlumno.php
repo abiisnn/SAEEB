@@ -58,6 +58,45 @@ echo"				<section id='cta'>
 	$con= conectar();
 	if($con){
 		$idUsuario=$_SESSION['username'];
+		if(isset($_POST['Aceptar'])){
+			$idAlumno=$_POST['alumno'];
+			$grupo=$_POST['grupo'];
+			$idGrupo=OtenerGrupo($idUsuario,$con);
+			$result = mysqli_query($con,"SELECT nombre,appaterno,apmaterno FROM usuario where idUsuario='$idAlumno'");
+			$Nombre = mysqli_fetch_array($result);
+			echo "
+				<div class='box'>
+					<form method='post' action='#'>
+						<div class='row uniform 50%'>
+							<div class='3u 12u(mobilep)'>
+								<h4>Alumno Seleccionado</h4>							
+							</div>
+						</div>
+					<div class='row uniform 50%'>
+							<div class='3u 12u(mobilep)'>
+								<label for='nombre'><b>Grupo Asignado</b></label>
+									<p>$grupo</p>
+							</div>
+					<div class='row uniform 50%'>
+						<div class='12u 12u(mobilep)'>
+							<label for='nombre'><b>Alumno</b></label>
+								<p> $idAlumno - $Nombre[0] $Nombre[1] $Nombre[2]</p>
+					</div>
+					<div class='row uniform'>
+							<div class='12u'>
+								<ul class='actions align-center'>
+									<li><a href='Boleta.php?idAlumno=$idAlumno&idGrupo=$idGrupo' class='button special'>Confirmar</a></li>
+								</ul>
+							</div>
+						</div>
+					</form>
+					</div>
+				</section>";
+
+			//$producto=$_REQUEST['mi_select'];
+
+		}
+		else{
 		$grupo=GrupoOrientador($idUsuario,$con);
 		$idGrupo=OtenerGrupo($idUsuario,$con);
 		$Alumno=ObtenerAlumnosGrupo($idGrupo,$con);
@@ -91,7 +130,8 @@ echo"				<section id='cta'>
 						<div class='row uniform'>
 							<div class='12u'>
 								<ul class='actions align-center'>
-									<li><a href='#' class='button special'>Aceptar</a></li>
+									<input type='hidden' value='$grupo' name='grupo'>
+									<li><input type='submit' name='Aceptar' value='Aceptar' class='button special'></li>
 								</ul>
 							</div>
 						</div>
@@ -104,9 +144,8 @@ echo"				<section id='cta'>
 						</div>
 					</form>
 					</div>
-				</section>
-				";
-
+				</section>";
+		}
 	}
 	
 ?>
