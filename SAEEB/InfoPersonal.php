@@ -71,7 +71,7 @@ if($now > $_SESSION['expire'])
 		$extraido=$result->fetch_array();
 		// Consulta para Grupo 
 		$result1 = mysqli_query($conexion,"SELECT*FROM alumno where idUsuario='" . $_SESSION['username']. "'");
-		$extraido1=$result1->fetch_array();
+		//$extraido1=$result1->fetch_array();
 		
 	}
 echo "			<section id='main' class='container 95%'>
