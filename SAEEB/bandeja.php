@@ -41,7 +41,7 @@ if($now > $_SESSION['expire'])
 
 		echo "<a href='enviados.php?idRemitente=$idusuario'><button>Enviados</button></a>";
 
-		echo "<a href='enviarNuevoMensaje.php?idRemitente=$idusuario'><button>Redactar</button></a>";
+		echo "<a href='nuevoMensaje.php?idRemitente=$idusuario'><button>Redactar</button></a>";
 		echo "<br><br>";
 
 		$mensaje=mysqli_query($con, "SELECT idusuario, idmensaje, asunto, horamensaje FROM mensaje WHERE destinatario=$idusuario ORDER BY 4 DESC"); 
