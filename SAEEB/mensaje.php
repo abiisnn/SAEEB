@@ -78,7 +78,7 @@ echo"				<section id='cta'>
 							</div>
 							<div class='row uniform 50%'>
 								<div class='12u'>
-									<label for='nombre'><b>ASUNTO: </b><i> $row[5]</i></label>
+									<label for='nombre'><b>ASUNTO: </b><i>  $row[5]</i></label>
 								</div>
 							</div>
 							<div class='row uniform 50%'>
