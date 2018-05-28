@@ -57,24 +57,25 @@ insert into cu values (280001, 21325);
 
 
 //Obtener profesores y orientador de cada alumno
-SELECT u.idusuario, u.nombre, u.appaterno, u.apmaterno 
+SELECT distinct u.idusuario, u.nombre, u.appaterno, u.apmaterno 
 FROM usuario u, profesor p, alumno a, grupo g, pg pg , orientador o
 WHERE ((u.idusuario=pg.idprofesor and pg.idgrupo=g.idgrupo) or (u.idusuario=g.idorientador)) and g.idgrupo=a.idgrupo and a.idalumno=280000;
 
 //Obtener alumnos por parte del orientador
-SELECT u.idusuario, u.nombre, u.appaterno, u.apmaterno 
+SELECT distinct u.idusuario, u.nombre, u.appaterno, u.apmaterno 
 FROM usuario u, orientador o, alumno a, grupo g
 WHERE u.idusuario=a.idalumno and a.idgrupo=g.idgrupo and g.idorientador=o.idorientador and o.idorientador=380001;
 
 //Obtener padres de familia por parte del orientador
-SELECT a.idalumno, a.tutor
+SELECT distinct a.idalumno, a.tutor
 FROM orientador o, alumno a, grupo g
 WHERE a.idgrupo=g.idgrupo and g.idorientador=o.idorientador and o.idorientador=380001;
 
 //Obtener alumnos por parte del profesor
-SELECT a.idalumno, a.tutor
+SELECT distinct a.idalumno, a.tutor
 FROM profesor p, alumno a, grupo g, pg pg
 WHERE a.idgrupo=g.idgrupo and g.idgrupo=pg.idgrupo and pg.idprofesor=p.idprofesor and p.idprofesor=480011;
+
 
 
 
