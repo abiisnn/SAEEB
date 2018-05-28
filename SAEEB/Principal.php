@@ -72,7 +72,7 @@ if($now > $_SESSION['expire'])
 	include("conexion.php");
 	include("obtenerUsuario.php");
 	$conexion = conectar();
-	$usuario = $_SESSION['idusername'];
+	$usuario = $_SESSION['username'];
 	$Tipo = tipoUsuario($usuario, $conexion);
 
 	echo "SOY UN ".$Tipo;

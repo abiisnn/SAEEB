@@ -25,24 +25,7 @@ session_start();
 			$_SESSION['username'] = $usuario;
 			$_SESSION['start'] = time();
 			$_SESSION['expire'] = $_SESSION['start'] + (20*60);
-			$Tipo = "ALUMNO";
-			$Tipo2 = "PROFESOR";
 			header("Location: Principal.php");
-			/*if($extraido['Tipo'] == $Tipo) // Tipo ALUMNO
-			{
-				header("Location: Principal_Alumno.php");	
-			}
-			else
-			{
-				if($extraido['Tipo'] == $Tipo2) // Tipo PROFESOR
-				{
-					header("Location: Principal_Profesor.php");		
-				}
-				else // Tipo Orientador 
-				{
-					header("Location: Principal_Orientador.php");
-				}
-			}*/
 		}
 		else
 		{
