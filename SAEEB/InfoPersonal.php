@@ -35,37 +35,23 @@ if($now > $_SESSION['expire'])
 	<body class="landing">
 		<div id='page-wrapper'>
 			<!-- Header -->
-				<header id='header' class='alt'>
-					<nav id='nav'>
+				<header id="header" class="alt">
+					<nav id="nav">
 						<ul>
-							<li><a href='Principal.html'>Inicio</a></li>
-							<li>
-								<a href='#' class='icon fa-angle-down'>Opciones</a>
-								<ul>
-									<li><a href='generic.html'>Contacto</a></li>
-									<li><a href='contact.html'>Cerrar Sesión</a></li>
-									<li>
-										<a href='#'>Submenu</a>
-										<ul>
-											<li><a href='#'>Option One</a></li>
-											<li><a href='#'>Option Two</a></li>
-											<li><a href='#'>Option Three</a></li>
-											<li><a href='#'>Option Four</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
+							<li><a href="CerrarSesion.php">Cerrar Sesión</a></li>
+							
 						</ul>
 					</nav>
 				</header>
-				<section id="cta">
-					<h2>Contact Us</h2>
+<?php
+echo"				<section id='cta'>
+					<h2>".$_SESSION['username']."</h2>
 				</section>
 				<section id='main' class='container 95%'>
 					<header>
-						<h2>   </h2>
+						<h3>INFORMACIÓN PERSONAL</h3>
 					</header>				
-<?php
+";
 	include ("conexion.php");
 	// Probamos la conexion
 	$conexion = conectar();
