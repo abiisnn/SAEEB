@@ -2,9 +2,7 @@
 <title>
 	Bandeja de Entrada - SAEEB
 </title>
-<body>
-
-	
+<body>	
 	<br>
 <?php
 	include("conexion.php");
