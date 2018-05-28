@@ -105,7 +105,7 @@ if($now > $_SESSION['expire'])
 								<span class='icon major fa fa-envelope accent4'></span>
 								<h3>Generar Boleta</h3>
 								<ul class='actions'>
-									<li><a href='boleta.php' class='button alt'>Ver</a></li>
+									<li><a href='SeleccionarAlumno.php' class='button alt'>Ver</a></li>
 								</ul>
 							</section>
 						</div>
