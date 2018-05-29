@@ -101,6 +101,19 @@ if($now > $_SESSION['expire'])
 			$row = mysqli_fetch_array($sql); 
 
 
+				if($row[3]==$_SESSION['username']){
+					echo "Recibido<br><br>";
+					$remi=$row[3];
+					$desti=$row[1];
+				}
+
+				else{
+					echo "Enviado<br><br>";
+					$remi=$row[1];
+					$desti=$row[3];
+				}
+
+
 			echo "		<form method='post' action='bandeja.php'>
 							<div class='row uniform 50%'>
 								<div class='12u 12u(mobilep)'>
@@ -134,16 +147,16 @@ if($now > $_SESSION['expire'])
 								<form action='responder.php' method='POST'>
 								<table>
 								<tr>
-								De: <input type='text' value='$row[3] - ".usuario($row[3], $con)."' size=40>
-								Para: <input type='text' value='$row[1] - ".usuario($row[1], $con)."' size=40>
+								De: <input type='text' value='$remi - ".usuario($remi, $con)."' size=40>
+								Para: <input type='text' value='$desti - ".usuario($desti, $con)."' size=40>
 								Asunto: <input type='text' name='asunto' value='Re: $row[5]' size=50>
 								Mensaje: <textarea name='mensaje' cols=20 rows=4></textarea>
 								</td>
 								</tr>
 								</table><br>
 								<input type='hidden' value='$id' name='idMensaje'>
-								<input type='hidden' value='$row[3]' name='remitente'>
-								<input type='hidden' value='$row[1]' name='destino'>
+								<input type='hidden' value='$remi' name='remitente'>
+								<input type='hidden' value='$desti' name='destino'>
 								<input type='submit' name='enviar' value='Enviar mensaje'>
 								</form>
 								</section>
