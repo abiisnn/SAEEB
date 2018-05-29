@@ -49,10 +49,10 @@ insert into mensaje values (4,280000, 'Quince años de malicia', 280001, CURRENT
 insert into mensaje values (5,280001, 'Ultra instinto', 380001, CURRENT_TIMESTAMP, 'Asunto 1');
 insert into mensaje values (6,380001, 'Nunca más', 280001, CURRENT_TIMESTAMP, 'Asunto 1');
 
-insert into cita values (21321, 'OFICINA DE DIRECCION', '2018-05-29', '11:00','No ha respondido a los Reportes de Conducta', 380001);
+insert into cita values (21321, 'OFICINA DE DIRECCION', '2018-05-29', '11:00','No ha respondido a los Reportes de Conducta', 380001, 0);
 insert into cu values (280001, 21321);
 
-insert into cita values (21325, 'SALON 1011', '2018-06-01', '8:00','Entrega de calificaciones 3er Parcial', 380001);
+insert into cita values (21325, 'SALON 1011', '2018-06-01', '8:00','Entrega de calificaciones 3er Parcial', 380001, 0);
 insert into cu values (280001, 21325);
 
 

@@ -85,10 +85,11 @@ DROP TABLE IF EXISTS `cita`;
 CREATE TABLE `cita` (
   `idCita` int(11) NOT NULL,
   `Lugar` varchar(45) NOT NULL,
-  `Fecha` datetime NOT NULL,
+  `Fecha` date DEFAULT NULL,
   `HoraCita` varchar(10) NOT NULL,
   `Motivo` varchar(50) NOT NULL,
   `Remitente` varchar(45) NOT NULL,
+  `Confirmada` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`idCita`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -99,7 +100,7 @@ CREATE TABLE `cita` (
 
 LOCK TABLES `cita` WRITE;
 /*!40000 ALTER TABLE `cita` DISABLE KEYS */;
-INSERT INTO `cita` VALUES (21321,'OFICINA DE DIRECCION','2018-05-29 00:00:00','11:00','No ha respondido a los Reportes de Conducta','380001'),(21325,'SALON 1011','2018-06-01 00:00:00','8:00','Entrega de calificaciones 3er Parcial','380001');
+INSERT INTO `cita` VALUES (21321,'OFICINA DE DIRECCION','2018-05-29','11:00','No ha respondido a los Reportes de Conducta','380001',0),(21325,'SALON 1011','2018-06-01','8:00','Entrega de calificaciones 3er Parcial','380001',0);
 /*!40000 ALTER TABLE `cita` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -126,7 +127,6 @@ CREATE TABLE `cu` (
 
 LOCK TABLES `cu` WRITE;
 /*!40000 ALTER TABLE `cu` DISABLE KEYS */;
-INSERT INTO `cu` VALUES (280001,21321),(280001,21325);
 /*!40000 ALTER TABLE `cu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -242,7 +242,7 @@ CREATE TABLE `mensaje` (
 
 LOCK TABLES `mensaje` WRITE;
 /*!40000 ALTER TABLE `mensaje` DISABLE KEYS */;
-INSERT INTO `mensaje` VALUES (1,280000,'Este es un mensaje enviado de prueba',380001,'2018-05-27 18:45:14','Asunto 1'),(2,280001,'Otro mensaje de prueba',280000,'2018-05-27 18:45:14','Asunto 1'),(3,380001,'El ultimo xD',380001,'2018-05-27 18:45:14','Asunto 1'),(4,280000,'Quince años de malicia',280001,'2018-05-27 18:45:14','Asunto 1'),(5,280001,'Ultra instinto',380001,'2018-05-27 18:45:14','Asunto 1'),(6,380001,'Nunca más',280001,'2018-05-27 18:45:15','Asunto 1');
+INSERT INTO `mensaje` VALUES (1,280000,'Este es un mensaje enviado de prueba',380001,'2018-05-27 18:45:14','Asunto 1'),(2,280001,'Otro mensaje de prueba',280000,'2018-05-27 18:45:14','Asunto 1'),(3,380001,'El ultimo xD',380001,'2018-05-27 18:45:14','Asunto 1'),(4,280000,'Quince años de malicia',280001,'2018-05-27 18:45:14','Asunto 1'),(5,280001,'Ultra instinto',380001,'2018-05-27 18:45:14','Asunto 1'),(6,380001,'Nunca más',280001,'2018-05-27 18:45:15','Asunto 1'),(380,480011,'agaga',280000,'2018-05-28 15:10:42','aLO XD'),(422,280000,'Vientos xd',480011,'2018-05-28 22:27:14','Re: aLO XD'),(447,280000,'muy bien xD',480011,'2018-05-28 15:11:11','Re: aLO XD'),(612,280000,'adgagaga ff',380001,'2018-05-28 15:01:13','Prueba xd');
 /*!40000 ALTER TABLE `mensaje` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -374,4 +374,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-27 20:56:59
+-- Dump completed on 2018-05-29 15:47:30
