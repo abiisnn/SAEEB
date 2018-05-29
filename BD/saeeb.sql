@@ -84,11 +84,11 @@ DROP TABLE IF EXISTS `cita`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cita` (
   `idCita` int(11) NOT NULL,
-  `Lugar` varchar(45) NOT NULL,
+  `Lugar` varchar(60) DEFAULT NULL,
   `Fecha` date DEFAULT NULL,
   `HoraCita` varchar(10) NOT NULL,
-  `Motivo` varchar(50) NOT NULL,
-  `Remitente` varchar(45) NOT NULL,
+  `Motivo` varchar(60) DEFAULT NULL,
+  `Remitente` int(11) DEFAULT NULL,
   `Confirmada` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`idCita`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -100,7 +100,7 @@ CREATE TABLE `cita` (
 
 LOCK TABLES `cita` WRITE;
 /*!40000 ALTER TABLE `cita` DISABLE KEYS */;
-INSERT INTO `cita` VALUES (21321,'OFICINA DE DIRECCION','2018-05-29','11:00','No ha respondido a los Reportes de Conducta','380001',0),(21325,'SALON 1011','2018-06-01','8:00','Entrega de calificaciones 3er Parcial','380001',0);
+INSERT INTO `cita` VALUES (21321,'OFICINA DE DIRECCION','2018-05-29','11:00','No ha respondido a los Reportes de Conducta',380001,0),(21325,'SALON 1011','2018-06-01','8:00','Entrega de calificaciones 3er Parcial',380001,0),(21328,'SALA SIGLO XXI','2018-05-29','9:30','Nada impide tanto el ser natural como el afán.',380002,0);
 /*!40000 ALTER TABLE `cita` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -127,7 +127,7 @@ CREATE TABLE `cu` (
 
 LOCK TABLES `cu` WRITE;
 /*!40000 ALTER TABLE `cu` DISABLE KEYS */;
-INSERT INTO `cu` VALUES (280001,21321),(280001,21325);
+INSERT INTO `cu` VALUES (280001,21321),(280001,21325),(280001,21328);
 /*!40000 ALTER TABLE `cu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -227,10 +227,10 @@ DROP TABLE IF EXISTS `mensaje`;
 CREATE TABLE `mensaje` (
   `idMensaje` int(11) NOT NULL,
   `idUsuario` int(11) NOT NULL,
-  `Mensaje` varchar(150) NOT NULL,
+  `Mensaje` varchar(1000) DEFAULT NULL,
   `Destinatario` int(11) NOT NULL,
   `HoraMensaje` varchar(30) DEFAULT NULL,
-  `Asunto` varchar(20) NOT NULL,
+  `Asunto` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`idMensaje`,`idUsuario`),
   KEY `idUsuario_idx` (`idUsuario`),
   CONSTRAINT `idUsuario_Mensaje` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -243,7 +243,7 @@ CREATE TABLE `mensaje` (
 
 LOCK TABLES `mensaje` WRITE;
 /*!40000 ALTER TABLE `mensaje` DISABLE KEYS */;
-INSERT INTO `mensaje` VALUES (1,280000,'Este es un mensaje enviado de prueba',380001,'2018-05-27 18:45:14','Asunto 1'),(2,280001,'Otro mensaje de prueba',280000,'2018-05-27 18:45:14','Asunto 1'),(3,380001,'El ultimo xD',380001,'2018-05-27 18:45:14','Asunto 1'),(4,280000,'Quince años de malicia',280001,'2018-05-27 18:45:14','Asunto 1'),(5,280001,'Ultra instinto',380001,'2018-05-27 18:45:14','Asunto 1'),(6,380001,'Nunca más',280001,'2018-05-27 18:45:15','Asunto 1'),(380,480011,'agaga',280000,'2018-05-28 15:10:42','aLO XD'),(422,280000,'Vientos xd',480011,'2018-05-28 22:27:14','Re: aLO XD'),(447,280000,'muy bien xD',480011,'2018-05-28 15:11:11','Re: aLO XD'),(612,280000,'adgagaga ff',380001,'2018-05-28 15:01:13','Prueba xd');
+INSERT INTO `mensaje` VALUES (1,280000,'Este es un mensaje enviado de prueba',380001,'2018-05-27 18:45:14','Asunto 1'),(2,280001,'Otro mensaje de prueba',280000,'2018-05-27 18:45:14','Asunto 1'),(3,380001,'El ultimo xD',380001,'2018-05-27 18:45:14','Asunto 1'),(4,280000,'Quince años de malicia',280001,'2018-05-27 18:45:14','Asunto 1'),(5,280001,'Ultra instinto',380001,'2018-05-27 18:45:14','Asunto 1'),(6,380001,'Nunca más',280001,'2018-05-27 18:45:15','Asunto 1'),(10,280000,'Asunto 50 caracteres',380002,'2018-05-29 16:58:25','Nada impide tanto él'),(245,280000,'FROM usuario u, profesor p, alumno a, grupo g, pg pg , orientador o\r\nWHERE ((u.idusuario=pg.idprofesor and pg.idgrupo=g.idgrupo) or (u.idusuario=g.idorientador)) and g.idgrupo=a.idgrupo and a.idalumno=280000;\r\n//Obtener alumnos por parte del orientador\r\nSELECT distinct u.idusuario, u.nombre, u.appaterno, u.apmaterno \r\nFROM usuario u, orientador o, alumno a, grupo g\r\nWHERE u.idusuario=a.idalumno and a.idgrupo=g.idgrupo and g.idorientador=o.idorientador and o.idorientador=380001;\r\n//Obtener padres de familia por parte del orientador\r\nSELECT distinct a.idalumno, a.tutor\r\nFROM orientador o, alumno a, grupo g\r\nWHERE a.idgrupo=g.idgrupo and g.idorientador=o.idorientador and o.idorientador=380001;\r\n//Obtener alumnos por parte del profesor\r\nSELECT distinct a.idalumno, a.tutor\r\nFROM profesor p, alumno a, grupo g, pg pg\r\nWHERE a.idgrupo=g.idgrupo and g.idgrupo=pg.idgrupo and pg.idprofesor=p.idprofesor and p.idprofesor=480011;\r\n',380001,'2018-05-29 17:05:16','Prueba 1000 caracteres'),(380,480011,'agaga',280000,'2018-05-28 15:10:42','aLO XD'),(422,280000,'Vientos xd',480011,'2018-05-28 22:27:14','Re: aLO XD'),(447,280000,'muy bien xD',480011,'2018-05-28 15:11:11','Re: aLO XD'),(612,280000,'adgagaga ff',380001,'2018-05-28 15:01:13','Prueba xd'),(26825,280000,'“Procure ser, en todo lo posible, el que ha de reprender, irreprensible. ”\r\nFélix María de Samaniego > Otras citas\r\nEnvíaesta cita a un amigo\r\nComparte esta cita:\r\n“Nada impide tanto el ser natural como el afán de parecerlo. Si en algunos hombres no aparece el lado ridículo, es que no lo hemos buscado bien. ”\r\nFrançois de la Rochefoucauld > Otras citas\r\nEnvía esta cita a un amigo\r\nComparte esta cita:\r\n“Buscad lo ridículo en todo y lo encontraréis. Hay que domar a la vida por la dulzura.”\r\nJules Renard > Otras citas\r\nEnvía esta cita a un amigo\r\nComparte esta cita:\r\n“El que toma las cosas a broma es siempre vencido por el que las toma en serio.”\r\nSantiago Ramón y Cajal > Otras citas\r\nEnvía esta cita a un amigo',480011,'2018-05-29 17:45:23','Más de 1000 caracteres');
 /*!40000 ALTER TABLE `mensaje` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -375,4 +375,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-29 16:02:01
+-- Dump completed on 2018-05-29 17:46:44
