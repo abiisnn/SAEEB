@@ -63,8 +63,8 @@ echo"			<section id='cta'>
 			echo "				<center>
 									<ul class='actions'>
 										<li><a href='Principal.php' class='button'>Inicio</a></li>
-										<li><a href='bandeja.php?idRemitente=$idusuario' class='button'>Recibidos</a></li>
-										<li><a href='enviados.php?idRemitente=$idusuario' class='button'>Enviados</a></li>
+										<li><a href='bandeja.php' class='button'>Recibidos</a></li>
+										<li><a href='enviados.php' class='button'>Enviados</a></li>
 										<li><a href='nuevoMensaje.php?idRemitente=$idusuario' class='button'>Redactar</a></li>
 									</ul>
 								</center>
