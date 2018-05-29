@@ -61,7 +61,7 @@ if($now > $_SESSION['expire'])
   	else{
   		if (isset($_POST['nuevoM'])) { 
 
-  			$nuevoid=rand(23,2000);
+  			$nuevoid=rand(23,90000);
   			$Remitente=$_POST['remitente'];
   			$Destinatario=$_POST['destino'];
   			$nuevoAsunto=$_POST['asunto'];
@@ -72,12 +72,22 @@ if($now > $_SESSION['expire'])
 
 			if (mysqli_query($con, $sql)){ 
 
-				echo "El mensaje se ha enviado correctamente.<br><br><a href=bandeja.php><font color=black><button>Volver a la bandeja de entrada.</button></font></a>";
+				echo " <center>El mensaje se ha enviado correctamente.</center><br><br>
+						<ul class='actions align-center'>
+										<li><a href='bandeja.php' class='button'>Regresar a la Bandeja</a></li>
+									</ul>
+					</section>
+				";
 
 			} 
 			else { 
 
-			echo "Hubo un error al agregar el mensaje".mysqli_error($con)."<br><br><a href=bandeja.php><font color=black><button>Intentar de nuevo</button></font></a>";
+			echo "<center>Hubo un error al agregar el mensaje. Tal vez el identificador de mensaje que se genero ya existia: ".mysqli_error($con)."</center><br><br>
+						<ul class='actions align-center'>
+										<li><a href='bandeja.php' class='button'>Regresar a la Bandeja</a></li>
+									</ul>
+					</section>
+				";
 			}
 
 		} 

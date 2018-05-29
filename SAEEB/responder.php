@@ -82,16 +82,21 @@ if($now > $_SESSION['expire'])
 
 			if (mysqli_query($con, $sql))
 			{ 
-				echo "
+				echo " El mensaje se ha enviado correctamente.<br><br>
 						<ul class='actions align-center'>
-										<li><a href='bandeja.php' class='button special'>Regresar a la Bandeja</a></li>
+										<li><a href='bandeja.php' class='button'>Regresar a la Bandeja</a></li>
 									</ul>
 					</section>
 				";
 			} 
 			else { 
 
-			echo "Hubo un error al agregar el mensaje".mysqli_error($con)."<br><br><a href=bandeja.php><font color=black><button>Intentar de nuevo</button></font></a>";
+			echo "Hubo un error al agregar el mensaje. Tal vez el identificador de mensaje que se genero ya existia: ".mysqli_error($con)."<br><br>
+						<ul class='actions align-center'>
+										<li><a href='bandeja.php' class='button'>Regresar a la Bandeja</a></li>
+									</ul>
+					</section>
+				";
 			}
 		} 
 		else
