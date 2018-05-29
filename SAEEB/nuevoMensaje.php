@@ -144,6 +144,7 @@ if($now > $_SESSION['expire'])
 										<input type='hidden' value='$idRemitente' name='remitente'>
 										<li><input type='submit' name='nuevoM' value='Enviar mensaje'></li>
 										<li><a href='bandeja.php' class='button special'>Cancelar y Regresar</a></li>
+										<li><a href='bandeja.php' class='button'>Bandeja de Entrada</a></li>
 									</ul>
 								</div>
 							</div>
