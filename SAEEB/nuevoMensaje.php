@@ -1,3 +1,21 @@
+<?php
+session_start();
+if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
+{
+
+}
+else 
+{
+	header("Location: index.html");
+	exit;
+}
+$now = time();
+if($now > $_SESSION['expire'])
+{
+	session_destroy();
+	header("Location: index.html");	
+}
+?>
 <!DOCTYPE HTML>
 <!--
 	Alpha by HTML5 UP
@@ -6,33 +24,33 @@
 -->
 <html>
 	<head>
-		<title>Contact - Alpha by HTML5 UP</title>
+		<title>REDACTAR MENSAJE</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
-	<body>
+	<body  class="landing">
 		<div id="page-wrapper">
-
 			<!-- Header -->
-				<header id="header">
+				<header id="header" class="alt">
 					<nav id="nav">
 						<ul>
-							<li><a href="index.html">Inicio</a></li>
-							<li><a href="index.html">Cerrar Sesion</a></li>
+							<li><a href="CerrarSesion.html">Cerrar Sesion</a></li>
 						</ul>
 					</nav>
 				</header>
-
-			<!-- Main -->
-				<section id="main" class="container 75%">
-					<header>
-						<h2>Envio Emails</h2>
-					</header>
 	<?php
-		include("conexion.php");
+	echo"			<section id='cta'>
+					<h2>".$_SESSION['username']."</h2>
+				</section>
+				<section id='main' class='container 95%'>
+					<header>
+						<h3>REDACTAR MENSAJE</h3>
+					</header>				
+";
+	include("conexion.php");
 	include("obtenerUsuario.php");
 
 	$con=conectar();
@@ -125,6 +143,7 @@
 									<ul class='actions align-center'>
 										<input type='hidden' value='$idRemitente' name='remitente'>
 										<li><input type='submit' name='nuevoM' value='Enviar mensaje'></li>
+										<li><a href='bandeja.php' class='button special'>Cancelar y Regresar</a></li>
 									</ul>
 								</div>
 							</div>
