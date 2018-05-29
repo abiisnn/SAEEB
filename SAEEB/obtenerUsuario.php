@@ -6,7 +6,6 @@
 		return $row[0];
 	}
 
-
 	function DestiAlumno($idUsuario, $conex){
 		$destinatariosA= mysqli_query($conex, "SELECT distinct u.idusuario, u.nombre, u.appaterno, u.apmaterno
 											FROM usuario u, profesor p, alumno a, grupo g, pg pg , orientador o
