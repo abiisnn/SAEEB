@@ -85,7 +85,7 @@ echo"				<section id='cta'>
 					<div class='row uniform'>
 							<div class='12u'>
 								<ul class='actions align-center'>
-									<li><a href='Boleta.php?idAlumno=$idAlumno&idGrupo=$idGrupo' class='button special'>Confirmar</a></li>
+									<li><a href='BoletaInicio.php?idAlumno=$idAlumno&idGrupo=$idGrupo' class='button special'>Confirmar</a></li>
 								</ul>
 							</div>
 						</div>
