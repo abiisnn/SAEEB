@@ -55,7 +55,7 @@ if($now > $_SESSION['expire'])
 				<input type='submit' name='buscar' value='Buscar citas por fecha'> </form> <a href='citas.php'><button>Ver todas las citas</button></a><br><br>
 			";
 
-			$citas=mysqli_query($con, "SELECT c.*, cu.idusuario FROM cita c, cu cu WHERE c.idcita=cu.idcita and cu.idusuario=$idusuario ORDER BY 1 DESC"); 
+			$citas=mysqli_query($con, "SELECT c.*, cu.idusuario FROM cita c, cu cu WHERE c.idcita=cu.idcita and cu.idusuario=$idusuario ORDER BY 3 desc, 4 asc"); 
 
 			if (mysqli_num_rows($citas)) { 
 				while ($rowCitas = mysqli_fetch_array($citas)) { 
