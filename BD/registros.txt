@@ -49,11 +49,16 @@ insert into mensaje values (4,280000, 'Quince años de malicia', 280001, CURRENT
 insert into mensaje values (5,280001, 'Ultra instinto', 380001, CURRENT_TIMESTAMP, 'Asunto 1');
 insert into mensaje values (6,380001, 'Nunca más', 280001, CURRENT_TIMESTAMP, 'Asunto 1');
 
+insert into mensaje values (10,280000, 'Asunto 50 caracteres', 380002, CURRENT_TIMESTAMP, 'Nada impide tanto él');
+
 insert into cita values (21321, 'OFICINA DE DIRECCION', '2018-05-29', '11:00','No ha respondido a los Reportes de Conducta', 380001, 0);
 insert into cu values (280001, 21321);
 
 insert into cita values (21325, 'SALON 1011', '2018-06-01', '8:00','Entrega de calificaciones 3er Parcial', 380001, 0);
 insert into cu values (280001, 21325);
+
+insert into cita values (21328, 'SALA SIGLO XXI', '2018-05-29', '9:30','Nada impide tanto el ser natural como el afán.', 380002, 0);
+insert into cu values (280001, 21328);
 
 
 //Obtener profesores y orientador de cada alumno
@@ -75,6 +80,15 @@ WHERE a.idgrupo=g.idgrupo and g.idorientador=o.idorientador and o.idorientador=3
 SELECT distinct a.idalumno, a.tutor
 FROM profesor p, alumno a, grupo g, pg pg
 WHERE a.idgrupo=g.idgrupo and g.idgrupo=pg.idgrupo and pg.idprofesor=p.idprofesor and p.idprofesor=480011;
+
+//Para quitar la confirmacion de la cita y probar botones (cambiar idusuario)
+UPDATE cita c, cu cu 
+set c.confirmada=0 
+WHERE c.idcita=cu.idcita and cu.idusuario=280001;
+
+
+
+
 
 
 
