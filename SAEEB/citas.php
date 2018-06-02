@@ -30,7 +30,9 @@ if($now > $_SESSION['expire'])
   	else{
   		$idusuario=$_SESSION['username'];
 
+  		if(tipoUsuario($idusuario,$con)=='ALUMNO'){
 
+  		}
   		if (isset($_GET['id_Cita'])) {
   			$ic=$_GET['id_Cita'];
   			$up = "UPDATE cita c, cu cu set c.confirmada=1 WHERE c.idcita=cu.idcita and cu.idusuario=$idusuario and c.idcita=$ic";
@@ -55,32 +57,65 @@ if($now > $_SESSION['expire'])
 				<input type='submit' name='buscar' value='Buscar citas por fecha'> </form> <a href='citas.php'><button>Ver todas las citas</button></a><br><br>
 			";
 
-			$citas=mysqli_query($con, "SELECT c.*, cu.idusuario FROM cita c, cu cu WHERE c.idcita=cu.idcita and cu.idusuario=$idusuario ORDER BY 3 desc, 4 asc"); 
+			$citasOri=mysqli_query($con, "SELECT c.*, cu.idusuario FROM cita c, cu cu WHERE c.idcita=cu.idcita and c.remitente=$idusuario ORDER BY 3 desc, 4 asc");
+			$citasAlu=mysqli_query($con, "SELECT c.*, cu.idusuario FROM cita c, cu cu WHERE c.idcita=cu.idcita and cu.idusuario=$idusuario ORDER BY 3 desc, 4 asc"); 
 
-			if (mysqli_num_rows($citas)) { 
-				while ($rowCitas = mysqli_fetch_array($citas)) { 
-					if($rowCitas[6]==1){
-						$edo="Confirmada";
-						$link="#";
+
+			if(tipoUsuario($idusuario,$con)=='ALUMNO'){
+				if (mysqli_num_rows($citasAlu)) { 
+					while ($rowCitasAlu = mysqli_fetch_array($citasAlu)) { 
+						if($rowCitasAlu[6]==1){
+							$edo="Confirmada";
+							$link="#";
+						}
+						else{
+							$edo="Pendiente...";
+							$link="citas.php?id_Cita=$rowCitasAlu[0]";
+						}
+
+
+
+
+						echo "$rowCitasAlu[0] $rowCitasAlu[5] ".usuario($rowCitasAlu[5], $con)." $rowCitasAlu[4] $rowCitasAlu[1] $rowCitasAlu[2] $rowCitasAlu[3]"; 
+						echo "	
+									<a href='$link'><button>$edo</button></a>
+								<br><hr>"; 
 					}
-					else{
-						$edo="Pendiente...";
-						$link="citas.php?id_Cita=$rowCitas[0]";
-					}
 
-
-
-
-					echo "$rowCitas[0] $rowCitas[5] ".usuario($rowCitas[5], $con)." $rowCitas[4] $rowCitas[1] $rowCitas[2] $rowCitas[3]"; 
-					echo "	
-								<a href='$link'><button>$edo</button></a>
-							<br><hr>"; 
+				}
+				else{ 
+					echo "Todavia no ha recibido citas.<br><br><br><br>";
 				}
 
 			}
-			else{ 
-				echo "Todavia no ha recibido citas.<br><br><br><br>";
+			else if(tipoUsuario($idusuario,$con)=='ORIENTADOR'){
+				if (mysqli_num_rows($citasOri)) { 
+					while ($rowCitasOri = mysqli_fetch_array($citasOri) ) { 
+						if($rowCitasOri[6]==1){
+							$edo="Confirmada";
+							$link="#";
+						}
+						else{
+							$edo="Pendiente...";
+							$link="citas.php?id_Cita=$rowCitasOri[0]";
+						}
+
+
+
+
+						echo "$rowCitasOri[0] $rowCitasOri[7] ".usuario($rowCitasOri[7], $con)." $rowCitasOri[4] $rowCitasOri[1] $rowCitasOri[2] $rowCitasOri[3]"; 
+						echo "	
+									<a href='$link'><button>$edo</button></a>
+								<br><hr>"; 
+					}
+
+				}
+				else{ 
+					echo "Todavia no ha recibido citas.<br><br><br><br>";
+				}
 			}
+
+			
 		}
 	
 	?>
