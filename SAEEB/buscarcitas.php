@@ -18,7 +18,7 @@ if($now > $_SESSION['expire'])
 ?>
 <html>
 <title>
-	Citas - SAEEB
+	BUSCAR CITAS POR FECHA
 </title>
 	<body>
 		<?php
@@ -28,14 +28,16 @@ if($now > $_SESSION['expire'])
 	if (!$con)
   			die ("Error al conectar a la BD: ". mysqli_connect_error());
   	else{
+  		$idusuario=$_SESSION['username'];
   			if (isset($_POST['buscar'])) { 
-		  		$idusuario=$_SESSION['username'];
 		  		$fecha=$_POST['fecha'];
+		  	}
 
 
 
-		  		if (isset($_GET['id_Cita'])) {
+		  		if (isset($_GET['id_Cita']) && isset($_GET['fechaBusq'])) {
 		  			$ic=$_GET['id_Cita'];
+		  			$fecha=$_GET['fechaBusq'];
 		  			$up = "UPDATE cita c, cu cu set c.confirmada=1 WHERE c.idcita=cu.idcita and cu.idusuario=$idusuario and c.idcita=$ic";
 
 		  			if (!mysqli_query($con, $up)){ 
@@ -74,7 +76,7 @@ if($now > $_SESSION['expire'])
 						}
 						else{
 							$edo="Pendiente...";
-							$link="citas.php?id_Cita=$rowCitasAlu[0]";
+							$link="buscarcitas.php?id_Cita=$rowCitasAlu[0]&fechaBusq=$fecha";
 						}
 
 
@@ -103,7 +105,7 @@ if($now > $_SESSION['expire'])
 						}
 						else{
 							$edo="Pendiente...";
-							$link="citas.php?id_Cita=$rowCitasOri[0]";
+							$link="citas.php?id_Cita=$rowCitasOri[0]&fechaBusq=$fecha";
 						}
 
 
@@ -122,7 +124,7 @@ if($now > $_SESSION['expire'])
 			}
 		}
 			
-		}
+		
 	
 	?>
 

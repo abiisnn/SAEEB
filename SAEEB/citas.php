@@ -18,7 +18,7 @@ if($now > $_SESSION['expire'])
 ?>
 <html>
 <title>
-	Citas - SAEEB
+	CITAS ESCOLARES
 </title>
 	<body>
 		<?php
