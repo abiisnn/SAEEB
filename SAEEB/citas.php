@@ -30,9 +30,6 @@ if($now > $_SESSION['expire'])
   	else{
   		$idusuario=$_SESSION['username'];
 
-  		if(tipoUsuario($idusuario,$con)=='ALUMNO'){
-
-  		}
   		if (isset($_GET['id_Cita'])) {
   			$ic=$_GET['id_Cita'];
   			$up = "UPDATE cita c, cu cu set c.confirmada=1 WHERE c.idcita=cu.idcita and cu.idusuario=$idusuario and c.idcita=$ic";
@@ -44,17 +41,23 @@ if($now > $_SESSION['expire'])
 
   		}
 
+  			if (tipoUsuario($idusuario,$con)=='ALUMNO')
+  				$tipoCitas='recibidas';
+  			else if (tipoUsuario($idusuario,$con)=='ORIENTADOR')
+  				$tipoCitas='enviadas';
 
 
 			
-			echo "Citas recibidas. <br>Usuario: $idusuario - ".usuario($idusuario, $con);
+			echo "Citas $tipoCitas. <br>Usuario: $idusuario - ".usuario($idusuario, $con);
 			echo "<br><br><br><br>"; 
 
 			echo "<div class='col-xs-6 col-sm-6'>
-			<label for='inputBirthday' class='control-label'>Fecha de Cita </label>
-			<form method='get' action='buscarcitas.php'>
+			<label for='fecha' class='control-label'>Fecha de Cita </label>
+			<form method='post' action='buscarcitas.php'>
 				<input name='fecha' type='date' class='form-control' value=".date('Y-m-d',strtotime('now'))." required>
-				<input type='submit' name='buscar' value='Buscar citas por fecha'> </form> <a href='citas.php'><button>Ver todas las citas</button></a><br><br>
+				<input type='submit' name='buscar' value='Buscar citas por fecha'> 
+			</form> 
+				<a href='citas.php'><button>Ver todas las citas</button></a>
 			";
 
 			$citasOri=mysqli_query($con, "SELECT c.*, cu.idusuario FROM cita c, cu cu WHERE c.idcita=cu.idcita and c.remitente=$idusuario ORDER BY 3 desc, 4 asc");
@@ -62,6 +65,7 @@ if($now > $_SESSION['expire'])
 
 
 			if(tipoUsuario($idusuario,$con)=='ALUMNO'){
+				echo "<br><br>";
 				if (mysqli_num_rows($citasAlu)) { 
 					while ($rowCitasAlu = mysqli_fetch_array($citasAlu)) { 
 						if($rowCitasAlu[6]==1){
@@ -89,6 +93,8 @@ if($now > $_SESSION['expire'])
 
 			}
 			else if(tipoUsuario($idusuario,$con)=='ORIENTADOR'){
+
+				echo "<a href='nuevaCita.php'><button>Generar Nueva Cita</button></a><br><br>";
 				if (mysqli_num_rows($citasOri)) { 
 					while ($rowCitasOri = mysqli_fetch_array($citasOri) ) { 
 						if($rowCitasOri[6]==1){
@@ -105,7 +111,7 @@ if($now > $_SESSION['expire'])
 
 						echo "$rowCitasOri[0] $rowCitasOri[7] ".usuario($rowCitasOri[7], $con)." $rowCitasOri[4] $rowCitasOri[1] $rowCitasOri[2] $rowCitasOri[3]"; 
 						echo "	
-									<a href='$link'><button>$edo</button></a>
+									<button>$edo</button>
 								<br><hr>"; 
 					}
 
