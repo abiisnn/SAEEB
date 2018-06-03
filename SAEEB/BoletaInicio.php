@@ -60,6 +60,8 @@ if($now > $_SESSION['expire'])
 	$idAlumno=$_GET['idAlumno'];
 	$idGrupo=$_GET['idGrupo'];
 	$result = mysqli_query($con,"SELECT nombre,appaterno,apmaterno,curp FROM usuario where idUsuario='$idAlumno'");
+	$escuela= mysqli_query($con, "SELECT e.ClaveEscuela, e.nombre, e.tipoe, e.periodoActual FROM usuario u, escuela e where e.ClaveEscuela=u.ClaveEscuela and u.idUsuario='".$idAlumno."'");
+	$School= mysqli_fetch_array($escuela);
 	$Nombre = mysqli_fetch_array($result);
 	$res = mysqli_query($con,"SELECT nombre FROM grupo where idGrupo='$idGrupo'");
 	$Grupo = mysqli_fetch_array($res);
@@ -69,6 +71,11 @@ if($now > $_SESSION['expire'])
 		echo"<div class='box'>
 				<form method='post' action='#'>
 				<div class='row uniform 50%'>
+				<div class='3u 12u(mobilep)'>
+						<label for='nombre'><b>ID Alumno:</b></label>
+							<p>$IformacionAlumno[0]</p>
+					</div>
+
 					<div class='3u 12u(mobilep)'>
 						<label for='nombre'><b>Nombre:</b></label>
 							<p>$Nombre[0]</p>
@@ -81,28 +88,51 @@ if($now > $_SESSION['expire'])
 						<label for='nombre'><b>Apellido Materno:</b></label>
 							<p>$Nombre[2]</p>
 					</div>
+
+					<div class='3u 12u(mobilep)'>
+						<label for='nombre'><b>Grado:</b></label>
+							<p>$IformacionAlumno[3]</p>
+					</div>
+
 					<div class='3u 12u(mobilep)'>
 						<label for='nombre'><b>Grupo:</b></label>
 							<p>$Grupo[0]</p>
 					</div>
-					<div class='8u 12u(mobilep)'>
+					<div class='3u 12u(mobilep)'>
 						<label for='nombre'><b>CURP:</b></label>
 							<p>$Nombre[3]</p>
 					</div>
 					<div class='3u 12u(mobilep)'>
 						<label for='nombre'><b>Turno:</b></label>
-							<p>$IformacionAlumno[3]</p>
+							<p>$IformacionAlumno[4]</p>
 					</div>
-					<div class='8u 12u(mobilep)'>
-						<label for='nombre'><b>Tutor:</b></label>
-							<p>$IformacionAlumno[2]</p>
+
+					
+
+					<div class='6u 12u(mobilep)'>
+						<label for='nombre'><b>Escuela:</b></label>
+							<p>".$School[0]." - ".$School[1]."</p>
 					</div>
+
+					<div class='3u 12u(mobilep)'>
+						<label for='nombre'><b>Tipo de Secundaria:</b></label>
+							<p>$School[2]</p>
+					</div>
+
+					<div class='3u 12u(mobilep)'>
+						<label for='nombre'><b>Periodo:</b></label>
+							<p>$School[3]</p>
+					</div>
+					<br></br><br></br>
 					<table style='width:100%'  charset='UTF-8'>
+					<br></br><br></br><br></br><br></br>
+					<tr></tr>
  						<tr>
-    						<th>idMateria</th>
+    						<th>ID Materia</th>
     						<th>Materia</th> 
     						<th>Calificacion</th>
   						</tr>
+
   					";
   		$res2 = mysqli_query($con,"SELECT m.idMateria,m.Nombre,x.Calificacion from 	Materia m,am x where m.idmateria=x.idmateria and idAlumno='$idAlumno'");
   		if (mysqli_num_rows($res2)){
@@ -117,7 +147,7 @@ if($now > $_SESSION['expire'])
 					";
 			}
 		}
-		$res3 = mysqli_query($con,"SELECT AVG(calificacion) from am where idAlumno='$idAlumno'");
+		$res3 = mysqli_query($con,"SELECT AVG(calificacion) from am where idAlumno='$idAlumno'");//Promedio
 		$promedio = mysqli_fetch_array($res3);
 		echo"
 			</table>
