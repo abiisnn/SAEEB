@@ -61,7 +61,7 @@ echo"				<section id='cta'>
 		$Usuario=$result2->fetch_array();
 		
 		// Para saber la Escuela
-		$result1 = mysqli_query($conexion, "SELECT e.nombre FROM usuario u, escuela e where e.ClaveEscuela=u.ClaveEscuela and u.idUsuario='".$usuario."'");
+		$result1 = mysqli_query($conexion, "SELECT e.nombre, e.tipoe, e.director FROM usuario u, escuela e where e.ClaveEscuela=u.ClaveEscuela and u.idUsuario='".$usuario."'");
 		$Escuela=$result1->fetch_array();
 
 		// PARA EL USUARIO TIPO: ALUMNO
@@ -112,7 +112,7 @@ echo "
 	
 	if($Tipo == "ALUMNO")
 	{
-		echo "					<div class='5u 12u(mobilep)'>
+		echo "					<div class='6u 12u(mobilep)'>
 									<label for='nombre'><b>Tutor:</b></label>
 									<p>".$Alumno[2]."</p>
 								</div>
@@ -120,7 +120,7 @@ echo "
 	}	
 	if($Tipo == "ORIENTADOR" || $Tipo == "PROFESOR")
 	{
-		echo "					<div class='2u 12u(mobilep)'>
+		echo "					<div class='3u 12u(mobilep)'>
 									<label for='nombre'><b>Hora de Entrada:</b></label>
 									<p>".$Usuario[16]."</p>
 								</div>
@@ -132,7 +132,7 @@ echo "
 	}
 
 echo "
-								<div class='4u 12u(mobilep)'>
+								<div class='3u 12u(mobilep)'>
 									<label for='nombre'><b>Email:</b></label>
 									<p>".$Usuario[6]."</p>
 								</div>
@@ -162,9 +162,17 @@ echo "
 								</div>
 							</div>
 							<div class='row uniform 50%'>
-								<div class='4u 12u(mobilep)'>
+								<div class='6u 12u(mobilep)'>
 									<label for='nombre'><b>Escuela:</b></label>
 									<p>".$Escuela[0]."</p>
+								</div>
+								<div class='3u 12u(mobilep)'>
+									<label for='nombre'><b>Tipo de Secundaria:</b></label>
+									<p>".$Escuela[1]."</p>
+								</div>
+								<div class='3u 12u(mobilep)'>
+									<label for='nombre'><b>Director:</b></label>
+									<p>".$Escuela[2]."</p>
 								</div>
 								
 ";
@@ -191,6 +199,10 @@ echo "
 		echo "					<div class='3u 12u(mobilep)'>
 									<label for='nombre'><b>Formación Académica:</b></label>
 									<p>".$Lic[0]."</p>
+								</div>
+								<div class='3u 12u(mobilep)'>
+									<label for='nombre'><b>Grupo:</b></label>
+									<p>".GrupoOrientador($usuario,$conexion)."</p>
 								</div>
 							</div>
 		";
