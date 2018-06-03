@@ -52,37 +52,40 @@ echo"				<section id='cta'>
 					</header>				
 ";
 	include ("conexion.php");
+	include("obtenerUsuario.php");
 	// Probamos la conexion
 		$conexion = conectar();
-		$result2 = mysqli_query($conexion,"SELECT * FROM usuario where idUsuario='".$_SESSION['username']."'");
+		$usuario = $_SESSION['username'];
+		$Tipo = tipoUsuario($usuario, $conexion);
+		$result2 = mysqli_query($conexion,"SELECT * FROM usuario where idUsuario='".$usuario."'");
 		$Usuario=$result2->fetch_array();
 		
 		// Para saber la Escuela
-		$result1 = mysqli_query($conexion, "SELECT e.nombre FROM usuario u, escuela e where e.ClaveEscuela=u.ClaveEscuela and u.idUsuario='".$_SESSION['username']."'");
+		$result1 = mysqli_query($conexion, "SELECT e.nombre FROM usuario u, escuela e where e.ClaveEscuela=u.ClaveEscuela and u.idUsuario='".$usuario."'");
 		$Escuela=$result1->fetch_array();
 
 		// PARA EL USUARIO TIPO: ALUMNO
 		// Consulta para Tutor, Grado, Turno y Promedio
-		$result2 = mysqli_query($conexion,"SELECT*FROM alumno where idAlumno='" . $_SESSION['username']. "'");
+		$result2 = mysqli_query($conexion,"SELECT*FROM alumno where idAlumno='" .$usuario. "'");
 		$Alumno=$result2->fetch_array();
 		// Para saber el grupo
-		$result3 = mysqli_query($conexion, "SELECT g.nombre FROM grupo g, alumno a where g.idGrupo=a.idGrupo and a.idAlumno='".$_SESSION['username']."'");
+		$result3 = mysqli_query($conexion, "SELECT g.nombre FROM grupo g, alumno a where g.idGrupo=a.idGrupo and a.idAlumno='".$usuario."'");
 		$Grupo=$result3->fetch_array();
 
 		// PARA EL USUARIO TIPO: ORIENTADOR
-		$result4 = mysqli_query($conexion, "SELECT Licenciatura FROM Orientador where idOrientador='".$_SESSION['username']."'");
+		$result4 = mysqli_query($conexion, "SELECT Licenciatura FROM Orientador where idOrientador='".$usuario."'");
 		$Lic=$result4->fetch_array();
 
 		// PARA EL USUARIO TIPO: PROFESOR
-		$result5 = mysqli_query($conexion, "SELECT Area FROM Profesor where idProfesor='".$_SESSION['username']."'");
+		$result5 = mysqli_query($conexion, "SELECT Area FROM Profesor where idProfesor='".$usuario."'");
 		$Area=$result5->fetch_array();
 	
 echo "			
 					<div class='box'>
 						<form method='post' action='#'>
 							<div class='row uniform 50%'>
-								<div class='3u 12u(mobilep)'>
-									<label for='nombre'><b>DATOS PERSONALES</b></label>							
+								<div class='6u 12u(mobilep)'>
+									<label for='nombre'><b>DATOS PERSONALES - ".tipoUsuario($usuario, $conexion)."</b></label>							
 								</div>
 							</div>
 							<div class='row uniform 50%'>
@@ -105,10 +108,8 @@ echo "
 							</div>
 							<div class='row uniform 50%'>
 ";
-	include("obtenerUsuario.php");
-	$conexion = conectar();
-	$usuario = $_SESSION['username'];
-	$Tipo = tipoUsuario($usuario, $conexion);
+	
+	
 	if($Tipo == "ALUMNO")
 	{
 		echo "					<div class='5u 12u(mobilep)'>
@@ -139,7 +140,22 @@ echo "
 									<label for='nombre'><b>Sexo:</b></label>
 									<p>".$Usuario[9]."</p>
 								</div>
-							</div>
+
+								<div class='3u 12u(mobilep)'>
+									<label for='nombre'><b>CURP:</b></label>
+									<p>".$Usuario[5]."</p>
+								</div>
+								<div class='6u 12u(mobilep)'>
+									<label for='nombre'><b>Domicilio:</b></label>
+									<p>".$Usuario[10]." ".$Usuario[11]." ".$Usuario[12].", ".$Usuario[13].", ".$Usuario[14]."</p>
+								</div>";
+		if($Tipo=='ALUMNO'){
+							echo "<div class='3u 12u(mobilep)'>
+									<label for='nombre'><b>Telefono:</b></label>
+									<p>".$Alumno[6]."</p>
+								</div>";
+		}
+							echo "</div>
 							<div class='row uniform 50%'>
 								<div class='3u 12u(mobilep)'>
 									<label for='nombre'><b>DATOS ACADEMICOS</b></label>							
