@@ -74,7 +74,7 @@ if($now > $_SESSION['expire'])
 								<span class='icon major fa fa-book accent3'></span>
 								<h3>Calificaciones</h3>
 								<ul class='actions'>
-									<li><a href='calificaciones.php' class='button alt'>Ver</a></li>
+									<li><a href='SeleccionarAlumno.php' class='button alt'>Ver</a></li>
 								</ul>
 							</section>	
 <?php
@@ -96,7 +96,7 @@ if($now > $_SESSION['expire'])
 						</div>
 		";	
 	}
-	if($Tipo == "ORIENTADOR")
+	/*if($Tipo == "ORIENTADOR")
 	{
     echo"				
     					<div class='features-row'>
@@ -109,7 +109,7 @@ if($now > $_SESSION['expire'])
 							</section>
 						</div>
 	";
-	}
+	}*/
 ?>				
 					</section>
 				</section>
