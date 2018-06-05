@@ -69,20 +69,25 @@ if($now > $_SESSION['expire'])
 								</ul>
 							</section>
 						</div>
-						<div class='features-row'>
-							<section>
-								<span class='icon major fa fa-book accent3'></span>
-								<h3>Calificaciones</h3>
-								<ul class='actions'>
-									<li><a href='SeleccionarAlumno.php' class='button alt'>Ver</a></li>
-								</ul>
-							</section>	
 <?php
 	include("conexion.php");
 	include("obtenerUsuario.php");
 	$conexion = conectar();
 	$usuario = $_SESSION['username'];
 	$Tipo = tipoUsuario($usuario, $conexion);
+
+echo "						<div class='features-row'>
+							<section>
+								<span class='icon major fa fa-book accent3'></span>
+								<h3>Calificaciones</h3>
+								<ul class='actions'>";
+							if($Tipo == 'ORIENTADOR')
+								echo "<li><a href='SeleccionarAlumno.php' class='button alt'>Ver</a></li>";
+							else
+								echo "<li><a href='calificaciones.php' class='button alt'>Ver</a></li>";
+echo "								</ul>
+							</section>	
+";
 	if($Tipo == "ALUMNO" || $Tipo == "ORIENTADOR")
 	{
 		echo "
