@@ -83,6 +83,8 @@ echo "						<div class='features-row'>
 								<ul class='actions'>";
 							if($Tipo == 'ORIENTADOR')
 								echo "<li><a href='SeleccionarAlumno.php' class='button alt'>Ver</a></li>";
+							if($Tipo == 'PROFESOR')
+								echo "<li><a href='CalProfesor.php' class='button alt'>Ver</a></li>";
 							else
 								echo "<li><a href='calificaciones.php' class='button alt'>Ver</a></li>";
 echo "								</ul>
