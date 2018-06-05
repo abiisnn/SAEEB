@@ -85,7 +85,7 @@ echo "						<div class='features-row'>
 								echo "<li><a href='SeleccionarAlumno.php' class='button alt'>Ver</a></li>";
 							if($Tipo == 'PROFESOR')
 								echo "<li><a href='CalProfesor.php' class='button alt'>Ver</a></li>";
-							else
+							if($Tipo == 'ALUMNO')
 								echo "<li><a href='calificaciones.php' class='button alt'>Ver</a></li>";
 echo "								</ul>
 							</section>	

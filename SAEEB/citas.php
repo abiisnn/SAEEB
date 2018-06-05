@@ -52,7 +52,6 @@ echo"				<section id='cta'>
 						<h3>CITAS</h3>
 					</header>				
 ";
-
 		include("conexion.php");
 		include("obtenerUsuario.php");
 		$con=conectar();
