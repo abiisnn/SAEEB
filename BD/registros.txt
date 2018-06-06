@@ -32,6 +32,8 @@ insert into pg values (1, 480011);
 insert into alumno values (280000, 1, "ENRIQUE RAMOS AGUILAR", 2, "MATUTINO", 0, '55-55-55-55-55');
 insert into alumno values (280001, 1, "SALOMON DIAZ HERNANDEZ", 2, "MATUTINO", 0, '55-89-12-11-00');
 
+
+
 insert into materia values (580000, "MATEMATICAS I");
 insert into materia values (580001, "FORMACION CIVICA Y ÉTICA II");
 insert into materia values (580002, "HISTORIA I");
@@ -64,7 +66,7 @@ insert into cu values (280001, 21328);
 //Obtener profesores y orientador de cada alumno
 SELECT distinct u.idusuario, u.nombre, u.appaterno, u.apmaterno 
 FROM usuario u, profesor p, alumno a, grupo g, pg pg , orientador o
-WHERE ((u.idusuario=pg.idprofesor and pg.idgrupo=g.idgrupo) or (u.idusuario=g.idorientador)) and g.idgrupo=a.idgrupo and a.idalumno=280000;
+WHERE ((u.idusuario=pg.idprofesor and pg.idgrupo=g.idgrupo) or (u.idusuario=g.idorientador)) and g.idgrupo=a.idgrupo and a.idalumno=280002;
 
 //Obtener alumnos por parte del orientador
 SELECT distinct u.idusuario, u.nombre, u.appaterno, u.apmaterno 
@@ -87,10 +89,51 @@ set c.confirmada=0
 WHERE c.idcita=cu.idcita and cu.idusuario=280001;
 
 
+------------------------- ABIII
+
+
+insert into usuario values (280002, 150021, 'ABIGAIL', 'NICOLAS', 'SAYAGO', 'NISA980722MMCIIN08', 'abigail.nic.say@hotmail.com','123', 13, 'FEMENINO', 'CALLE DULCE', 109, 'SAN LORENZO', 'CHIMALHUACAN', 'EDOMEX', 'ALUMNO', '8:00', '15:00');
+
+insert into usuario values (280003, 150021, 'LILIANA', 'NICOLAS', 'SAYAGO', 'NISL001004MMCIIN08', 'abigail.nic.say@hotmail.com','123', 13, 'FEMENINO', 'CALLE DULCE', 109, 'SAN LORENZO', 'CHIMALHUACAN', 'EDOMEX', 'ALUMNO', '8:00', '15:00');
+
+insert into usuario values (280004, 150021, 'VICTOR GABRIEL', 'NICOLAS', 'SAYAGO', 'NISV050616hMCIIN08', 'enriquebroly@gmail.com','123', 13, 'MASCULINO', 'CALLE DULCE', 109, 'SAN LORENZO', 'CHIMALHUACAN', 'EDOMEX', 'ALUMNO', '8:00', '15:00');
 
 
 
+insert into alumno values (280002, 2, "BARBARA SAYAGO GONZALEZ", 2, "MATUTINO", 0, '55-22-11-11-00');
+insert into alumno values (280003, 2, "VICTOR NICOLAS LOPEZ", 2, "MATUTINO", 0, '55-45-15-21-00');
+insert into alumno values (280004, 2, "MARIBEL SAYAGO GONZALEZ", 2, "MATUTINO", 0, '55-35-42-31-00');
 
 
+insert into am values (280002, 580000, 0);
+insert into am values (280002, 580001, 0);
+insert into am values (280002, 580002, 0);
+insert into am values (280003, 580000, 0);
+insert into am values (280003, 580001, 0);
+insert into am values (280003, 580002, 0);
+insert into am values (280004, 580000, 0);
+insert into am values (280004, 580001, 0);
+insert into am values (280004, 580002, 0);
+
+select g.idGrupo, g.Nombre
+from grupo g, pg pg, profesor p
+where g.idGrupo=pg.idGrupo
+and pg.idProfesor=p.idProfesor
+and p.idProfesor='480011'
+order by 1;
 
 
+select a.idAlumno, g.idGrupo, g.Nombre
+from alumno a, grupo g, pg pg, profesor p
+where a.idGrupo=g.idGrupo
+and g.idGrupo=pg.idGrupo
+and pg.idProfesor=p.idProfesor
+and p.idProfesor='480011'
+order by 1;
+
+select u.Nombre, u.ApPaterno, u.ApMaterno, a.idGrupo
+from usuario u, Alumno a, grupo g
+where u.idUsuario=a.idAlumno
+and a.idGrupo=g.idGrupo
+and g.idGrupo='2'
+order by 1;
