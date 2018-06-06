@@ -59,4 +59,13 @@
 
 		return $row[0];
 	}
+	// Función para OBTENER GRUPOS de un Profesor
+	function ObtenerGrupos($idprofesor, $conex)
+	{
+		$tipo = mysqli_query($conex, "SELECT g.idGrupo, g.Nombre FROM grupo g, pg pg, profesor p WHERE g.idGrupo=pg.idGrupo AND pg.idProfesor=p.idProfesor and p.idProfesor=$idprofesor order by 1 asc;");
+		return $tipo;		
+	}
+
+
+
 ?>
