@@ -65,7 +65,13 @@
 		$tipo = mysqli_query($conex, "SELECT g.idGrupo, g.Nombre FROM grupo g, pg pg, profesor p WHERE g.idGrupo=pg.idGrupo AND pg.idProfesor=p.idProfesor and p.idProfesor=$idprofesor order by 1 asc;");
 		return $tipo;		
 	}
+	// OBTIENE LA MATERIA QUE IMPARTE UN PROFESOR
+	function ObtenerMateria($idUsuario, $conex){
+		$tipo = mysqli_query($conex, "SELECT idMateria FROM Profesor WHERE idProfesor=$idUsuario"); 
+		$row = mysqli_fetch_array($tipo);
 
+		return $row[0];
+	}
 
 
 ?>

@@ -24,7 +24,7 @@ session_start();
 			$_SESSION['loggedin'] = true;
 			$_SESSION['username'] = $usuario;
 			$_SESSION['start'] = time();
-			$_SESSION['expire'] = $_SESSION['start'] + (20*60);
+			$_SESSION['expire'] = $_SESSION['start'] + (40*60);
 			header("Location: Principal.php");
 		}
 		else
