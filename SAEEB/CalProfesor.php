@@ -58,105 +58,54 @@ echo"				<section id='cta'>
 	$con= conectar();
 	if($con)
 	{
-		$idUsuario=$_SESSION['username'];
-		if(isset($_POST['Aceptar']))
-		{
-			$grupo=$_POST['grupo'];
-			echo "".$grupo;
-
-			$alumno=mysqli_query($con, "SELECT u.Nombre, u.ApPaterno, u.ApMaterno, a.idGrupo FROM usuario u, Alumno a, grupo g WHERE u.idUsuario=a.idAlumno AND a.idGrupo=g.idGrupo AND g.idGrupo='$grupo' ORDER BY 1 ASC;"); 
-			echo" <div class='row'>
-						<div class='12u'>
-							<!-- Table -->
-								<section class='box'>
-									<h3><center>ALUMNOS</center></h3>
-									<div class='table-wrapper'>
-										<table>
-											<thead>
-												<tr>
-													<th><center>ALUMNO</center></th>
-													<th><center>CALIFICACION</center></th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-				";
-				if (mysqli_num_rows($alumno)) 
-				{ 
-					while ($rowAlumno = mysqli_fetch_array($alumno)) 
-					{
-					    echo "						<td>$rowAlumno[0] $rowAlumno[1] $rowAlumno[2] </td> 
-													<td>
-											 			// AQUÍ
-													</td>
-												</tr>
-				";
-					} 
-				} // FIN MSQLY_NUM_ROWS $ALUMNO
-				else
-				{ 
-						echo "<td>Todavia no ha recibido mensajes.</td>
-								</tr>";
-				}
-				echo "						</tbody>
-											<tfoot>
-											</tfoot>
-										</table>
-									</div>
-								</section>
-						</div>
-					</div>
-			";
 		
-		} // FIN ACEPTAR
-		else
-		{
-			$idGrupo=OtenerGrupo($idUsuario,$con);
-			$Alumno=ObtenerAlumnosGrupo($idGrupo,$con);
-			$Grupos = ObtenerGrupos($idUsuario, $con);
-			//$grupo=GrupoOrientador($idUsuario, $con);
-			echo "			
-							<div class='box'>
-								<form method='post' action='#'>
-									<div class='row uniform 50%'>
-										<div class='3u 12u(mobilep)'>
-											<label for='nombre'><b></b></label>							
-										</div>
+		$idUsuario=$_SESSION['username'];
+		$idGrupo=OtenerGrupo($idUsuario,$con);
+		$Alumno=ObtenerAlumnosGrupo($idGrupo,$con);
+		$Grupos = ObtenerGrupos($idUsuario, $con);
+		//$grupo=GrupoOrientador($idUsuario, $con);
+		echo "			
+						<div class='box'>
+							<form method='post' action='AgregarCal.php'>
+								<div class='row uniform 50%'>
+									<div class='3u 12u(mobilep)'>
+										<label for='nombre'><b></b></label>							
 									</div>
-									<div class='row uniform 50%'>
-										<div class='12u 12u(mobilep)'>
-											<label for='nombre'><b>Grupos</b></label>
-											<select name='grupo'>";
-						if (mysqli_num_rows($Grupos)) 
+								</div>
+								<div class='row uniform 50%'>
+									<div class='12u 12u(mobilep)'>
+										<label for='nombre'><b>Grupos</b></label>
+										<select name='grupo'>";
+					if (mysqli_num_rows($Grupos)) 
+					{ 
+						while ($row = mysqli_fetch_array($Grupos)) 
 						{ 
-							while ($row = mysqli_fetch_array($Grupos)) 
-							{ 
-								echo "<option value='$row[0]'> $row[0] - $row[1] </option>";
-							}
-						} //FIN MYSQLI_NUM_ROWS
-						echo"			</select>
-								</div>";
-										
-						echo " 
-							<div class='row uniform'>
-								<div class='12u'>
-									<ul class='actions align-center'>
-										<input type='hidden' value='$row[0]' name='idgrupo'>
-										<li><input type='submit' name='Aceptar' value='Aceptar' class='button special'></li>
-									</ul>
-								</div>
+							echo "<option value='$row[0]'> $row[0] - $row[1] </option>";
+						}
+					} //FIN MYSQLI_NUM_ROWS
+					echo"			</select>
+							</div>";
+									
+					echo " 
+						<div class='row uniform'>
+							<div class='12u'>
+								<ul class='actions align-center'>
+									<input type='hidden' value='$row[0]' name='idgrupo'>
+									<li><input type='submit' name='Aceptar' value='Aceptar' class='button special'></li>
+								</ul>
 							</div>
-							<div class='row uniform'>
-								<div class='12u'>
-									<ul class='actions align-center'>
-										<li><a href='Principal.php' class='button special'>Regresar</a></li>
-									</ul>
-								</div>
-							</div>
-						</form>
 						</div>
-					</section>";
-		} // FIN ELSE
+						<div class='row uniform'>
+							<div class='12u'>
+								<ul class='actions align-center'>
+									<li><a href='Principal.php' class='button special'>Regresar</a></li>
+								</ul>
+							</div>
+						</div>
+					</form>
+					</div>
+				</section>";
+	
 	} // FIN CONEXION
 	
 ?>
