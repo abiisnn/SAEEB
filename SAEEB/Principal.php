@@ -78,15 +78,29 @@ if($now > $_SESSION['expire'])
 
 echo "						<div class='features-row'>
 							<section>
-								<span class='icon major fa fa-book accent3'></span>
-								<h3>Calificaciones</h3>
-								<ul class='actions'>";
+
+	";
 							if($Tipo == 'ORIENTADOR')
-								echo "<li><a href='SeleccionarAlumno.php' class='button alt'>Ver</a></li>";
+							{
+								echo "	<span class='icon major fa fa-file-pdf-o accent3'></span>
+									<h3>Boleta</h3>
+										<ul class='actions'>
+									<li><a href='SeleccionarAlumno.php' class='button alt'>Ver</a></li>";
+							}
 							if($Tipo == 'PROFESOR')
-								echo "<li><a href='CalProfesor.php' class='button alt'>Ver</a></li>";
+							{
+								echo "<span class='icon major fa fa-book accent3'></span>	
+								<h3>Calificaciones</h3>
+										<ul class='actions'>
+								<li><a href='CalProfesor.php' class='button alt'>Ver</a></li>";
+							}
 							if($Tipo == 'ALUMNO')
-								echo "<li><a href='calificaciones.php' class='button alt'>Ver</a></li>";
+							{
+								echo "<span class='icon major fa fa-book accent3'></span>
+								<h3>Calificaciones</h3>
+									<ul class='actions'>
+								<li><a href='calificaciones.php' class='button alt'>Ver</a></li>";
+							}
 echo "								</ul>
 							</section>	
 ";
