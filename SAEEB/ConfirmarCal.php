@@ -44,11 +44,11 @@ if($now > $_SESSION['expire'])
 				</header>
 <?php
 echo"				<section id='cta'>
-					<h2>SAEEB</h2>
+						<h2>".$_SESSION['username']."</h2>
 				</section>
 				<section id='main' class='container 95%'>
 					<header>
-						<h3>Boleta de Calificaciones</h3>
+						<h3>CONFIRMACIÓN</h3>
 					</header>				
 ";
 	include ("conexion.php");
@@ -59,6 +59,13 @@ echo"				<section id='cta'>
 	if($con)
 	{
 		$idUsuario=$_SESSION['username'];
+		echo "				<center>
+									<ul class='actions'>
+										<li><a href='Principal.php' class='button'>Inicio</a></li>
+										<li><a href='CalProfesor.php' class='button'>Regresar a Grupos</a></li>
+									</ul>
+								</center>
+			";
 		$limite = $_POST["var"];
 		$grupo = $_POST["grupo"];
 		echo" <div class='row'>
@@ -73,7 +80,7 @@ echo"				<section id='cta'>
 
 		$idusuario = $idUsuario;
 		$materia =  ObtenerMateria($idusuario, $con); 
-		
+		$cal = 0;
 
 			//insert into am values (280002, 580000, 0); IDALUMNO, IDMATERIA, Calificacion
 		$alumno = mysqli_query($con, "SELECT a.idAlumno, a.idGrupo FROM usuario u, Alumno a, grupo g WHERE u.idUsuario=a.idAlumno AND a.idGrupo=g.idGrupo AND g.idGrupo='$grupo' ORDER BY 1 ASC;"); 
@@ -83,10 +90,24 @@ echo"				<section id='cta'>
 		{ 
 			while ($rowAlumno = mysqli_fetch_array($alumno)) 
 			{
-			    mysqli_query($con, "INSERT INTO am VALUES ($rowAlumno[0], $materia, $Calificacion[$j]);");
+				$cal = $Calificacion[$j];
+				mysqli_query($con, "UPDATE am SET calificacion=$cal WHERE idAlumno =$rowAlumno[0]  AND idMateria=$materia;");
+			  //  mysqli_query($con, "INSERT INTO am VALUES ($rowAlumno[0], $materia, $Calificacion[$j]);");
 			    $j++;
 			}
 		}
+		echo "	<div class='row'>
+						<div class='12u'>
+							<!-- Table -->
+								<section class='box'>
+									<div class='table-wrapper'>
+									<br><br>SE AGREGARON EXITOSAMENTE LAS CALIFICACIONES<br><br>							
+									</div>
+								</section>
+						</div>
+				</div>
+		";
+		
 	} // FIN CONEXION
 	
 ?>
