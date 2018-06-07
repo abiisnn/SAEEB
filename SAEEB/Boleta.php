@@ -29,7 +29,7 @@ if($now > $_SESSION['expire'])
 	if($con){
 			$sql_e= mysqli_query($con, "SELECT e.ClaveEscuela, e.nombre, e.tipoe, e.periodoActual, e.municipio, e.estado, e.director FROM usuario u, escuela e where e.ClaveEscuela=u.ClaveEscuela and u.idUsuario=".$idAlumno."");
 
-			$sql_ori=mysqli_query($con, "SELECT nombre, appaterno, apmaterno FROM usuario where idUsuario=".$idOri."");
+			$sql_ori=mysqli_query($con, "SELECT appaterno, apmaterno, nombre FROM usuario where idUsuario=".$idOri."");
 
 			$Escuela= mysqli_fetch_array($sql_e);
 			$Ori= mysqli_fetch_array($sql_ori);
@@ -77,13 +77,13 @@ if($now > $_SESSION['expire'])
 			$pdf->Cell(15,10,'',0);
 			$pdf->SetFont('Arial','',10);
 			$pdf->Cell(30,5,'ID Alumno:',0);
-			$pdf->Cell(40,5,'Nombre:',0);
-			$pdf->Cell(50,5,'Apellido Paterno:',0);
+			$pdf->Cell(40,5,'Apellido Paterno:',0);
 			$pdf->Cell(50,5,'Apellido Materno:',0);
+			$pdf->Cell(50,5,'Nombre(s):',0);
 
 			$pdf->ln(5);
 			$pdf->SetFont('Arial','B',10);
-			$result = mysqli_query($con,"SELECT nombre,appaterno,apmaterno,curp FROM usuario where idUsuario='$idAlumno'");
+			$result = mysqli_query($con,"SELECT appaterno,apmaterno,nombre,curp FROM usuario where idUsuario='$idAlumno'");
 			$Nombre = mysqli_fetch_array($result);
 			$pdf->Cell(15,10,'',0);
 			$pdf->Cell(30,5,utf8_decode($IformacionAlumno[0]),0);

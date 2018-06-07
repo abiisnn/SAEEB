@@ -59,7 +59,7 @@ if($now > $_SESSION['expire'])
 	$con=conectar();
 	$idAlumno=$_GET['idAlumno'];
 	$idGrupo=$_GET['idGrupo'];
-	$result = mysqli_query($con,"SELECT nombre,appaterno,apmaterno,curp FROM usuario where idUsuario='$idAlumno'");
+	$result = mysqli_query($con,"SELECT appaterno,apmaterno,nombre,curp FROM usuario where idUsuario='$idAlumno'");
 	$escuela= mysqli_query($con, "SELECT e.ClaveEscuela, e.nombre, e.tipoe, e.periodoActual FROM usuario u, escuela e where e.ClaveEscuela=u.ClaveEscuela and u.idUsuario='".$idAlumno."'");
 	$School= mysqli_fetch_array($escuela);
 	$Nombre = mysqli_fetch_array($result);
@@ -77,15 +77,15 @@ if($now > $_SESSION['expire'])
 					</div>
 
 					<div class='3u 12u(mobilep)'>
-						<label for='nombre'><b>Nombre:</b></label>
+						<label for='nombre'><b>Apellido Paterno:</b></label>
 							<p>$Nombre[0]</p>
 					</div>
 					<div class='3u 12u(mobilep)'>
-						<label for='nombre'><b>Apellido Paterno:</b></label>
+						<label for='nombre'><b>Apellido Materno:</b></label>
 							<p>$Nombre[1]</p>
 					</div>
 					<div class='3u 12u(mobilep)'>
-						<label for='nombre'><b>Apellido Materno:</b></label>
+						<label for='nombre'><b>Nombre(s):</b></label>
 							<p>$Nombre[2]</p>
 					</div>
 

@@ -90,16 +90,16 @@ echo "
 							</div>
 							<div class='row uniform 50%'>
 								<div class='3u 12u(mobilep)'>
-									<label for='nombre'><b>Nombre(s):</b></label>
-									<p>".$Usuario[2]."</p>
-								</div>
-								<div class='3u 12u(mobilep)'>
 									<label for='nombre'><b>Apellido Paterno:</b></label>
 									<p>".$Usuario[3]."</p>
 								</div>
 								<div class='3u 12u(mobilep)'>
 									<label for='nombre'><b>Apellido Materno:</b></label>
 									<p>".$Usuario[4]."</p>
+								</div>
+								<div class='3u 12u(mobilep)'>
+									<label for='nombre'><b>Nombre(s):</b></label>
+									<p>".$Usuario[2]."</p>
 								</div>
 								<div class='3u 12u(mobilep)'>
 									<label for='nombre'><b>Edad:</b></label>

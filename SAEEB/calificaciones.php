@@ -89,7 +89,7 @@ echo"			<section id='cta'>
 				{
 					echo "							
 													<td><center>$row[0]</center></td> 
-													<td>$row[1]</td>
+													<td><center>$row[1]</center></td>
 													<td><center>$row[2]</center></td>  		
 												</tr>
 				";

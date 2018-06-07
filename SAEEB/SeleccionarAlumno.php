@@ -62,7 +62,7 @@ echo"				<section id='cta'>
 			$idAlumno=$_POST['alumno'];
 			$grupo=$_POST['grupo'];
 			$idGrupo=OtenerGrupo($idUsuario,$con);
-			$result = mysqli_query($con,"SELECT nombre,appaterno,apmaterno FROM usuario where idUsuario='$idAlumno'");
+			$result = mysqli_query($con,"SELECT appaterno,apmaterno, nombre FROM usuario where idUsuario='$idAlumno'");
 			$Nombre = mysqli_fetch_array($result);
 			echo "
 				<div class='box'>

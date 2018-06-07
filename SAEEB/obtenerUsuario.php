@@ -7,7 +7,7 @@
 	}
 
 	function DestiAlumno($idUsuario, $conex){
-		$destinatariosA= mysqli_query($conex, "SELECT distinct u.idusuario, u.nombre, u.appaterno, u.apmaterno
+		$destinatariosA= mysqli_query($conex, "SELECT distinct u.idusuario, u.appaterno, u.apmaterno, u.nombre
 											FROM usuario u, profesor p, alumno a, grupo g, pg pg , orientador o
 											WHERE ((u.idusuario=pg.idprofesor and pg.idgrupo=g.idgrupo) or (u.idusuario=g.idorientador)) and g.idgrupo=a.idgrupo and a.idalumno=$idUsuario order by 1 asc;"); 
 		return $destinatariosA;
@@ -36,7 +36,7 @@
 					$nombreUsuario= $rowUsuario[0];
 				}
 				else{
-					$usuario=mysqli_query($conex, "SELECT nombre, appaterno, apmaterno FROM usuario WHERE idusuario=".$idusuario.""); 
+					$usuario=mysqli_query($conex, "SELECT appaterno, apmaterno, nombre  FROM usuario WHERE idusuario=".$idusuario.""); 
 					$rowUsuario = mysqli_fetch_array($usuario);
 					$nombreUsuario= $rowUsuario[0]." ".$rowUsuario[1]." ".$rowUsuario[2];
 				}
@@ -50,7 +50,7 @@
 	}
 	function ObtenerAlumnosGrupo($idgrupo,$conex)
 	{
-		$Alumno= mysqli_query($conex, "SELECT u.idUsuario,u.nombre,u.appaterno, u.apmaterno FROM Usuario u, grupo g,alumno a WHERE g.idgrupo=a.idgrupo and a.idalumno=u.idUsuario and g.idgrupo=$idgrupo order by 1 asc;"); 
+		$Alumno= mysqli_query($conex, "SELECT u.idUsuario,u.appaterno, u.apmaterno,u.nombre FROM Usuario u, grupo g,alumno a WHERE g.idgrupo=a.idgrupo and a.idalumno=u.idUsuario and g.idgrupo=$idgrupo order by 1 asc;"); 
 		return $Alumno;	
 	}
 	function OtenerGrupo($idusuario, $conex){
