@@ -134,7 +134,9 @@ if($now > $_SESSION['expire'])
 			}
 			$pdf->ln(3);
 			$res3 = mysqli_query($con,"SELECT AVG(calificacion) from am where idAlumno='$idAlumno'");
+
 			$promedio = mysqli_fetch_array($res3);
+			$insertaProm=mysqli_query($con, "UPDATE alumno SET promedio=$promedio[0] WHERE idAlumno =$idAlumno");
 			$pdf->Cell(55,10,"",0);
 			$pdf->SetFont('Arial','B',10);
 			$pdf->Cell(90,5,"PROMEDIO GENERAL",0);
