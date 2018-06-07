@@ -96,10 +96,85 @@ insert into alumno values (280100, 6, "ENRIQUE RAMOS AGUILAR", 3, "MATUTINO", 0,
 
 
 
-insert into am values (280000, 580000, 10);
-insert into am values (280000, 580001, 9);
-insert into am values (280001, 580002, 8);
+insert into am values (280000, 580000, 0);
+insert into am values (280000, 580001, 0);
+insert into am values (280000, 580002, 0);
+insert into am values (280000, 580003, 0);
+insert into am values (280000, 580004, 0);
+insert into am values (280000, 580005, 0);
+insert into am values (280000, 580006, 0);
 
+insert into am values (280001, 580000, 0);
+insert into am values (280001, 580001, 0);
+insert into am values (280001, 580002, 0);
+insert into am values (280001, 580003, 0);
+insert into am values (280001, 580004, 0);
+insert into am values (280001, 580005, 0);
+insert into am values (280001, 580006, 0);
+
+insert into am values (280002, 580000, 0);
+insert into am values (280002, 580001, 0);
+insert into am values (280002, 580002, 0);
+insert into am values (280002, 580003, 0);
+insert into am values (280002, 580004, 0);
+insert into am values (280002, 580005, 0);
+insert into am values (280002, 580006, 0);
+
+insert into am values (280003, 580000, 0);
+insert into am values (280003, 580001, 0);
+insert into am values (280003, 580002, 0);
+insert into am values (280003, 580003, 0);
+insert into am values (280003, 580004, 0);
+insert into am values (280003, 580005, 0);
+insert into am values (280003, 580006, 0);
+
+insert into am values (280004, 580000, 0);
+insert into am values (280004, 580001, 0);
+insert into am values (280004, 580002, 0);
+insert into am values (280004, 580003, 0);
+insert into am values (280004, 580004, 0);
+insert into am values (280004, 580005, 0);
+insert into am values (280004, 580006, 0);
+
+insert into am values (280006, 580000, 0);
+insert into am values (280006, 580001, 0);
+insert into am values (280006, 580002, 0);
+insert into am values (280006, 580003, 0);
+insert into am values (280006, 580004, 0);
+insert into am values (280006, 580005, 0);
+insert into am values (280006, 580006, 0);
+
+insert into am values (280007, 580000, 0);
+insert into am values (280007, 580001, 0);
+insert into am values (280007, 580002, 0);
+insert into am values (280007, 580003, 0);
+insert into am values (280007, 580004, 0);
+insert into am values (280007, 580005, 0);
+insert into am values (280007, 580006, 0);
+
+insert into am values (280008, 580000, 0);
+insert into am values (280008, 580001, 0);
+insert into am values (280008, 580002, 0);
+insert into am values (280008, 580003, 0);
+insert into am values (280008, 580004, 0);
+insert into am values (280008, 580005, 0);
+insert into am values (280008, 580006, 0);
+
+insert into am values (280009, 580000, 0);
+insert into am values (280009, 580001, 0);
+insert into am values (280009, 580002, 0);
+insert into am values (280009, 580003, 0);
+insert into am values (280009, 580004, 0);
+insert into am values (280009, 580005, 0);
+insert into am values (280009, 580006, 0);
+
+insert into am values (280100, 580000, 0);
+insert into am values (280100, 580001, 0);
+insert into am values (280100, 580002, 0);
+insert into am values (280100, 580003, 0);
+insert into am values (280100, 580004, 0);
+insert into am values (280100, 580005, 0);
+insert into am values (280100, 580006, 0);
 
 
 
