@@ -37,6 +37,7 @@ if($now > $_SESSION['expire'])
 				<header id="header" class="alt">
 					<nav id="nav">
 						<ul>
+							<li><a href="Principal.php">Inicio</a></li>
 							<li><a href="CerrarSesion.php">Cerrar Sesión</a></li>
 							
 						</ul>
@@ -83,7 +84,7 @@ echo"				<section id='cta'>
 		$cal = 0;
 
 			//insert into am values (280002, 580000, 0); IDALUMNO, IDMATERIA, Calificacion
-		$alumno = mysqli_query($con, "SELECT a.idAlumno, a.idGrupo FROM usuario u, Alumno a, grupo g WHERE u.idUsuario=a.idAlumno AND a.idGrupo=g.idGrupo AND g.idGrupo='$grupo' ORDER BY 1 ASC;"); 
+		$alumno = mysqli_query($con, "SELECT a.idAlumno, u.appaterno, a.idGrupo FROM usuario u, Alumno a, grupo g WHERE u.idUsuario=a.idAlumno AND a.idGrupo=g.idGrupo AND g.idGrupo='$grupo' ORDER BY 2 ASC;"); 
 		$j = 0;
 		//mysqli_query($con, "INSERT INTO am VALUES ($rowAlumno[0], $materia, $Calificacion[$j]);");
 		if (mysqli_num_rows($alumno)) 

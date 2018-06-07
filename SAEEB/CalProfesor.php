@@ -37,6 +37,7 @@ if($now > $_SESSION['expire'])
 				<header id="header" class="alt">
 					<nav id="nav">
 						<ul>
+							<li><a href="Principal.php">Inicio</a></li>
 							<li><a href="CerrarSesion.php">Cerrar Sesión</a></li>
 							
 						</ul>
@@ -74,7 +75,7 @@ echo"				<section id='cta'>
 								</div>
 								<div class='row uniform 50%'>
 									<div class='12u 12u(mobilep)'>
-										<label for='nombre'><b>Grupos</b></label>
+										<label for='nombre'><b>Seleccione un Grupo</b></label>
 										<select name='grupo'>";
 					if (mysqli_num_rows($Grupos)) 
 					{ 

@@ -29,7 +29,7 @@ if($now > $_SESSION['expire'])
 	if($con){
 			$sql_e= mysqli_query($con, "SELECT e.ClaveEscuela, e.nombre, e.tipoe, e.periodoActual, e.municipio, e.estado, e.director FROM usuario u, escuela e where e.ClaveEscuela=u.ClaveEscuela and u.idUsuario=".$idAlumno."");
 
-			$sql_ori=mysqli_query($con, "SELECT appaterno, apmaterno, nombre FROM usuario where idUsuario=".$idOri."");
+			$sql_ori=mysqli_query($con, "SELECT nombre, appaterno, apmaterno FROM usuario where idUsuario=".$idOri."");
 
 			$Escuela= mysqli_fetch_array($sql_e);
 			$Ori= mysqli_fetch_array($sql_ori);

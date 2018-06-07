@@ -79,16 +79,24 @@ echo"				<section id='cta'>
 						<div class='row uniform 50%'>
 							<div class='9u 12u(mobilep)'>
 								<center>
+
 								<form method='post' action='buscarcitas.php'>
 									<input name='fecha' type='date' class='form-control' value=".date('Y-m-d',strtotime('now'))." required>
+
 									<input type='submit' name='buscar' value='Buscar citas por fecha'>
 								</form> 
-								</center>	
+								</center>
+
 							</div>
-							<div class='3u 12u(mobilep)'>		
+							<div class='3u 12u(mobilep)'>
+
 								<form method='post' action='citas.php'>
 									<input type='submit' name='buscar' value='Ver todas las citas'>
 								</form>	
+								<ul class='actions align-center'>
+								<li><a href='Principal.php' class='button'>Inicio</a></li>
+								</ul>
+
 							</div>
 						</div>				
 							
@@ -98,19 +106,22 @@ echo"				<section id='cta'>
 					echo " 
 						<div class='row uniform 50%'>
 							<div class='6u 12u(mobilep)'>		
-								<h3><center>CITAS RECIBIDAS</center></h3>				
+								<h3><center>CITAS AGENDADAS</center></h3>				
 							</div>
 							<div class='6u 12u(mobilep)'>		
 								<ul class='actions align-center'>
-									<li><a href='nuevaCita.php' class='button special'>Generar Nueva Cita</a></li>
+									<li><a href='nuevaCita.php' class='button'>Generar Nueva Cita</a></li>
+									
 								</ul>
 							</div>
 						</div>
 							<br><br>
 					";
 				}
-				else
+				else{
+
 					echo "<br><h3><center>CITAS RECIBIDAS</center></h3>";
+				}
 				// INICIO DE LA TABLA
 				echo "
 						<div class='table-wrapper'>
@@ -119,7 +130,6 @@ echo"				<section id='cta'>
 									<tr>
 										<th><center>ESTADO</center></th>
 										<th><center>ID CITA</center></th>
-										<th><center>ID</center></th>
 										<th><center>USUARIO</center></th>
 										<th><center>MOTIVO</center></th>
 										<th><center>LUGAR</center></th>
@@ -154,13 +164,12 @@ echo"				<section id='cta'>
 														<li><a href='$link' class='button special small'>$edo</a></li>
 													</ul>
 													</td>
-													<td>$rowCitasAlu[0]</td> 
-													<td>$rowCitasAlu[5]</td> 
-													<td>".usuario($rowCitasAlu[5], $con)."</td> 
-													<td>$rowCitasAlu[4]</td> 
-													<td>$rowCitasAlu[1]</td> 
-													<td>$rowCitasAlu[2]</td>
-													<td>$rowCitasAlu[3]</td> 									 			
+													<td><center>$rowCitasAlu[0]</center></td> 
+													<td><center>".usuario($rowCitasAlu[5], $con)."</center></td> 
+													<td><center>$rowCitasAlu[4]</center></td> 
+													<td><center>$rowCitasAlu[1]</center></td> 
+													<td><center>$rowCitasAlu[2]</center></td>
+													<td><center>$rowCitasAlu[3]</center></td> 									 			
 												</tr>
 				";
 					}
@@ -191,13 +200,12 @@ echo"				<section id='cta'>
 														<li><a href='$link' class='button special small'>$edo</a></li>
 													</ul>
 													</td>
-													<td>$rowCitasOri[0]</td>
-													<td>$rowCitasOri[7]</td>
-													<td>".usuario($rowCitasOri[7], $con)." </td>
-													<td>$rowCitasOri[4]</td>
-													<td> $rowCitasOri[1]</td>
-													<td>$rowCitasOri[2]</td>
-													<td>$rowCitasOri[3]</td>
+													<td><center>$rowCitasOri[0]</center></td>
+													<td><center>".usuario($rowCitasOri[7], $con)."</center></td>
+													<td><center>$rowCitasOri[4]</center></td>
+													<td><center>$rowCitasOri[1]</center></td>
+													<td><center>$rowCitasOri[2]</center></td>
+													<td><center>$rowCitasOri[3]</center></td>
 												</tr>
 				";
 					}

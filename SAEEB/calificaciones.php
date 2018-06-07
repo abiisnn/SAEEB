@@ -101,10 +101,18 @@ echo "						</tbody>
 											<tfoot>
 											</tfoot>
 										</table>
+										<ul class='actions align-center'>
+									<li><a href='Principal.php' class='button special'>Inicio</a></li>
+									</ul>
 									</div>
 								</section>
+
 						</div>
+
 					</div>
+		
+								
+							
 			";
 ?>
 

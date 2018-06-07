@@ -38,6 +38,7 @@ if($now > $_SESSION['expire'])
 				<header id="header" class="alt">
 					<nav id="nav">
 						<ul>
+							<li><a href="Principal.php">Inicio</a></li>
 							<li><a href="CerrarSesion.php">Cerrar Sesion</a></li>
 						</ul>
 					</nav>

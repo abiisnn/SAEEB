@@ -37,6 +37,7 @@ if($now > $_SESSION['expire'])
 				<header id="header" class="alt">
 					<nav id="nav">
 						<ul>
+							<li><a href="Principal.php">Inicio</a></li>
 							<li><a href="CerrarSesion.php">Cerrar Sesión</a></li>
 							
 						</ul>
@@ -72,7 +73,7 @@ echo"				<section id='cta'>
 			// echo "GRUPO:".$grupo;
 			$i = 0;
 
-			$alumno=mysqli_query($con, "SELECT u.Nombre, u.ApPaterno, u.ApMaterno, a.idGrupo FROM usuario u, Alumno a, grupo g WHERE u.idUsuario=a.idAlumno AND a.idGrupo=g.idGrupo AND g.idGrupo='$grupo' ORDER BY 1 ASC;"); 
+			$alumno=mysqli_query($con, "SELECT u.Nombre, u.ApPaterno, u.ApMaterno, a.idGrupo, g.nombre FROM usuario u, Alumno a, grupo g WHERE u.idUsuario=a.idAlumno AND a.idGrupo=g.idGrupo AND g.idGrupo='$grupo' ORDER BY 2 ASC;"); 
 			echo" 	<div class='row'>
 						<div class='12u'>
 							<!-- Table -->
@@ -81,7 +82,7 @@ echo"				<section id='cta'>
 										<table>
 											<thead>
 												<tr>
-													<th><center>ALUMNOS</center></th>
+													<th><center>ALUMNOS INSCRITOS</center></th>
 													<th><center>CALIFICACION</center></th>
 												</tr>
 											</thead>
@@ -93,7 +94,7 @@ echo"				<section id='cta'>
 				{ 
 					while ($rowAlumno = mysqli_fetch_array($alumno)) 
 					{
-					    echo "						<td>$rowAlumno[2] $rowAlumno[1] $rowAlumno[0] </td> 
+					    echo "						<td><center>$rowAlumno[2] $rowAlumno[1] $rowAlumno[0]</center> </td> 
 													<td>
 														<select name='cal_".$i."'>
 															<option value=0>0</option>
