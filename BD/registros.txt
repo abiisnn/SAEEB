@@ -21,7 +21,7 @@ insert into usuario values (480011, 150070, 'LEONEL', 'QUINTERO', 'LOPEZ', 'QULL
 
 insert into orientador values (380001, 'LIC. EN CIENCIAS SOCIALES');
 
-insert into profesor values (480011, 'LIC. EN CONTABILIDAD');
+insert into profesor values (480011, 'LIC. EN CONTABILIDAD',1);
 
 
 
