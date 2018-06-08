@@ -166,7 +166,7 @@ echo"				<section id='cta'>
 				}
 				else
 				{ 
-					echo "<td>Todavia no ha recibido mensajes.</td>
+					echo "<td>Todavia no ha recibido citas.</td>
 								</tr>";
 				}
 			}
@@ -204,7 +204,7 @@ echo"				<section id='cta'>
 				}
 				else
 				{ 
-					echo "<td>Todavia no ha recibido mensajes.</td>
+					echo "<td>Todavia no se han agendado citas.</td>
 								</tr>";
 				}
 			}
