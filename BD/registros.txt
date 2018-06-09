@@ -3,6 +3,7 @@ mysqldump -u root -p saeeb > c:/saeeb.sql
 
 insert into escuela values(150003, 'ESCUELA SECUNDARIA TECNICA NUM. 3', 'CALLE ISLA DE GUADALUPE E ISLA CLARION', 4,'PRADO VALLEJO', 'TLALNEPANTLA DE BAZ', 'EDOMEX', 'TECNICA', concat(year(now()), '-2'), 'TERESA VALENCIA DE LA MORA');
 
+
 insert into escuela values(151386, 'COLEGIO LAS AMERICAS', 'AVENIDA JORGE JIMÉNEZ CANTU', 17,'VILLA DE GUADALUPE XALOSTOC', 'ECATEPEC DE MORELOS', 'EDOMEX', 'TECNICA', concat(year(now()), '-2'), '');
 
 insert into escuela values(150160, 'ESCUELA SECUNDARIA TECNICA NUM. 150', 'CALLE ARGELIA', 11,'MEXICO 86', 'ATIZAPAN DE ZARAGOZA', 'EDOMEX', 'TECNICA', concat(year(now()), '-2'), 'RAUL AGUSTIN JAIMES SANTANA');
@@ -17,26 +18,26 @@ insert into usuario values (280000, 150003, 'ERICK', 'RAMOS', 'TELLEZ', 'RATE040
 update usuario set claveescuela=150003 where tipo="PROFESOR";
 update grupo ser claveescuela=150003;
 
-insert into usuario values (280001, 150021, 'LEONARDO', 'DIAZ', 'MIRANDA', 'DIML040906HMCIIN08', 'enriquebroly@gmail.com','instinto', 13, 'MASCULINO', 'CALLE TOLUCA', 109, 'LOMAS DE SAN ANDRES ATENCO', 'TLALNEPANTLA DE BAZ', 'EDOMEX', 'ALUMNO', '8:00', '15:00');
+insert into usuario values (280001, 150003, 'LEONARDO', 'DIAZ', 'MIRANDA', 'DIML040906HMCIIN08', 'enriquebroly@gmail.com','instinto', 13, 'MASCULINO', 'CALLE TOLUCA', 109, 'LOMAS DE SAN ANDRES ATENCO', 'TLALNEPANTLA DE BAZ', 'EDOMEX', 'ALUMNO', '8:00', '15:00');
 
-insert into usuario values (280006, 151386, 'PEDRO', 'PEREZ', 'PEREZ', 'PEPP040916HASRRD02', 'peterpp@gmail.com','123', 14, 'MASCULINO', 'CALLE FABELA', 99, 'BRUSELAS', 'AZCAPOTZALCO', 'CDMX', 'ALUMNO', '7:00', '13:30');
+insert into usuario values (280006, 150003, 'PEDRO', 'PEREZ', 'PEREZ', 'PEPP040916HASRRD02', 'peterpp@gmail.com','123', 14, 'MASCULINO', 'CALLE FABELA', 99, 'BRUSELAS', 'AZCAPOTZALCO', 'CDMX', 'ALUMNO', '7:00', '13:30');
 
-insert into usuario values (280007, 150160, 'CARMEN', 'DEL VALLE', 'SOSA', 'VASC0403194S8', 'delvalle@gmail.com','123', 14, 'FEMENINO', 'CALLE GARGOLA', 555, 'FABRICIO NEYRA', 'IZTAPALAPA', 'CDMX', 'ALUMNO', '7:00', '13:30');
+insert into usuario values (280007, 150003, 'CARMEN', 'DEL VALLE', 'SOSA', 'VASC0403194S8', 'delvalle@gmail.com','123', 14, 'FEMENINO', 'CALLE GARGOLA', 555, 'FABRICIO NEYRA', 'IZTAPALAPA', 'CDMX', 'ALUMNO', '7:00', '13:30');
 
-insert into usuario values (280008, 150160, 'MEI', 'YIANG', 'ZHU', 'YIZM040319CW5', 'yzhu@hotmail.com','123', 14, 'FEMENINO', 'CALLE ASIA', 204, 'LOMAS DEL VALLE', 'TLALPAN', 'CDMX', 'ALUMNO', '7:00', '13:30');
+insert into usuario values (280008, 150003, 'MEI', 'YIANG', 'ZHU', 'YIZM040319CW5', 'yzhu@hotmail.com','123', 14, 'FEMENINO', 'CALLE ASIA', 204, 'LOMAS DEL VALLE', 'TLALPAN', 'CDMX', 'ALUMNO', '7:00', '13:30');
 
-insert into usuario values (280009, 150160, 'RUBEN', 'VILLALOBOS', 'ALCALA', 'VIAR970919469', 'rubencio@hotmail.com','123', 15, 'MASCULINO', 'CALLE CEDRO', 28, 'VALLE DE LOS PINOS 1ERA SECCION', 'TLALNEPANTLA DE BAZ', 'EDOMEX', 'ALUMNO', '7:00', '13:30');
+insert into usuario values (280009, 150003, 'RUBEN', 'VILLALOBOS', 'ALCALA', 'VIAR970919469', 'rubencio@hotmail.com','123', 15, 'MASCULINO', 'CALLE CEDRO', 28, 'VALLE DE LOS PINOS 1ERA SECCION', 'TLALNEPANTLA DE BAZ', 'EDOMEX', 'ALUMNO', '7:00', '13:30');
 
-insert into usuario values (280100, 150160, 'ENRIQUE', 'RAMOS', 'DIAZ', 'RADE980707HMCMZN03', 'enriquebroly@hotmail.com','123', 13, 'MASCULINO', 'CALLE BAJA CALIFORNIA', 313, 'LOMAS DE SAN LORENZO', 'TLALNEPANTLA DE BAZ', 'EDOMEX', 'ALUMNO', '7:00', '13:30');
+insert into usuario values (280100, 150003, 'ENRIQUE', 'RAMOS', 'DIAZ', 'RADE980707HMCMZN03', 'enriquebroly@hotmail.com','123', 13, 'MASCULINO', 'CALLE BAJA CALIFORNIA', 313, 'LOMAS DE SAN LORENZO', 'TLALNEPANTLA DE BAZ', 'EDOMEX', 'ALUMNO', '7:00', '13:30');
 
 
-insert into usuario values (380001, 150021, 'JAIME', 'DAVALOS', 'PEREZ', 'DAPJ040916HMCYYN11', 'jaime@gmail.com','123', 33, 'MASCULINO', 'CALLE ESMERALDA', 9, 'ACAPULCO', 'TLALNEPANTLA DE BAZ', 'EDOMEX', 'ORIENTADOR', '8:00', '15:00');
+insert into usuario values (380001, 150003, 'JAIME', 'DAVALOS', 'PEREZ', 'DAPJ040916HMCYYN11', 'jaime@gmail.com','123', 33, 'MASCULINO', 'CALLE ESMERALDA', 9, 'ACAPULCO', 'TLALNEPANTLA DE BAZ', 'EDOMEX', 'ORIENTADOR', '8:00', '15:00');
 
-insert into usuario values (380004, 150160, 'CARLOS', 'FERNANDEZ', 'CORRIJA', 'FACP040916HMCYYN11', 'c_fernandez@gmail.com','123', 28, 'MASCULINO', 'CALLE NUECES', 3, 'TULUM', 'ATIZAPAN DE ZARAGOZA', 'EDOMEX', 'ORIENTADOR', '8:00', '15:00');
+insert into usuario values (380004, 150003, 'CARLOS', 'FERNANDEZ', 'CORRIJA', 'FACP040916HMCYYN11', 'c_fernandez@gmail.com','123', 28, 'MASCULINO', 'CALLE NUECES', 3, 'TULUM', 'ATIZAPAN DE ZARAGOZA', 'EDOMEX', 'ORIENTADOR', '8:00', '15:00');
 
-insert into usuario values (380006, 150160, 'GUILLERMO', 'OCHOA', 'VAZQUEZ', 'OVGU040916HMCYYN11', 'memo_ochoa@gmail.com','123', 31, 'MASCULINO', 'CALLE RUSIA', 2018, 'LAS PALMAS', 'CUAUHTEMOC', 'CDMX', 'ORIENTADOR', '8:00', '15:00');
+insert into usuario values (380006, 150003, 'GUILLERMO', 'OCHOA', 'VAZQUEZ', 'OVGU040916HMCYYN11', 'memo_ochoa@gmail.com','123', 31, 'MASCULINO', 'CALLE RUSIA', 2018, 'LAS PALMAS', 'CUAUHTEMOC', 'CDMX', 'ORIENTADOR', '8:00', '15:00');
 
-insert into usuario values (480011, 150070, 'LEONEL', 'QUINTERO', 'LOPEZ', 'QULL040920HMCXDYN11', 'leonel@gmail.com','123', 46, 'MASCULINO', 'CALLE FORTUNA', 187, 'GUERRERO', 'NAUCALPAN DE JUAREZ', 'EDOMEX', 'PROFESOR', '8:00', '15:00');
+insert into usuario values (480011, 150003, 'LEONEL', 'QUINTERO', 'LOPEZ', 'QULL040920HMCXDYN11', 'leonel@gmail.com','123', 46, 'MASCULINO', 'CALLE FORTUNA', 187, 'GUERRERO', 'NAUCALPAN DE JUAREZ', 'EDOMEX', 'PROFESOR', '8:00', '15:00');
 
 insert into usuario values (480001, 150003, 'EDUARDO', 'ALVAREZ', 'ALVAREZ', 'AAED040920HMCXDYN11', 'lalo@gmail.com','123', 33, 'MASCULINO', 'CALLE VAINILLA', 468, 'GRANJAS MEXICO', 'IZTACALCO', 'CDMX', 'PROFESOR', '8:00', '15:00');
 
@@ -66,8 +67,8 @@ insert into profesor values (480005, 'ING. EN TELECOMUNICACIONES', 580006);
 
 
 
-insert into grupo values (1, '1CM1', 380001, 150021);
-insert into grupo values (4, '3CM1', 380001, 150021);
+insert into grupo values (1, '1CM1', 380001, 150003);
+insert into grupo values (4, '3CM1', 380001, 150003);
 insert into grupo values (5, 'C', 380004, 150003);
 insert into grupo values (6, '4CM3', 380006, 150003);
 
