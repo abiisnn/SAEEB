@@ -14,6 +14,9 @@ insert into escuela values(	150021, 'ADOLFO LOPEZ MATEOS', 'CALLE SALVADOR NOVO'
 
 insert into usuario values (280000, 150003, 'ERICK', 'RAMOS', 'TELLEZ', 'RATE040125HMCMLRA8', 'enriquebroly@hotmail.com','ultra', 13, 'MASCULINO', 'CALLE AQUILES SERDAN', 31, 'EL GALLITO STA CLARA', 'ECATEPEC DE MORELOS', 'EDOMEX', 'ALUMNO', '7:00', '13:00');
 
+update usuario set claveescuela=150003 where tipo="PROFESOR";
+update grupo ser claveescuela=150003;
+
 insert into usuario values (280001, 150021, 'LEONARDO', 'DIAZ', 'MIRANDA', 'DIML040906HMCIIN08', 'enriquebroly@gmail.com','instinto', 13, 'MASCULINO', 'CALLE TOLUCA', 109, 'LOMAS DE SAN ANDRES ATENCO', 'TLALNEPANTLA DE BAZ', 'EDOMEX', 'ALUMNO', '8:00', '15:00');
 
 insert into usuario values (280006, 151386, 'PEDRO', 'PEREZ', 'PEREZ', 'PEPP040916HASRRD02', 'peterpp@gmail.com','123', 14, 'MASCULINO', 'CALLE FABELA', 99, 'BRUSELAS', 'AZCAPOTZALCO', 'CDMX', 'ALUMNO', '7:00', '13:30');
@@ -188,31 +191,30 @@ insert into cu values (280001, 21325);
 insert into cita values (21328, 'SALA SIGLO XXI', '2018-05-29', '9:30','Nada impide tanto el ser natural como el afán.', 380002, 0);
 insert into cu values (280001, 21328);
 
+//Obtener orientador y profesores del alumno
+select u.idusuario, u.nombre,u.appaterno, u.apmaterno from usuario u, grupo g
+where u.idusuario=g.idorientador and u.claveescuela=g.claveescuela and u.tipo='ORIENTADOR' and g.idgrupo=4 and g.claveescuela=150003
+union
+select idusuario, nombre,appaterno, apmaterno from usuario where idusuario in (select p.idprofesor from profesor p, pg pg, grupo g where p.idprofesor=pg.idprofesor and pg.idgrupo=g.idgrupo and g.idgrupo=4 and g.claveescuela=150003) order by 1 asc;
 
-//Obtener profesores y orientador de cada alumno
-SELECT distinct u.idusuario, u.nombre, u.appaterno, u.apmaterno 
-FROM usuario u, profesor p, alumno a, grupo g, pg pg , orientador o
-WHERE ((u.idusuario=pg.idprofesor and pg.idgrupo=g.idgrupo) or (u.idusuario=g.idorientador)) and g.idgrupo=a.idgrupo and a.idalumno=280000;
-
-//Obtener alumnos por parte del orientador
-SELECT distinct u.idusuario, u.nombre, u.appaterno, u.apmaterno 
-FROM usuario u, orientador o, alumno a, grupo g
-WHERE u.idusuario=a.idalumno and a.idgrupo=g.idgrupo and g.idorientador=o.idorientador and o.idorientador=380001;
-
-//Obtener padres de familia por parte del orientador
-SELECT distinct a.idalumno, a.tutor
-FROM orientador o, alumno a, grupo g
-WHERE a.idgrupo=g.idgrupo and g.idorientador=o.idorientador and o.idorientador=380001;
 
 //Obtener alumnos por parte del profesor
-SELECT distinct a.idalumno, a.tutor
-FROM profesor p, alumno a, grupo g, pg pg
-WHERE a.idgrupo=g.idgrupo and g.idgrupo=pg.idgrupo and pg.idprofesor=p.idprofesor and p.idprofesor=480011;
+select a.idalumno, a.tutor from usuario u, grupo g, alumno a
+where u.idusuario=a.idalumno and u.claveescuela=g.claveescuela and g.idgrupo=a.idgrupo and u.tipo='ALUMNO' and g.idgrupo in (select idgrupo from pg where idprofesor=480001) and g.claveescuela=150003 order by 1 asc;
+
+//Obtener alumnos por parte del orientador
+select a.idalumno, a.tutor from usuario u, grupo g, alumno a
+where u.idusuario=a.idalumno and u.claveescuela=g.claveescuela and g.idgrupo=a.idgrupo and a.idgrupo=4 and u.claveescuela=150003 order by 1 asc;
 
 //Para quitar la confirmacion de la cita y probar botones (cambiar idusuario)
 UPDATE cita c, cu cu 
 set c.confirmada=0 
 WHERE c.idcita=cu.idcita and cu.idusuario=280001;
+
+
+
+
+
 
 
 

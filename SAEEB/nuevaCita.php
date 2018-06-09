@@ -97,7 +97,7 @@ if($now > $_SESSION['expire'])
 		else{
 
 
-	  		$desti=DestiOri($idusuario, $con);
+	  		$desti=DestiOri($idusuario, OtenerGrupo($idusuario, $con), getEscuela($idusuario, $con), $con);
 
 
 

@@ -96,16 +96,16 @@ if($now > $_SESSION['expire'])
 	  		$idRemitente = $_GET['idRemitente'];
 
 	  		if(tipoUsuario($idRemitente, $con)=='ORIENTADOR'){
-	  			$desti=DestiOri($idRemitente, $con);
+	  			$desti=DestiOri($idRemitente, OtenerGrupo($idRemitente, $con), getEscuela($idRemitente, $con), $con);
 
 
 	  		}
 	  		else if(tipoUsuario($idRemitente, $con)=='ALUMNO'){
-	  			$desti=DestiAlumno($idRemitente, $con);
+	  			$desti=DestiAlumno($idRemitente, getGrupoAlumno($idRemitente, $con), getEscuela($idRemitente, $con), $con);
 
 	  		}
 	  		else if(tipoUsuario($idRemitente, $con)=='PROFESOR'){
-	  			$desti=DestiProf($idRemitente, $con);
+	  			$desti=DestiProf($idRemitente, getEscuela($idRemitente, $con), $con);
 
 	  		} 
 				echo"
