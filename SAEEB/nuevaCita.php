@@ -75,6 +75,8 @@ if($now > $_SESSION['expire'])
 
 			if (mysqli_query($con, $sql1) && mysqli_query($con, $sql2)){ 
 
+				echo "<script type=\"text/javascript\">alert(\"La cita se ha agendado correctamente.\");</script>";  
+
 				echo " <center>La cita se ha agendado correctamente.</center><br><br>
 						<ul class='actions align-center'>
 										<li><a href='citas.php' class='button'>Regresar a Citas</a></li>
@@ -84,6 +86,8 @@ if($now > $_SESSION['expire'])
 
 			} 
 			else { 
+
+				echo "<script type=\"text/javascript\">alert(\"Hubo un error al agendar la cita. Tal vez el identificador de cita ya existia: ".mysqli_error($con).". Intente de nuevo.\");</script>"; 
 
 			echo "<center>Hubo un error al agendar la cita. Tal vez el identificador de cita ya existia: ".mysqli_error($con).". Intente de nuevo.</center><br><br>
 						<ul class='actions align-center'>

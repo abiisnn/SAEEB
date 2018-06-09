@@ -81,6 +81,7 @@ if($now > $_SESSION['expire'])
 
 			if (mysqli_query($con, $sql))
 			{ 
+				echo "<script type=\"text/javascript\">alert(\"El mensaje se ha enviado correctamente.\");</script>";  
 				echo " El mensaje se ha enviado correctamente.<br><br>
 						<ul class='actions align-center'>
 										<li><a href='bandeja.php' class='button'>Regresar a la Bandeja</a></li>
@@ -88,7 +89,9 @@ if($now > $_SESSION['expire'])
 					</section>
 				";
 			} 
-			else { 
+			else {
+
+			echo "<script type=\"text/javascript\">alert(\"Hubo un error al agregar el mensaje. Tal vez el identificador de mensaje que se genero ya existia: ".mysqli_error($con)."\");</script>";  
 
 			echo "Hubo un error al agregar el mensaje. Tal vez el identificador de mensaje que se genero ya existia: ".mysqli_error($con)."<br><br>
 						<ul class='actions align-center'>

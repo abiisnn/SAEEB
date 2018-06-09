@@ -97,12 +97,14 @@ echo"				<section id='cta'>
 			    $j++;
 			}
 		}
+		echo "<script type=\"text/javascript\">alert(\"Se agregaron exitosamente las calificaciones\");</script>"; 
+
 		echo "	<div class='row'>
 						<div class='12u'>
 							<!-- Table -->
 								<section class='box'>
 									<div class='table-wrapper'>
-									<br><br>SE AGREGARON EXITOSAMENTE LAS CALIFICACIONES<br><br>							
+									<br><br>Se agregaron exitosamente las calificaciones<br><br>							
 									</div>
 								</section>
 						</div>
