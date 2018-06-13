@@ -44,24 +44,31 @@ if($now > $_SESSION['expire'])
 					</nav>
 				</header>
 <?php
-echo"				<section id='cta'>
-						<h2>".$_SESSION['username']."</h2>
-				</section>
-				<section id='main' class='container 95%'>
-					<header>
-						<h3>AGREGAR CALIFICACIONES</h3>
-					</header>				
-";
 	include ("conexion.php");
 	include ("obtenerUsuario.php");
-
 	// Probamos la conexion
 	$con= conectar();
 	if($con)
 	{
+		$idUsuario=$_SESSION['username'];
+		$idmateria=ObtenerMateria($idUsuario, $con);
+		$materia=nombreMateria($idmateria, $con);
+		$grupo=$_POST['grupo'];
+			// echo "GRUPO:".$grupo;
+		$i = 0;
+
+
 		if(isset($_POST['Aceptar']))
 		{
-			$idUsuario=$_SESSION['username'];
+			echo"		<section id='cta'>
+						<h2>".$_SESSION['username']."</h2>
+				</section>
+				<section id='main' class='container 95%'>
+					<header>
+						<h3>AGREGAR CALIFICACIONES - ".$materia."</h3>
+					</header>				
+			";
+			
 			echo "				<center>
 									<ul class='actions'>
 										<li><a href='Principal.php' class='button'>Inicio</a></li>
@@ -69,49 +76,57 @@ echo"				<section id='cta'>
 									</ul>
 								</center>
 			";
-			$grupo=$_POST['grupo'];
-			// echo "GRUPO:".$grupo;
-			$i = 0;
+			
+			
 
-			$alumno=mysqli_query($con, "SELECT u.Nombre, u.ApPaterno, u.ApMaterno, a.idGrupo, g.nombre FROM usuario u, Alumno a, grupo g WHERE u.idUsuario=a.idAlumno AND a.idGrupo=g.idGrupo AND g.idGrupo='$grupo' ORDER BY 2 ASC;"); 
+			$alumno=mysqli_query($con, "SELECT u.Nombre, u.ApPaterno, u.ApMaterno, a.idGrupo, g.nombre FROM usuario u, Alumno a, grupo g WHERE u.idUsuario=a.idAlumno AND a.idGrupo=g.idGrupo AND g.idGrupo=$grupo ORDER BY u.ApPaterno, u.ApMaterno, u.nombre ASC;"); 
+
+			$califActual=mysqli_query($con, "SELECT am.calificacion FROM usuario u, am am, alumno a WHERE u.idusuario=a.idalumno and a.idalumno=am.idalumno and am.idMateria=$idmateria and a.idgrupo=$grupo ORDER BY u.ApPaterno, u.ApMaterno, u.nombre ASC;"); 
+
+
 			echo" 	<div class='row'>
 						<div class='12u'>
 							<!-- Table -->
+
 								<section class='box'>
 									<div class='table-wrapper'>
 										<table>
 											<thead>
 												<tr>
-													<th><center>ALUMNOS INSCRITOS</center></th>
+													<th><center>GRUPO </center></th>
+													<th><center>ALUMNOS INSCRITOS </center></th>
 													<th><center>CALIFICACION</center></th>
+													<th><center>NUEVA CALIFICACION</center></th>
 												</tr>
 											</thead>
 											<tbody>
 											<form action= 'ConfirmarCal.php' method = 'POST'>
 												<tr>
 				";
-				if (mysqli_num_rows($alumno)) 
+				if (mysqli_num_rows($alumno) && mysqli_num_rows($califActual)) 
 				{ 
-					while ($rowAlumno = mysqli_fetch_array($alumno)) 
+					while (($rowAlumno = mysqli_fetch_array($alumno)) && $rowCalif = mysqli_fetch_array($califActual))
 					{
-					    echo "						<td><center>$rowAlumno[2] $rowAlumno[1] $rowAlumno[0]</center> </td> 
+						$combo=califActual($rowCalif[0]);
+					    echo "						<td><center>$rowAlumno[4]</center></td>
+					    							<td><center>$rowAlumno[2] $rowAlumno[1] $rowAlumno[0]</center> </td> 
+					    							<td><center>$rowCalif[0]</center></td>
 													<td>
-														<select name='cal_".$i."'>
-															<option value=0>0</option>
-															<option value=1>1</option>
-															<option value=2>2</option>
-															<option value=3>3</option>
-															<option value=4>4</option>
-															<option value=5>5</option>
-															<option value=6>6</option>
-															<option value=7>7</option>
-															<option value=8>8</option>
-															<option value=9>9</option>
-															<option value=10>10</option>
+														<select name='cal_".$i."' value=10>
+															<option value=0 $combo[0]>0</option>
+															<option value=1 $combo[1]>1</option>
+															<option value=2 $combo[2]>2</option>
+															<option value=3 $combo[3]>3</option>
+															<option value=4 $combo[4]>4</option>
+															<option value=5 $combo[5]>5</option>
+															<option value=6 $combo[6]>6</option>
+															<option value=7 $combo[7]>7</option>
+															<option value=8 $combo[8]>8</option>
+															<option value=9 $combo[9]>9</option>
+															<option value=10 $combo[10]>10</option>
 											 			</select>
 											 		</td>
-													<td>
-													</td>
+												
 												</tr>
 				";
 				 $i++;

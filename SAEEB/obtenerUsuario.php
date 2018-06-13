@@ -90,5 +90,24 @@ where u.idusuario=a.idalumno and u.claveescuela=g.claveescuela and g.idgrupo=a.i
 		return $row[0];
 	}
 
+	function nombreMateria($idMateria, $conex){
+		$mat = mysqli_query($conex, "SELECT nombre FROM materia WHERE idMateria=$idMateria"); 
+		$row = mysqli_fetch_array($mat);
+
+		return $row[0];
+	}
+
+	function califActual($calif){
+
+		for($j=0; $j<11; $j++){
+			if($calif==$j)
+			$sel[$j]="selected";
+			else
+				$sel[$j]="";
+		}
+
+		return $sel;
+	}
+
 
 ?>
