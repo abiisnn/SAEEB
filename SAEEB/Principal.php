@@ -65,7 +65,7 @@ if($now > $_SESSION['expire'])
 								<span class='icon major fa fa-envelope accent4'></span>
 								<h3>Bandeja de Entrada</h3>
 								<ul class='actions'>
-									<li><a href='bandeja.php' class='button alt'>Ver</a></li>
+									<li><a href='bandeja.php' class='button alt'>Acceder</a></li>
 								</ul>
 							</section>
 						</div>
@@ -85,14 +85,24 @@ echo "						<div class='features-row'>
 								echo "	<span class='icon major fa fa-file-pdf-o accent3'></span>
 									<h3>Boleta</h3>
 										<ul class='actions'>
-									<li><a href='SeleccionarAlumno.php' class='button alt'>Ver</a></li>";
+									<li><a href='SeleccionarAlumno.php' class='button alt'>Generar</a></li>";
 							}
 							if($Tipo == 'PROFESOR')
 							{
 								echo "<span class='icon major fa fa-book accent3'></span>	
 								<h3>Calificaciones</h3>
 										<ul class='actions'>
-								<li><a href='CalProfesor.php' class='button alt'>Ver</a></li>";
+								<li><a href='CalProfesor.php' class='button alt'>Agregar</a></li>
+								</section>
+
+								<section>
+								<span class='icon major fa fa-search accent1'></span>
+								<h3>Directorio de Usuarios</h3>
+								<ul class='actions'>
+									<li><a href='buscador.php' class='button alt'>Buscar</a></li>
+								</ul>
+								</section>
+								</div>";
 							}
 							if($Tipo == 'ALUMNO')
 							{
@@ -114,25 +124,21 @@ echo "								</ul>
 									<li><a href='citas.php' class='button alt'>Ver</a></li>
 								</ul>
 							</section>
+							</div>
+							<div class='features-row'>
+							<section>
+								<span class='icon major fa fa-search accent1'></span>
+								<h3>Directorio de Usuarios</h3>
+								<ul class='actions'>
+									<li><a href='buscador.php' class='button alt'>Buscar</a></li>
+								</ul>
+								</section>
 						</div>
 		";	
 	}
-	/*if($Tipo == "ORIENTADOR")
-	{
-    echo"				
-    					<div class='features-row'>
-							<section>
-								<span class='icon major fa fa-file-pdf-o accent4'></span>
-								<h3>Generar Boleta</h3>
-								<ul class='actions'>
-									<li><a href='SeleccionarAlumno.php' class='button alt'>Ver</a></li>
-								</ul>
-							</section>
-						</div>
-	";
-	}*/
-?>				
-					</section>
+
+?>								
+						</section>
 				</section>
 			<!-- CTA -->
 				<section id="cta">

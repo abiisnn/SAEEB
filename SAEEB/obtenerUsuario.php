@@ -52,7 +52,7 @@ where u.idusuario=a.idalumno and u.claveescuela=g.claveescuela and g.idgrupo=a.i
 				}
 				return $nombreUsuario;	
 		}
-	function GrupoOrientador($idUsuario,$conex){
+	function GrupoOrientador($idUsuario,$conex){//Orientador nombre
 		$grupo=mysqli_query($conex, "SELECT Nombre FROM Grupo WHERE idOrientador=$idUsuario"); 
 		$row = mysqli_fetch_array($grupo);
 
@@ -63,7 +63,7 @@ where u.idusuario=a.idalumno and u.claveescuela=g.claveescuela and g.idgrupo=a.i
 		$Alumno= mysqli_query($conex, "SELECT u.idUsuario,u.appaterno, u.apmaterno,u.nombre FROM Usuario u, grupo g,alumno a WHERE g.idgrupo=a.idgrupo and a.idalumno=u.idUsuario and g.idgrupo=$idgrupo order by 1 asc;"); 
 		return $Alumno;	
 	}
-	function OtenerGrupo($idusuario, $conex){//Orientador
+	function OtenerGrupo($idusuario, $conex){//Orientador id grupo
 		$tipo=mysqli_query($conex, "SELECT idgrupo FROM grupo where idorientador=$idusuario"); 
 		$row = mysqli_fetch_array($tipo);
 

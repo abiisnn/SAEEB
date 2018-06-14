@@ -79,7 +79,7 @@ if($now > $_SESSION['expire'])
 			
 			
 
-			$alumno=mysqli_query($con, "SELECT u.Nombre, u.ApPaterno, u.ApMaterno, a.idGrupo, g.nombre FROM usuario u, Alumno a, grupo g WHERE u.idUsuario=a.idAlumno AND a.idGrupo=g.idGrupo AND g.idGrupo=$grupo ORDER BY u.ApPaterno, u.ApMaterno, u.nombre ASC;"); 
+			$alumno=mysqli_query($con, "SELECT u.Nombre, u.ApPaterno, u.ApMaterno, a.idGrupo, g.nombre, u.idusuario FROM usuario u, Alumno a, grupo g WHERE u.idUsuario=a.idAlumno AND a.idGrupo=g.idGrupo AND g.idGrupo=$grupo ORDER BY u.ApPaterno, u.ApMaterno, u.nombre ASC;"); 
 
 			$califActual=mysqli_query($con, "SELECT am.calificacion FROM usuario u, am am, alumno a WHERE u.idusuario=a.idalumno and a.idalumno=am.idalumno and am.idMateria=$idmateria and a.idgrupo=$grupo ORDER BY u.ApPaterno, u.ApMaterno, u.nombre ASC;"); 
 
@@ -94,7 +94,8 @@ if($now > $_SESSION['expire'])
 											<thead>
 												<tr>
 													<th><center>GRUPO </center></th>
-													<th><center>ALUMNOS INSCRITOS </center></th>
+													<th><center>ID</center></th>
+													<th><center>ALUMNOS</center></th>
 													<th><center>CALIFICACION</center></th>
 													<th><center>NUEVA CALIFICACION</center></th>
 												</tr>
@@ -109,6 +110,7 @@ if($now > $_SESSION['expire'])
 					{
 						$combo=califActual($rowCalif[0]);
 					    echo "						<td><center>$rowAlumno[4]</center></td>
+					    							<td><center>$rowAlumno[5]</center></td>
 					    							<td><center>$rowAlumno[2] $rowAlumno[1] $rowAlumno[0]</center> </td> 
 					    							<td><center>$rowCalif[0]</center></td>
 													<td>
@@ -156,6 +158,7 @@ if($now > $_SESSION['expire'])
 	} // FIN CONEXION
 	
 ?>
+			</section>
 			<!-- CTA -->
 				<section id="cta">
 				</section>
