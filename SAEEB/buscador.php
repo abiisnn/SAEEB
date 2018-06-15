@@ -24,7 +24,7 @@ if($now > $_SESSION['expire'])
 -->
 <html>
 	<head>
-		<title>SELECCION GRUPO</title>
+		<title>DIRECTORIO DE USUARIOS</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -49,7 +49,7 @@ echo"				<section id='cta'>
 				</section>
 				<section id='main' class='container 95%'>
 					<header>
-						<h3>AGREGAR CALIFICACIONES - GRUPOS</h3>
+						<h3>DIRECTORIO DE USUARIOS</h3>
 					</header>				
 ";
 	include ("conexion.php");
@@ -61,13 +61,11 @@ echo"				<section id='cta'>
 	{
 		
 		$idUsuario=$_SESSION['username'];
-		$idGrupo=OtenerGrupo($idUsuario,$con);
-		$Alumno=ObtenerAlumnosGrupo($idGrupo,$con);
-		$Grupos = ObtenerGrupos($idUsuario, $con);
+
 		//$grupo=GrupoOrientador($idUsuario, $con);
 		echo "			
 						<div class='box'>
-							<form method='post' action='AgregarCal.php'>
+							<form method='post' action='resultadoBusqueda.php'>
 								<div class='row uniform 50%'>
 									<div class='3u 12u(mobilep)'>
 										<label for='nombre'><b></b></label>							
@@ -75,24 +73,16 @@ echo"				<section id='cta'>
 								</div>
 								<div class='row uniform 50%'>
 									<div class='12u 12u(mobilep)'>
-										<label for='nombre'><b>Seleccione un Grupo</b></label>
-										<select name='grupo'>";
-					if (mysqli_num_rows($Grupos)) 
-					{ 
-						while ($row = mysqli_fetch_array($Grupos)) 
-						{ 
-							echo "<option value='$row[0]'> $row[0] - $row[1] </option>";
-						}
-					} //FIN MYSQLI_NUM_ROWS
-					echo"			</select>
+										<label for='nombre'><b>Ingrese la busqueda:</b></label>
+										<input type='text' name='consulta'></input>
 							</div>";
 									
 					echo " 
 						<div class='row uniform'>
 							<div class='12u'>
 								<ul class='actions align-center'>
-									<input type='hidden' value='$row[0]' name='idgrupo'>
-									<li><input type='submit' name='Aceptar' value='Aceptar' class='button special'></li>
+									<li><input type='submit' name='Nombre' value='Buscar por nombre' class='button special'></li>
+									<li><input type='submit' name='ID' value='Buscar por ID' class='button special'></li>
 								</ul>
 							</div>
 						</div>
@@ -110,7 +100,7 @@ echo"				<section id='cta'>
 	} // FIN CONEXION
 	
 ?>
-			<!-- CTA -->
+				<!-- CTA -->
 				<section id="cta">
 				</section>
 
